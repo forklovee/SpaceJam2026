@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7kdhutqx8guj" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://ekk6qgvepctd" path="res://Ship/PlayerShip/player_ship.tscn" id="2_lquwl"]
-[ext_resource type="PackedScene" uid="uid://dqyem6geyier2" path="res://Level/debug_level.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c446u8dav2dnv" path="res://Level/level.tscn" id="3_h2yge"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 ground_bottom_color = Color(0.059710145, 0.076380156, 0.16532534, 1)

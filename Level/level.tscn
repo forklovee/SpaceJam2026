@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c446u8dav2dnv"]
 
+[ext_resource type="Script" uid="uid://dpeoqhvxehnv7" path="res://Level/level.gd" id="1_52x1o"]
 [ext_resource type="Script" uid="uid://c0bq257vib83j" path="res://Level/star.gd" id="1_jglls"]
 [ext_resource type="PackedScene" uid="uid://1qqcaerm06c7" path="res://Objects/Crystal/cristal.tscn" id="2_e6b4q"]
 [ext_resource type="Script" uid="uid://dm1nvh7d4k27x" path="res://Level/space_bg.gd" id="3_7a20f"]
@@ -73,6 +74,7 @@ shader_parameter/stars_color = PackedVector3Array(0.9196297, 0.25485146, 1.92523
 shader_parameter/stars_ani = PackedInt32Array(0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0)
 
 [node name="Main" type="Node3D" unique_id=289798224]
+script = ExtResource("1_52x1o")
 
 [node name="star5" type="MeshInstance3D" parent="." unique_id=752513250]
 transform = Transform3D(0.07329019, 0, -0.2909701, 0, 0.3, 0, 0.2909701, 0, 0.07329019, -0.651775, 0, -1.0171165)

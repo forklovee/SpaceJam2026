@@ -2,6 +2,8 @@ class_name Level extends Node3D
 
 signal crystal_amount_changed(level: Level)
 
+@onready var query_plane: SpacePlane = $Space_BG
+
 var crystals_to_gather: Array = []
 
 func _ready() -> void:

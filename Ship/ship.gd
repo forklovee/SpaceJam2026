@@ -4,7 +4,8 @@ signal health_changed(ship: Ship)
 signal storage_changed(ship: Ship)
 signal fuel_changed(ship: Ship)
 
-@onready var base_gun_slot: Marker3D = $BaseGunSlot
+@onready var base_gun_slot: GunSlot = $BaseGunSlot
+@onready var radiation_query: RadiationQuery = $RaddiationQuerry
 
 @export var max_health: int = 100
 var health: int = max_health
@@ -18,7 +19,6 @@ var fuel: int = max_fuel
 
 var weapons: Array[Gun] = [] 
 
-
 var steering_direction: Vector2
 var movement_direction: Vector2
 
@@ -26,6 +26,8 @@ func _ready() -> void:
 	update_weapons()
 
 func _physics_process(delta: float) -> void:
+	radiation_query.update()
+	
 	var current_angle: float = rotation.y
 	var target_angle: float = lerp_angle(current_angle, steering_direction.angle(), 2.0*delta) 
 	

@@ -1,5 +1,5 @@
 @tool
-extends MeshInstance3D
+class_name SpacePlane extends MeshInstance3D
 
 @export var input_stars:Array[Star3D]
 
@@ -21,8 +21,8 @@ func _process(delta: float) -> void:
 	m.set_shader_parameter("stars_color",stars_color)
 	m.set_shader_parameter("stars_ani",stars_Ani)
 	
-func querry(poss):
-	var di={}
+func querry(poss) -> Dictionary[Star3D.RaditionType, float]:
+	var di: Dictionary[Star3D.RaditionType, float] = {}
 	di[Star3D.RaditionType.FUEL]=0.0
 	di[Star3D.RaditionType.SHILD]=0.0
 	di[Star3D.RaditionType.AMMO]=0.0

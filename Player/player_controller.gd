@@ -38,6 +38,8 @@ func spawn(transform: Transform3D, new_ship_scene: PackedScene = null):
 	ship = _ship_scene.instantiate()
 	add_child(ship)
 	
+	#ship.radiation_query.data
+	
 	ship.global_transform = transform
 	
 	camera.follow_target = ship

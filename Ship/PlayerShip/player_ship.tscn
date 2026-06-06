@@ -3,18 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://idcyet8cqbav" path="res://Ship/base_ship.tscn" id="1_4ff6c"]
 [ext_resource type="Script" uid="uid://dxo8tkdtd822e" path="res://Ship/PlayerShip/score_label.gd" id="2_d1b4h"]
 [ext_resource type="Script" uid="uid://dd63v2ojxwq4p" path="res://Ship/PlayerShip/rad_label.gd" id="3_wtuya"]
+[ext_resource type="Script" uid="uid://bty5ejl7c7k30" path="res://Ship/Gun/gun.gd" id="4_bmidl"]
+[ext_resource type="PackedScene" uid="uid://dr7hss4w17q6r" path="res://Ship/Gun/Bullet.tscn" id="5_sui1w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ff6c"]
 albedo_color = Color(0.3372549, 1, 1, 1)
 
 [node name="PlayerShip" unique_id=1525440035 instance=ExtResource("1_4ff6c")]
-is_allay = true
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1993636732]
 surface_material_override/0 = SubResource("StandardMaterial3D_4ff6c")
-
-[node name="Gun" parent="." index="2" unique_id=1331141947]
-contorl_by_player = true
 
 [node name="ColorRect" type="ColorRect" parent="." index="3" unique_id=299499538]
 anchors_preset = 1
@@ -48,3 +46,11 @@ var RAD_TOKSIC=0.0
 var RAD_FUEL_BEAM=0.0
 "
 script = ExtResource("3_wtuya")
+
+[node name="GunSlot" parent="." index="5" unique_id=886972490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.54223883)
+
+[node name="Gun" type="Node3D" parent="GunSlot" index="0" unique_id=1212398569]
+script = ExtResource("4_bmidl")
+bullet_res = ExtResource("5_sui1w")
+metadata/_custom_type_script = "uid://bty5ejl7c7k30"
