@@ -2,14 +2,16 @@ class_name Crystal extends StaticBody3D
 
 signal gathered(ship: Ship)
 
-var hp=1
+@onready var collision: CollisionShape3D = $CollisionShape3D
 
-func destroy(ship: Ship):
-	gathered.emit(ship)
+@export var durability := 1
 
-func hit(damage,owner):
-	hp-=damage
-	if hp<=0:
-		if not is_queued_for_deletion():
-			owner.collect()
-			self.queue_free()
+func damage(instigator: Ship, value: int):
+	durability -= value
+	if durability <= 0:
+		_destroy(instigator)
+
+func _destroy(instigator: Ship):
+	collision.disabled = true
+	queue_free()
+	gathered.emit(instigator)

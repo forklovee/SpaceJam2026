@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://idcyet8cqbav"]
 
 [ext_resource type="Script" uid="uid://cdg783r88enja" path="res://Ship/ship.gd" id="1_wo1jh"]
-[ext_resource type="Script" uid="uid://bty5ejl7c7k30" path="res://Ship/gun.gd" id="2_qsskr"]
+[ext_resource type="Script" uid="uid://d4hsl8ystudtd" path="res://Ship/Gun/gun_slot.gd" id="2_qsskr"]
+[ext_resource type="Script" uid="uid://bty5ejl7c7k30" path="res://Ship/Gun/gun.gd" id="3_1gmcr"]
 [ext_resource type="PackedScene" uid="uid://dr7hss4w17q6r" path="res://Ship/Gun/Bullet.tscn" id="3_bv82c"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_qsskr"]
@@ -24,8 +25,11 @@ mesh = SubResource("PrismMesh_qsskr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=103843045]
 shape = SubResource("SphereShape3D_wo1jh")
 
-[node name="Gun" type="Node3D" parent="." unique_id=1331141947 node_paths=PackedStringArray("ship")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5733783)
+[node name="BaseGunSlot" type="Marker3D" parent="." unique_id=1819252461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.48522997)
 script = ExtResource("2_qsskr")
-bullet = ExtResource("3_bv82c")
-ship = NodePath("..")
+
+[node name="BaseGun" type="Node3D" parent="BaseGunSlot" unique_id=1608411042]
+script = ExtResource("3_1gmcr")
+bullet_res = ExtResource("3_bv82c")
+metadata/_custom_type_script = "uid://bty5ejl7c7k30"

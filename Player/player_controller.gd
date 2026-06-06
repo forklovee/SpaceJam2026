@@ -12,9 +12,16 @@ func _ready() -> void:
 	camera = ResourceLoader.load("res://Player/Camera/player_camera.tscn").instantiate()
 	add_child(camera)
 
+func _input(_event: InputEvent) -> void:
+	if !is_instance_valid(ship):
+		return
+
 func _process(_delta: float) -> void:
 	if !is_instance_valid(ship):
 		return
+	
+	if Input.is_action_pressed("Fire"):
+		ship.shoot()
 	
 	input_direction = Input.get_vector("Left", "Right", "Down", "Up")
 	ship.steer(input_direction)
