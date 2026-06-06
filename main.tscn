@@ -1,3 +1,40 @@
 [gd_scene format=3 uid="uid://bgpg2dxkc7nmu"]
 
+[ext_resource type="Script" uid="uid://7kdhutqx8guj" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://idcyet8cqbav" path="res://Ship/base_ship.tscn" id="2_0xm2m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ff6c"]
+albedo_color = Color(0.3372549, 1, 1, 1)
+
+[sub_resource type="PackedScene" id="PackedScene_h2yge"]
+_bundled = {
+"base_scene": 0,
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array()],
+"names": PackedStringArray("PlayerShip", "MeshInstance3D", "surface_material_override/0"),
+"node_count": 2,
+"node_ids": PackedInt32Array(1525440035, 1993636732),
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 1, 2, 1, 0),
+"variants": [ExtResource("2_0xm2m"), SubResource("StandardMaterial3D_4ff6c")],
+"version": 3
+}
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
+ground_bottom_color = Color(0.059710145, 0.076380156, 0.16532534, 1)
+
+[sub_resource type="Sky" id="Sky_h2yge"]
+sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
+
+[sub_resource type="Environment" id="Environment_1bvp3"]
+background_mode = 2
+sky = SubResource("Sky_h2yge")
+
 [node name="Main" type="Node3D" unique_id=289798224]
+script = ExtResource("1_ig7tw")
+debug_player_ship = SubResource("PackedScene_h2yge")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=672368694]
+environment = SubResource("Environment_1bvp3")

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bclhb4dyt4q6o"]
+
+[ext_resource type="PackedScene" uid="uid://idcyet8cqbav" path="res://Ship/base_ship.tscn" id="1_25uhw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25uhw"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="BaseEnemyShip" unique_id=1525440035 instance=ExtResource("1_25uhw")]
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1993636732]
+surface_material_override/0 = SubResource("StandardMaterial3D_25uhw")
