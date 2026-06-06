@@ -9,9 +9,7 @@ func _ready() -> void:
 	add_child(pc)
 
 func open_level(level_scene: PackedScene):
-	if !level_scene:
-		printerr(self, ":open_level: no level_scene provided!")
-		return
+	assert(level_scene)
 	if is_instance_valid(level):
 		level.queue_free()
 	

@@ -7,7 +7,10 @@
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_1bvp3"]
 radial_steps = 5
 
-[node name="cristal" type="StaticBody3D" unique_id=207448365 groups=["Crystal"]]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_color = Color(4.1873755e-06, 0.5089053, 0.5611632, 1)
+
+[node name="cristal" type="StaticBody3D" unique_id=1058605122]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 script = ExtResource("1_nkxha")
 
@@ -15,5 +18,6 @@ script = ExtResource("1_nkxha")
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 shape = SubResource("BoxShape3D_ndduc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=8677979]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1982544863]
 mesh = SubResource("TubeTrailMesh_1bvp3")
+surface_material_override/0 = SubResource("StandardMaterial3D_lquwl")

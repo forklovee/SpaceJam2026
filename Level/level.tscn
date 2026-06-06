@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c446u8dav2dnv"]
 
 [ext_resource type="Script" uid="uid://c0bq257vib83j" path="res://Level/star.gd" id="1_jglls"]
-[ext_resource type="PackedScene" uid="uid://1qqcaerm06c7" path="res://Level/cristal_2.tscn" id="2_e6b4q"]
+[ext_resource type="PackedScene" uid="uid://1qqcaerm06c7" path="res://Objects/Crystal/cristal.tscn" id="2_e6b4q"]
 [ext_resource type="Script" uid="uid://dm1nvh7d4k27x" path="res://Level/space_bg.gd" id="3_7a20f"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_7dm0k"]
@@ -81,8 +81,8 @@ transform = Transform3D(-2.6060572, 0, -2.0785065, 0, 3.3333325, 0, 2.0785065, 0
 mesh = SubResource("SphereMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
 
-[node name="cristal2" parent="star5/star/planet3" unique_id=740578654 instance=ExtResource("2_e6b4q")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.66134787, -0.0074821115, -0.20147157)
+[node name="cristal" parent="star5/star/planet3" unique_id=1058605122 instance=ExtResource("2_e6b4q")]
+transform = Transform3D(-0.07035968, 0, 0.05611659, 0, 0.090000026, 0, -0.05611659, 0, -0.07035968, -0.15578675, 0, 0.8065796)
 
 [node name="star2" type="MeshInstance3D" parent="star5" unique_id=1066390521]
 transform = Transform3D(-0.3673054, 0, -0.9300919, 0, 0.99999994, 0, 0.9300919, 0, -0.3673054, 15.154943, 0, 19.673292)
@@ -97,8 +97,8 @@ transform = Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, -2.27911
 mesh = SubResource("SphereMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
 
-[node name="cristal" parent="star5/star2/planet2" unique_id=1545926833 instance=ExtResource("2_e6b4q")]
-transform = Transform3D(0.3, 0, 0, 0, 0.29999995, 0, 0, 0, 0.3, -0.66134715, -0.007482111, -0.20147228)
+[node name="cristal" parent="star5/star2/planet2" unique_id=648142832 instance=ExtResource("2_e6b4q")]
+transform = Transform3D(-0.07035968, 0, 0.05611659, 0, 0.09000002, 0, -0.05611659, 0, -0.07035968, -1.6227894, 0, -0.2274189)
 
 [node name="star3" type="MeshInstance3D" parent="star5" unique_id=1862060780]
 transform = Transform3D(0.033869796, 0, 0.99901557, 0, 0.9999998, 0, -0.99901557, 0, 0.033869796, 22.406221, 0, 4.4194813)
@@ -112,8 +112,8 @@ transform = Transform3D(2.95006, 0, 1.552099, 0, 3.3333328, 0, -1.552099, 0, 2.9
 mesh = SubResource("SphereMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
 
-[node name="cristal2" parent="star5/star3/planet2" unique_id=1833451319 instance=ExtResource("2_e6b4q")]
-transform = Transform3D(0.09, 0, 2.3283064e-10, 0, 0.09, 0, -2.3283064e-10, 0, 0.09, 0.60777736, -0.007482111, 4.7683716e-07)
+[node name="cristal" parent="star5/star3/planet2" unique_id=732239225 instance=ExtResource("2_e6b4q")]
+transform = Transform3D(-0.07035967, 0, 0.05611659, 0, 0.090000026, 0, -0.05611659, 0, -0.07035967, -1.2954202, 0, 2.1673498)
 
 [node name="star4" type="MeshInstance3D" parent="star5" unique_id=765289077]
 transform = Transform3D(0.014255054, 0, -0.9998896, 0, 0.99999994, 0, 0.9998896, 0, 0.014255054, -26.965248, 0, -2.4868546)
@@ -127,19 +127,16 @@ transform = Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, 7.889954
 mesh = SubResource("SphereMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
 
-[node name="cristal2" parent="star5/star4/planet" unique_id=1552353343 instance=ExtResource("2_e6b4q")]
-transform = Transform3D(0.09, 0, 3.7252903e-09, 0, 0.09000001, 0, -3.7252903e-09, 0, 0.09, 0.6077776, -0.007482112, -9.536743e-07)
-
 [node name="planet2" type="MeshInstance3D" parent="star5/star4" unique_id=1712991058]
 transform = Transform3D(-0.97782123, 0, 3.1866837, 0, 3.3333328, 0, -3.1866837, 0, -0.97782123, 1.2412391, 0, 7.575736)
 mesh = SubResource("SphereMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
 
-[node name="cristal2" parent="star5/star4/planet2" unique_id=2111473997 instance=ExtResource("2_e6b4q")]
-transform = Transform3D(0.09, 0, -9.313226e-10, 0, 0.09000001, 0, 9.313226e-10, 0, 0.09, 0.6077776, -0.0074821115, -2.3841858e-07)
+[node name="cristal" parent="star5/star4/planet2" unique_id=654610449 instance=ExtResource("2_e6b4q")]
+transform = Transform3D(-0.07035967, 0, 0.056116585, 0, 0.090000026, 0, -0.056116585, 0, -0.07035967, 0.82098484, 0, 1.4172401)
 
 [node name="Space_BG" type="MeshInstance3D" parent="." unique_id=1451238334 node_paths=PackedStringArray("input_stars")]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.08535671, 0.0060663223, -0.04908967)
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 1.1171687, 0.0060663223, 0.6135304)
 mesh = SubResource("PlaneMesh_ig7tw")
 surface_material_override/0 = SubResource("ShaderMaterial_h2yge")
 script = ExtResource("3_7a20f")
