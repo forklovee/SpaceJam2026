@@ -19,12 +19,17 @@ func _process(delta: float) -> void:
 	if !is_instance_valid(ship):
 		return
 	
+	#camera.global_position = camera.global_position.lerp(
+		#Vector3(ship.global_position.x, CAMERA_HEIGHT, ship.global_position.z), 10.0*delta
+	#)
+	
+	input_direction = Input.get_vector("Left", "Right", "Down", "Up")
+	ship.steer(input_direction)
+
+func _physics_process(delta: float) -> void:
 	camera.global_position = camera.global_position.lerp(
 		Vector3(ship.global_position.x, CAMERA_HEIGHT, ship.global_position.z), 10.0*delta
 	)
-	
-	input_direction = Input.get_vector("Left", "Right", "Down", "Up")
-	ship.move(input_direction)
 
 func spawn(transform: Transform3D, new_ship_scene: PackedScene = null):
 	destroy_ship()

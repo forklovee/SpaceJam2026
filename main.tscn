@@ -32,9 +32,35 @@ sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
 background_mode = 2
 sky = SubResource("Sky_h2yge")
 
+[sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
+
 [node name="Main" type="Node3D" unique_id=289798224]
 script = ExtResource("1_ig7tw")
 debug_player_ship = SubResource("PackedScene_h2yge")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=672368694]
 environment = SubResource("Environment_1bvp3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=315374435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2922564, -3.762704, 0.7849817)
+mesh = SubResource("BoxMesh_0xm2m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=326239066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1846182, -3.762704, 2.532031)
+mesh = SubResource("BoxMesh_0xm2m")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1240110776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.938657, -3.762704, -3.762714)
+mesh = SubResource("BoxMesh_0xm2m")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1307406508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8061533, -3.762704, -6.762802)
+mesh = SubResource("BoxMesh_0xm2m")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1674224514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.042617, -3.762704, -1.0542665)
+mesh = SubResource("BoxMesh_0xm2m")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=1393448652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5666547, -3.762704, 3.791401)
+mesh = SubResource("BoxMesh_0xm2m")
