@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://1qqcaerm06c7" path="res://Objects/Crystal/cristal.tscn" id="2_e6b4q"]
 [ext_resource type="Script" uid="uid://8pks5lg5crwq" path="res://Level/level_end.gd" id="2_iincs"]
 [ext_resource type="Script" uid="uid://dm1nvh7d4k27x" path="res://Level/space_bg.gd" id="3_7a20f"]
+[ext_resource type="PackedScene" uid="uid://bao2jybtf0idi" path="res://MainMenu/win.tscn" id="3_nk1il"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_7dm0k"]
 
@@ -81,6 +82,7 @@ script = ExtResource("1_52x1o")
 
 [node name="LevelEnd" type="Node" parent="." unique_id=1053667887]
 script = ExtResource("2_iincs")
+menu = ExtResource("3_nk1il")
 
 [node name="star5" type="MeshInstance3D" parent="." unique_id=752513250]
 transform = Transform3D(0.07329019, 0, -0.2909701, 0, 0.3, 0, 0.2909701, 0, 0.07329019, -0.651775, 0, -1.0171165)

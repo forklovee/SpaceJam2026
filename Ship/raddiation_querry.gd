@@ -4,7 +4,7 @@ var data: Dictionary
 
 func update() -> void:
 	if !Game.level: return
-	
+	if !Game.level is Level: return
 	var sp: SpacePlane = Game.level.query_plane
 	if !sp: return
 	
