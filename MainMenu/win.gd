@@ -1,7 +1,7 @@
 extends Node
 
 func _ready() -> void:
-	$Label2.text="(your score X enemy score Y)".replace("X",Game.player_score).replace("Y",Game.enemy_score)
+	$Label2.text="(your score X enemy score Y)".replace("X",str(Game.player_score)).replace("Y",str(Game.enemy_score))
 
 func _on_button_pressed() -> void:
 	Game.player_score=0
