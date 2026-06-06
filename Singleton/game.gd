@@ -1,25 +1,19 @@
 extends Node
 
+signal player_score_changed
+signal enemy_score_changed
+
 var pc: PlayerController
 var level
-var player_score=0
 
-
-
-
-
-var RAD_FUEL=0.0
-var RAD_SHILD=0.0
-var RAD_AMMO=0.0
-var RAD_PACE=0.0
-var RAD_TOKSIC=0.0
-var RAD_FUEL_BEAM=0.0
-
-
-
-
-
-
+var player_score := 0:
+	set(value):
+		player_score = value
+		player_score_changed.emit()
+var enemy_score := 0:
+	set(value):
+		enemy_score = value
+		enemy_score_changed.emit()
 
 func _ready() -> void:
 	# Create PlayerController

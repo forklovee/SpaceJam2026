@@ -1,14 +1,20 @@
 class_name Ship extends RigidBody3D
 
 signal health_changed(ship: Ship)
+signal shield_changed(ship: Ship)
+signal died(ship: Ship)
 signal storage_changed(ship: Ship)
 signal fuel_changed(ship: Ship)
+
+signal used_weapon(ship: Ship)
 
 @onready var base_gun_slot: GunSlot = $BaseGunSlot
 @onready var radiation_query: RadiationQuery = $RaddiationQuerry
 
 @export var max_health: int = 100
 var health: int = max_health
+@export var max_shield: int = 100
+var shield: int = 0
 @export var max_storage: int = 10
 var storage: int = 0
 @export var max_fuel: int = 100
@@ -17,7 +23,7 @@ var fuel: int = max_fuel
 @export_group("Movement")
 @export var speed: float = 20.0
 
-var weapons: Array[Gun] = [] 
+var weapons: Array[Gun] = []
 
 var steering_direction: Vector2
 var movement_direction: Vector2
@@ -68,10 +74,25 @@ func update_weapons():
 		if slot.get_child_count() > 0 && slot.get_child(0) is Gun:
 			weapons.append(slot.get_child(0))
 
-func shoot():
-	for weapon in weapons:
-		weapon.shoot(self)
+func get_gun_of_ammo_type(bullet_type: Bullet3D.Type) -> Gun:
+	var weapon_id := weapons.find_custom(func(gun): return gun.bullet_type == bullet_type)
+	return weapons[weapon_id] if weapon_id > -1 else null
 
+func get_max_ammo_count(bullet_type: Bullet3D.Type) -> int:
+	var gun: Gun = get_gun_of_ammo_type(bullet_type)
+	return gun.max_ammo if gun != null else 0
+
+func get_ammo_count(bullet_type: Bullet3D.Type) -> int:
+	var gun: Gun = get_gun_of_ammo_type(bullet_type)
+	return gun.ammo if gun != null else 0
+
+func shoot(weapon_id: int):
+	if weapon_id > weapons.size():
+		printerr(self, " ", weapon_id, " out of bounds")
+		return
+	var weapon: Gun = weapons[weapon_id]
+	weapon.shoot(self)
+	used_weapon.emit(self, weapon.bullet_type)
 
 func damage(instigator: Node3D, value: int):
 	health = clamp(health-value, 0, max_health)
@@ -81,6 +102,7 @@ func damage(instigator: Node3D, value: int):
 		_on_died()
 
 func _on_died():
+	died.emit(self)
 	queue_free()
 
 func heal(instigator: Node3D, value: int):
@@ -91,6 +113,12 @@ func heal(instigator: Node3D, value: int):
 		_on_died()
 	health_changed.emit(instigator)
 
+func add_shield(instigator: Node3D, value: int):
+	shield = clamp(shield+value, 0, max_shield)
+	print(self, "(", shield, "/", max_shield,")", " shield by ", instigator, " with ", value)
+	shield_changed.emit(self)
+
+
 func is_storage_full() -> bool:
 	return storage == max_storage
 
@@ -99,14 +127,16 @@ func can_gather_crystals(amount: int) -> bool:
 
 #TODO: define crystal piece
 func gather_crystal(crystal_piece: Node3D, amount: int):
-	if can_gather_crystals(amount):
+	if !can_gather_crystals(amount):
 		return
 	
-	if !crystal_piece.is_inside_tree():
+	if crystal_piece && !crystal_piece.is_inside_tree():
 		printerr(self, ": gather_crystal: crystal piece on inside tree!")
 		return
 	
 	storage = clamp(storage+amount, 0, max_storage)
+	print(self, " gathered ", amount, " crystals. Has: ", storage, "/", max_storage)
+	
 	storage_changed.emit(self)
 
 func can_use_fuel(value: int) -> bool:

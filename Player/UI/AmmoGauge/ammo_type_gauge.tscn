@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://b7nmuufk6vgfh"]
+
+[ext_resource type="Script" uid="uid://bnrv1ow8ovkhm" path="res://Player/UI/AmmoGauge/ammo_type_gauge.gd" id="1_if4wq"]
+[ext_resource type="Texture2D" uid="uid://d0pdf2ktfivuy" path="res://icon.svg" id="2_bpk0r"]
+
+[node name="AmmoTypeGauge" type="Control" unique_id=1824773762]
+custom_minimum_size = Vector2(116, 57)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_if4wq")
+
+[node name="Panel" type="Panel" parent="." unique_id=1079810432]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AmmoType" type="Label" parent="." unique_id=1137426499]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -6.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.75
+theme_override_font_sizes/font_size = 14
+text = "Ammo"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=662709505]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=682154487]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+texture = ExtResource("2_bpk0r")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=751142137]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.75
+text = "0/0"
+horizontal_alignment = 1
+vertical_alignment = 1
