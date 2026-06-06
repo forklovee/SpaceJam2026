@@ -2,12 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://bwy07snm5ww4j" path="res://MainMenu/screen.png" id="1_o7qdd"]
 [ext_resource type="Script" uid="uid://by0t80uffijic" path="res://MainMenu/win.gd" id="1_qs3e1"]
-[ext_resource type="PackedScene" uid="uid://c446u8dav2dnv" path="res://Level/level.tscn" id="2_27qir"]
 
 [node name="Win" type="CanvasLayer" unique_id=1738511404]
 layer = 100
 script = ExtResource("1_qs3e1")
-main = ExtResource("2_27qir")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1578405937]
 anchors_preset = 15

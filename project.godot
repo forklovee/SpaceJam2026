@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 Game="*uid://bmd84awadrgp1"
 Data="*uid://be0yhnw6xdgq2"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
+
 [global_group]
 
 Crystal=""
