@@ -1,22 +1,39 @@
 class_name Ship extends RigidBody3D
 
+signal health_changed(ship: Ship)
+signal storage_changed(ship: Ship)
+signal fuel_changed(ship: Ship)
+
+@onready var base_gun_slot: Marker3D = $BaseGunSlot
+
+@export var max_health: int = 100
+var health: int = max_health
+@export var max_storage: int = 10
+var storage: int = 0
+@export var max_fuel: int = 100
+var fuel: int = max_fuel
+
+@export_group("Movement")
+@export var speed: float = 20.0
+
+var weapons: Array[Gun] = [] 
+
+
 var steering_direction: Vector2
 var movement_direction: Vector2
-@export var is_allay:bool
 
-func collect():
-	if is_allay:
-		Game.player_score+=1
+func _ready() -> void:
+	update_weapons()
 
 func _physics_process(delta: float) -> void:
 	var current_angle: float = rotation.y
 	var target_angle: float = lerp_angle(current_angle, steering_direction.angle(), 2.0*delta) 
 	
 	if movement_direction.length() > 0.01:
-		apply_central_force(20.0*get_forward())
+		apply_central_force(15.0*get_forward())
 	
 	# y rotation
-	apply_torque(50.0*Vector3.UP * angle_difference(current_angle, target_angle))	
+	apply_torque(100.0*Vector3.UP * angle_difference(current_angle, target_angle))	
 
 func get_forward() -> Vector3:
 	return -global_basis.z
@@ -42,3 +59,59 @@ func steer(input_direction: Vector2):
 	steering_direction = steering_direction.lerp(
 		pre_target_direction, 0.1
 	)
+
+func update_weapons():
+	weapons = []
+	for slot in get_children().filter(func(ch): return ch is GunSlot):
+		if slot.get_child_count() > 0 && slot.get_child(0) is Gun:
+			weapons.append(slot.get_child(0))
+
+func shoot():
+	for weapon in weapons:
+		weapon.shoot(self)
+
+
+func damage(instigator: Node3D, value: int):
+	health = clamp(health-value, 0, max_health)
+	print(self, "(", health, "/", max_health,")"," damaged by ", instigator, " with ", value, "DMG")
+	health_changed.emit(self) 
+	if health <= 0:
+		_on_died()
+
+func _on_died():
+	queue_free()
+
+func heal(instigator: Node3D, value: int):
+	health = clamp(health+value, 0, max_health)
+	print(self, "(", health, "/", max_health,")", " healt by ", instigator, " with ", value, "HP")
+	health_changed.emit(self)
+	if health <= 0:
+		_on_died()
+	health_changed.emit(instigator)
+
+func is_storage_full() -> bool:
+	return storage == max_storage
+
+func can_gather_crystals(amount: int) -> bool:
+	return storage + amount <= max_storage
+
+#TODO: define crystal piece
+func gather_crystal(crystal_piece: Node3D, amount: int):
+	if can_gather_crystals(amount):
+		return
+	
+	if !crystal_piece.is_inside_tree():
+		printerr(self, ": gather_crystal: crystal piece on inside tree!")
+		return
+	
+	storage = clamp(storage+amount, 0, max_storage)
+	storage_changed.emit(self)
+
+func can_use_fuel(value: int) -> bool:
+	return fuel - value >= 0
+
+func use_fuel(value: int):
+	if !can_use_fuel(value):
+		return
+	fuel = clamp(fuel-value, 0, max_fuel)
+	fuel_changed.emit(self)

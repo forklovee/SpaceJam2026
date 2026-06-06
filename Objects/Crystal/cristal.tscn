@@ -3,9 +3,12 @@
 [ext_resource type="Script" uid="uid://dmwnhpoysrvs5" path="res://Objects/Crystal/cristal.gd" id="1_nkxha"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ndduc"]
+size = Vector3(2, 2, 2)
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_1bvp3"]
+radius = 1.0
 radial_steps = 5
+section_length = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
 albedo_color = Color(4.1873755e-06, 0.5089053, 0.5611632, 1)

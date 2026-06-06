@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dqyem6geyier2"]
+
+[ext_resource type="Script" uid="uid://dpeoqhvxehnv7" path="res://Level/level.gd" id="1_8h5wu"]
+[ext_resource type="PackedScene" uid="uid://bclhb4dyt4q6o" path="res://Ship/EnemyShip/base_enemy_ship.tscn" id="2_r47fj"]
+
+[node name="DebugLevel" type="Node3D" unique_id=1980545195]
+script = ExtResource("1_8h5wu")
+
+[node name="BaseEnemyShip" parent="." unique_id=1525440035 instance=ExtResource("2_r47fj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.156834, 0, -1.5045869)
