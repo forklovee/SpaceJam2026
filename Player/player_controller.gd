@@ -20,14 +20,15 @@ func _process(_delta: float) -> void:
 	ship.steer(input_direction)
 
 
-
 func spawn(transform: Transform3D, new_ship_scene: PackedScene = null):
 	destroy_ship()
 	
 	if new_ship_scene:
 		_ship_scene = new_ship_scene
-	
-	ship = new_ship_scene.instantiate()
+	if !_ship_scene:
+		printerr(self, ":spawn: No ship scene set!")
+		return
+	ship = _ship_scene.instantiate()
 	add_child(ship)
 	
 	ship.global_transform = transform

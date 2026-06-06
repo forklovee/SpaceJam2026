@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bgpg2dxkc7nmu"]
 
-[ext_resource type="Script" uid="uid://c0bq257vib83j" path="res://space/star.gd" id="1_0xm2m"]
-[ext_resource type="Script" uid="uid://dm1nvh7d4k27x" path="res://space/space_bg.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://1qqcaerm06c7" path="res://space/cristal_2.tscn" id="2_4ccy6"]
+[ext_resource type="Script" uid="uid://dpeoqhvxehnv7" path="res://Level/level.gd" id="1_52x1o"]
+[ext_resource type="Script" uid="uid://c0bq257vib83j" path="res://Level/star.gd" id="2_iincs"]
+[ext_resource type="PackedScene" uid="uid://1qqcaerm06c7" path="res://Objects/Crystal/cristal.tscn" id="3_nk1il"]
+[ext_resource type="Script" uid="uid://dm1nvh7d4k27x" path="res://Level/space_bg.gd" id="4_d6qko"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_7dm0k"]
 
@@ -56,12 +57,13 @@ shader_parameter/scale = 100.0
 shader_parameter/stars = PackedVector2Array(-0.2955556, 5.8263283, -5.2654057, 4.834378, 3.3067617, -9.424968, -1.9044629, -9.04546, -0.651775, -1.0171165, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/stars_color = PackedVector3Array(1, 1, 1, 0.41683245, 0.9999996, 0.86245996, 1, 0.63428277, 0.97245926, 1, 1, 1, 1, 0.63428277, 0.97245926, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
-[node name="Main" type="Node3D" unique_id=289798224]
+[node name="Level" type="Node3D" unique_id=289798224]
+script = ExtResource("1_52x1o")
 
 [node name="star5" type="MeshInstance3D" parent="." unique_id=752513250]
 transform = Transform3D(0.07329019, 0, -0.2909701, 0, 0.3, 0, 0.2909701, 0, 0.07329019, -0.651775, 0, -1.0171165)
 mesh = SubResource("SphereMesh_7dm0k")
-script = ExtResource("1_0xm2m")
+script = ExtResource("2_iincs")
 color = Color(1, 0.63428277, 0.97245926, 1)
 rad = 1.0
 freq_profile = SubResource("CurveTexture_h2yge")
@@ -70,7 +72,7 @@ rot = 0.1
 [node name="star" type="MeshInstance3D" parent="star5" unique_id=1891473443]
 transform = Transform3D(-0.9953891, 0, 0.09814364, 0, 0.99999994, 0, -0.09814364, 0, -0.9953891, -23.94969, 0, -19.63712)
 mesh = SubResource("SphereMesh_7dm0k")
-script = ExtResource("1_0xm2m")
+script = ExtResource("2_iincs")
 color = Color(1, 0.63428277, 0.97245926, 1)
 rad = 1.0
 freq_profile = SubResource("CurveTexture_h2yge")
@@ -81,14 +83,14 @@ transform = Transform3D(-2.6060572, 0, -2.0785065, 0, 3.3333325, 0, 2.0785065, 0
 mesh = SubResource("SphereMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
 
-[node name="cristal2" parent="star5/star/planet3" unique_id=740578654 instance=ExtResource("2_4ccy6")]
+[node name="cristal2" parent="star5/star/planet3" unique_id=740578654 instance=ExtResource("3_nk1il")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.66134787, -0.0074821115, -0.20147157)
 
 [node name="star2" type="MeshInstance3D" parent="star5" unique_id=1066390521]
 transform = Transform3D(-0.3673054, 0, -0.9300919, 0, 0.99999994, 0, 0.9300919, 0, -0.3673054, 15.154943, 0, 19.673292)
 mesh = SubResource("SphereMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
-script = ExtResource("1_0xm2m")
+script = ExtResource("2_iincs")
 color = Color(0.41683245, 0.9999996, 0.86245996, 1)
 rot = 1.0
 
@@ -97,13 +99,13 @@ transform = Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, -2.27911
 mesh = SubResource("SphereMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
 
-[node name="cristal" parent="star5/star2/planet2" unique_id=1545926833 instance=ExtResource("2_4ccy6")]
+[node name="cristal" parent="star5/star2/planet2" unique_id=1545926833 instance=ExtResource("3_nk1il")]
 transform = Transform3D(0.3, 0, 0, 0, 0.29999995, 0, 0, 0, 0.3, -0.66134715, -0.007482111, -0.20147228)
 
 [node name="star3" type="MeshInstance3D" parent="star5" unique_id=1862060780]
 transform = Transform3D(0.033869796, 0, 0.99901557, 0, 0.9999998, 0, -0.99901557, 0, 0.033869796, 22.406221, 0, 4.4194813)
 mesh = SubResource("SphereMesh_7dm0k")
-script = ExtResource("1_0xm2m")
+script = ExtResource("2_iincs")
 color = Color(1, 1, 1, 1)
 rot = -0.5
 
@@ -112,13 +114,13 @@ transform = Transform3D(2.95006, 0, 1.552099, 0, 3.3333328, 0, -1.552099, 0, 2.9
 mesh = SubResource("SphereMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
 
-[node name="cristal2" parent="star5/star3/planet2" unique_id=1833451319 instance=ExtResource("2_4ccy6")]
+[node name="cristal2" parent="star5/star3/planet2" unique_id=1833451319 instance=ExtResource("3_nk1il")]
 transform = Transform3D(0.09, 0, 2.3283064e-10, 0, 0.09, 0, -2.3283064e-10, 0, 0.09, 0.60777736, -0.007482111, 4.7683716e-07)
 
 [node name="star4" type="MeshInstance3D" parent="star5" unique_id=765289077]
 transform = Transform3D(0.014255054, 0, -0.9998896, 0, 0.99999994, 0, 0.9998896, 0, 0.014255054, -26.965248, 0, -2.4868546)
 mesh = SubResource("SphereMesh_7dm0k")
-script = ExtResource("1_0xm2m")
+script = ExtResource("2_iincs")
 color = Color(1, 1, 1, 1)
 rot = -1.0
 
@@ -127,7 +129,7 @@ transform = Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, 7.889954
 mesh = SubResource("SphereMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
 
-[node name="cristal2" parent="star5/star4/planet" unique_id=1552353343 instance=ExtResource("2_4ccy6")]
+[node name="cristal2" parent="star5/star4/planet" unique_id=1552353343 instance=ExtResource("3_nk1il")]
 transform = Transform3D(0.09, 0, 3.7252903e-09, 0, 0.09000001, 0, -3.7252903e-09, 0, 0.09, 0.6077776, -0.007482112, -9.536743e-07)
 
 [node name="planet2" type="MeshInstance3D" parent="star5/star4" unique_id=1712991058]
@@ -135,12 +137,12 @@ transform = Transform3D(-0.97782123, 0, 3.1866837, 0, 3.3333328, 0, -3.1866837, 
 mesh = SubResource("SphereMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
 
-[node name="cristal2" parent="star5/star4/planet2" unique_id=2111473997 instance=ExtResource("2_4ccy6")]
+[node name="cristal2" parent="star5/star4/planet2" unique_id=2111473997 instance=ExtResource("3_nk1il")]
 transform = Transform3D(0.09, 0, -9.313226e-10, 0, 0.09000001, 0, 9.313226e-10, 0, 0.09, 0.6077776, -0.0074821115, -2.3841858e-07)
 
 [node name="Space_BG" type="MeshInstance3D" parent="." unique_id=1451238334 node_paths=PackedStringArray("input_stars")]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.08535671, 0.0060663223, -0.04908967)
 mesh = SubResource("PlaneMesh_ig7tw")
 surface_material_override/0 = SubResource("ShaderMaterial_h2yge")
-script = ExtResource("1_ig7tw")
+script = ExtResource("4_d6qko")
 input_stars = [NodePath("../star5/star3"), NodePath("../star5/star2"), NodePath("../star5/star"), NodePath("../star5/star4"), NodePath("../star5")]

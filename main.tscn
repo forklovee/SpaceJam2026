@@ -1,66 +1,93 @@
 [gd_scene format=3 uid="uid://bgpg2dxkc7nmu"]
 
 [ext_resource type="Script" uid="uid://7kdhutqx8guj" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://idcyet8cqbav" path="res://Ship/base_ship.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ekk6qgvepctd" path="res://Ship/PlayerShip/player_ship.tscn" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://dpeoqhvxehnv7" path="res://Level/level.gd" id="3_7mycd"]
+[ext_resource type="Script" uid="uid://c0bq257vib83j" path="res://Level/star.gd" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://1qqcaerm06c7" path="res://Objects/Crystal/cristal.tscn" id="5_5vw27"]
+[ext_resource type="Script" uid="uid://dm1nvh7d4k27x" path="res://Level/space_bg.gd" id="6_kek77"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ff6c"]
-albedo_color = Color(0.3372549, 1, 1, 1)
+[sub_resource type="SphereMesh" id="SphereMesh_7dm0k"]
 
-[sub_resource type="PackedScene" id="PackedScene_h2yge"]
+[sub_resource type="Curve" id="Curve_0xm2m"]
+_data = [Vector2(0.2021605, 0.98771554), 0.0, 0.0, 0, 0, Vector2(0.52932096, 0.29978746), 0.0, 0.0, 0, 0, Vector2(0.8657407, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_h2yge"]
+curve = SubResource("Curve_0xm2m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+albedo_color = Color(0.25278595, 0.10047678, 0.013183145, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+shading_mode = 0
+albedo_color = Color(0.31398752, 0.70897424, 0.6122957, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ig7tw"]
+
+[sub_resource type="Shader" id="Shader_0xm2m"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, unshaded;
+
+uniform vec4 albedo : source_color;
+uniform float scale=100.0;
+uniform vec2 stars[12];
+uniform vec3 stars_color[12];
+void vertex() {
+}
+
+void fragment() {
+	vec2 pos = (UV-vec2(0.5,0.5))*scale*2.0;
+	ALBEDO = albedo.rgb;
+	for(int id=0;id<12;id++){
+		vec2 star=stars[id];
+		if(length(pos-star)<3.0){
+			float l=(3.0-length(pos-star))/10.0;
+			ALBEDO += l*stars_color[id];
+		}
+	}
+
+	
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2yge"]
+render_priority = 0
+shader = SubResource("Shader_0xm2m")
+shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/scale = 100.0
+shader_parameter/stars = PackedVector2Array(-0.2955556, 5.8263283, -5.2654057, 4.834378, 3.3067617, -9.424968, -1.9044629, -9.04546, -0.651775, -1.0171165, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/stars_color = PackedVector3Array(1, 1, 1, 0.41683245, 0.9999996, 0.86245996, 1, 0.63428277, 0.97245926, 1, 1, 1, 1, 0.63428277, 0.97245926, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="PackedScene" id="PackedScene_4c57u"]
 _bundled = {
-"base_scene": 0,
 "conn_count": 0,
 "conns": PackedInt32Array(),
 "editable_instances": [],
-"id_paths": [PackedInt32Array()],
-"names": PackedStringArray("PlayerShip", "MeshInstance3D", "surface_material_override/0"),
-"node_count": 2,
-"node_ids": PackedInt32Array(1525440035, 1993636732),
-"node_paths": [NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 2147483647, 0, -1, 0, 0, 1073741824, -1, 2147483647, 262145, -1, 1, 2, 1, 0),
-"variants": [ExtResource("2_0xm2m"), SubResource("StandardMaterial3D_4ff6c")],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("Level", "Node3D", "script", "star5", "MeshInstance3D", "transform", "mesh", "script", "color", "rad", "freq_profile", "rot", "star", "MeshInstance3D", "transform", "mesh", "script", "color", "rad", "freq_profile", "rot", "planet3", "MeshInstance3D", "transform", "mesh", "surface_material_override/0", "cristal2", "transform", "star2", "MeshInstance3D", "transform", "mesh", "surface_material_override/0", "script", "color", "rot", "planet2", "MeshInstance3D", "transform", "mesh", "surface_material_override/0", "cristal", "transform", "star3", "MeshInstance3D", "transform", "mesh", "script", "color", "rot", "planet2", "MeshInstance3D", "transform", "mesh", "surface_material_override/0", "cristal2", "transform", "star4", "MeshInstance3D", "transform", "mesh", "script", "color", "rot", "planet", "MeshInstance3D", "transform", "mesh", "surface_material_override/0", "cristal2", "transform", "planet2", "MeshInstance3D", "transform", "mesh", "surface_material_override/0", "cristal2", "transform", "Space_BG", "MeshInstance3D", "transform", "mesh", "surface_material_override/0", "script", "input_stars"),
+"node_count": 17,
+"node_ids": PackedInt32Array(289798224, 752513250, 1891473443, 3176532, 740578654, 1066390521, 721897847, 1545926833, 1862060780, 1853410261, 1833451319, 765289077, 548929316, 1552353343, 1712991058, 2111473997, 1451238334),
+"node_paths": [NodePath("."), NodePath("./star5"), NodePath("./star5/star"), NodePath("./star5/star/planet3"), NodePath("./star5"), NodePath("./star5/star2"), NodePath("./star5/star2/planet2"), NodePath("./star5"), NodePath("./star5/star3"), NodePath("./star5/star3/planet2"), NodePath("./star5"), NodePath("./star5/star4"), NodePath("./star5/star4/planet"), NodePath("./star5/star4"), NodePath("./star5/star4/planet2"), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 7, 5, 1, 6, 2, 7, 3, 8, 4, 9, 5, 10, 6, 11, 7, 0, 1073741825, 0, 13, 12, -1, 7, 14, 8, 15, 9, 16, 10, 17, 11, 18, 12, 19, 13, 20, 14, 0, 1073741826, 0, 22, 21, -1, 3, 23, 15, 24, 16, 25, 17, 0, 1073741827, 0, 2147483647, 26, 18, 1, 27, 19, 0, 1073741828, 0, 29, 28, -1, 6, 30, 20, 31, 21, 32, 22, 33, 23, 34, 24, 35, 25, 0, 1073741829, 0, 37, 36, -1, 3, 38, 26, 39, 27, 40, 28, 0, 1073741830, 0, 2147483647, 41, 29, 1, 42, 30, 0, 1073741831, 0, 44, 43, -1, 5, 45, 31, 46, 32, 47, 33, 48, 34, 49, 35, 0, 1073741832, 0, 51, 50, -1, 3, 52, 36, 53, 37, 54, 38, 0, 1073741833, 0, 2147483647, 55, 39, 1, 56, 40, 0, 1073741834, 0, 58, 57, -1, 5, 59, 41, 60, 42, 61, 43, 62, 44, 63, 45, 0, 1073741835, 0, 65, 64, -1, 3, 66, 46, 67, 47, 68, 48, 0, 1073741836, 0, 2147483647, 69, 49, 1, 70, 50, 0, 1073741837, 0, 72, 71, -1, 3, 73, 51, 74, 52, 75, 53, 0, 1073741838, 0, 2147483647, 76, 54, 1, 77, 55, 0, 1073741839, 0, 79, 78, -1, 5, 80, 56, 81, 57, 82, 58, 83, 59, 1073741908, 60, 0),
+"variants": [ExtResource("3_7mycd"), Transform3D(0.07329019, 0, -0.2909701, 0, 0.3, 0, 0.2909701, 0, 0.07329019, -0.651775, 0, -1.0171165), SubResource("SphereMesh_7dm0k"), ExtResource("4_272bh"), Color(1, 0.63428277, 0.97245926, 1), 1.0, SubResource("CurveTexture_h2yge"), 0.1, Transform3D(-0.9953891, 0, 0.09814364, 0, 0.99999994, 0, -0.09814364, 0, -0.9953891, -23.94969, 0, -19.63712), SubResource("SphereMesh_7dm0k"), ExtResource("4_272bh"), Color(1, 0.63428277, 0.97245926, 1), 1.0, SubResource("CurveTexture_h2yge"), 2.5, Transform3D(-2.6060572, 0, -2.0785065, 0, 3.3333325, 0, 2.0785065, 0, -2.6060572, 1.2704945, 0, 2.4257987), SubResource("SphereMesh_7dm0k"), SubResource("StandardMaterial3D_h2yge"), ExtResource("5_5vw27"), Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.66134787, -0.0074821115, -0.20147157), Transform3D(-0.3673054, 0, -0.9300919, 0, 0.99999994, 0, 0.9300919, 0, -0.3673054, 15.154943, 0, 19.673292), SubResource("SphereMesh_7dm0k"), SubResource("StandardMaterial3D_0xm2m"), ExtResource("4_272bh"), Color(0.41683245, 0.9999996, 0.86245996, 1), 1.0, Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, -2.2791185, 0, -4.92052), SubResource("SphereMesh_7dm0k"), SubResource("StandardMaterial3D_h2yge"), ExtResource("5_5vw27"), Transform3D(0.3, 0, 0, 0, 0.29999995, 0, 0, 0, 0.3, -0.66134715, -0.007482111, -0.20147228), Transform3D(0.033869796, 0, 0.99901557, 0, 0.9999998, 0, -0.99901557, 0, 0.033869796, 22.406221, 0, 4.4194813), SubResource("SphereMesh_7dm0k"), ExtResource("4_272bh"), Color(1, 1, 1, 1), -0.5, Transform3D(2.95006, 0, 1.552099, 0, 3.3333328, 0, -1.552099, 0, 2.95006, 4.729884, 0, 0.6264181), SubResource("SphereMesh_7dm0k"), SubResource("StandardMaterial3D_h2yge"), ExtResource("5_5vw27"), Transform3D(0.09, 0, 2.3283064e-10, 0, 0.09, 0, -2.3283064e-10, 0, 0.09, 0.60777736, -0.007482111, 4.7683716e-07), Transform3D(0.014255054, 0, -0.9998896, 0, 0.99999994, 0, 0.9998896, 0, 0.014255054, -26.965248, 0, -2.4868546), SubResource("SphereMesh_7dm0k"), ExtResource("4_272bh"), Color(1, 1, 1, 1), -1.0, Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, 7.889954, 0, -1.3240018), SubResource("SphereMesh_7dm0k"), SubResource("StandardMaterial3D_h2yge"), ExtResource("5_5vw27"), Transform3D(0.09, 0, 3.7252903e-09, 0, 0.09000001, 0, -3.7252903e-09, 0, 0.09, 0.6077776, -0.007482112, -9.536743e-07), Transform3D(-0.97782123, 0, 3.1866837, 0, 3.3333328, 0, -3.1866837, 0, -0.97782123, 1.2412391, 0, 7.575736), SubResource("SphereMesh_7dm0k"), SubResource("StandardMaterial3D_h2yge"), ExtResource("5_5vw27"), Transform3D(0.09, 0, -9.313226e-10, 0, 0.09000001, 0, 9.313226e-10, 0, 0.09, 0.6077776, -0.0074821115, -2.3841858e-07), Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.08535671, 0.0060663223, -0.04908967), SubResource("PlaneMesh_ig7tw"), SubResource("ShaderMaterial_h2yge"), ExtResource("6_kek77"), [NodePath("../star5/star3"), NodePath("../star5/star2"), NodePath("../star5/star"), NodePath("../star5/star4"), NodePath("../star5")]],
 "version": 3
 }
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
-ground_bottom_color = Color(0.059710145, 0.076380156, 0.16532534, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7mycd"]
+ground_bottom_color = Color(0.09803922, 0.078431375, 0.23137255, 1)
 
-[sub_resource type="Sky" id="Sky_h2yge"]
-sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
+[sub_resource type="Sky" id="Sky_272bh"]
+sky_material = SubResource("ProceduralSkyMaterial_7mycd")
 
-[sub_resource type="Environment" id="Environment_1bvp3"]
+[sub_resource type="Environment" id="Environment_5vw27"]
 background_mode = 2
-sky = SubResource("Sky_h2yge")
+sky = SubResource("Sky_272bh")
 
-[sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
-
-[node name="Main" type="Node3D" unique_id=289798224]
+[node name="main" type="Node3D" unique_id=762369492]
 script = ExtResource("1_ig7tw")
-debug_player_ship = SubResource("PackedScene_h2yge")
+debug_player_ship = ExtResource("2_h2yge")
+debug_level = SubResource("PackedScene_4c57u")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=672368694]
-environment = SubResource("Environment_1bvp3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=315374435]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2922564, -3.762704, 0.7849817)
-mesh = SubResource("BoxMesh_0xm2m")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=326239066]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1846182, -3.762704, 2.532031)
-mesh = SubResource("BoxMesh_0xm2m")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1240110776]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.938657, -3.762704, -3.762714)
-mesh = SubResource("BoxMesh_0xm2m")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1307406508]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8061533, -3.762704, -6.762802)
-mesh = SubResource("BoxMesh_0xm2m")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1674224514]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.042617, -3.762704, -1.0542665)
-mesh = SubResource("BoxMesh_0xm2m")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=1393448652]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5666547, -3.762704, 3.791401)
-mesh = SubResource("BoxMesh_0xm2m")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1201305069]
+environment = SubResource("Environment_5vw27")

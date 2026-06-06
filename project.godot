@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Game="*uid://bmd84awadrgp1"
 
+[global_group]
+
+Crystal=""
+
 [input]
 
 Up={
