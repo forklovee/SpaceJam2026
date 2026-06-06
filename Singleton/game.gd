@@ -4,6 +4,23 @@ var pc: PlayerController
 var level
 var player_score=0
 
+
+
+
+
+var RAD_FUEL=0.0
+var RAD_SHILD=0.0
+var RAD_AMMO=0.0
+var RAD_PACE=0.0
+var RAD_TOKSIC=0.0
+var RAD_FUEL_BEAM=0.0
+
+
+
+
+
+
+
 func _ready() -> void:
 	# Create PlayerController
 	pc = PlayerController.new()

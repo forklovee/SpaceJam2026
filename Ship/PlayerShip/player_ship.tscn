@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://idcyet8cqbav" path="res://Ship/base_ship.tscn" id="1_4ff6c"]
 [ext_resource type="Script" uid="uid://dxo8tkdtd822e" path="res://Ship/PlayerShip/score_label.gd" id="2_d1b4h"]
+[ext_resource type="Script" uid="uid://dd63v2ojxwq4p" path="res://Ship/PlayerShip/rad_label.gd" id="3_wtuya"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ff6c"]
 albedo_color = Color(0.3372549, 1, 1, 1)
@@ -19,8 +20,8 @@ contorl_by_player = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -206.0
-offset_bottom = 159.0
+offset_left = -234.0
+offset_bottom = 265.0
 grow_horizontal = 0
 color = Color(0.33055663, 0.2231215, 0.3273466, 1)
 
@@ -32,3 +33,18 @@ offset_right = 106.0
 offset_bottom = 57.0
 text = "Score:xxx"
 script = ExtResource("2_d1b4h")
+
+[node name="RadLabel" type="Label" parent="ColorRect" index="1" unique_id=165582564]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 76.0
+offset_right = 205.0
+offset_bottom = 255.0
+text = "var RAD_FUEL=0.0
+var RAD_SHILD=0.0
+var RAD_AMMO=0.0
+var RAD_PACE=0.0
+var RAD_TOKSIC=0.0
+var RAD_FUEL_BEAM=0.0
+"
+script = ExtResource("3_wtuya")
