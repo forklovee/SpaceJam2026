@@ -3,6 +3,8 @@ extends Node
 var pc: PlayerController
 var level
 var player_score=0
+var enemy_score=0
+var level_end=null
 
 
 

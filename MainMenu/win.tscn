@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bao2jybtf0idi"]
+
+[ext_resource type="Texture2D" uid="uid://bwy07snm5ww4j" path="res://MainMenu/screen.png" id="1_o7qdd"]
+[ext_resource type="Script" uid="uid://by0t80uffijic" path="res://MainMenu/win.gd" id="1_qs3e1"]
+
+[node name="Win" type="Node" unique_id=1333281755]
+script = ExtResource("1_qs3e1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1578405937]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.22745098, 0.22352941, 0.24313726, 1)
+
+[node name="Screen" type="Sprite2D" parent="." unique_id=2123805271]
+position = Vector2(601, 318)
+texture = ExtResource("1_o7qdd")
+
+[node name="Label" type="Label" parent="." unique_id=498752161]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -207.0
+offset_right = 166.0
+offset_bottom = -119.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "YOU WIN"
+
+[node name="Label2" type="Label" parent="." unique_id=367423974]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -106.0
+offset_right = 140.0
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "(your score 3 enemy score 1)"
+
+[node name="Button" type="Button" parent="." unique_id=1567810134]
+offset_left = 502.0
+offset_top = 438.0
+offset_right = 709.0
+offset_bottom = 501.0
+theme_override_font_sizes/font_size = 40
+text = "Play Again"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

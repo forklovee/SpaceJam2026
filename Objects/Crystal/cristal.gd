@@ -6,9 +6,14 @@ signal gathered(ship: Ship)
 
 @export var durability := 1
 
+func _ready() -> void:
+	Game.level_end.cristal_left+=1
+	Game.level_end.cristal_total+=1
+
 func damage(instigator: Ship, value: int):
 	durability -= value
 	if durability <= 0:
+		Game.level_end.cristal_left-=1
 		_destroy(instigator)
 
 func _destroy(instigator: Ship):
