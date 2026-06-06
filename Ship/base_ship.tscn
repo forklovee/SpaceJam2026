@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://idcyet8cqbav"]
 
 [ext_resource type="Script" uid="uid://cdg783r88enja" path="res://Ship/ship.gd" id="1_wo1jh"]
+[ext_resource type="Script" uid="uid://bty5ejl7c7k30" path="res://Ship/gun.gd" id="2_qsskr"]
+[ext_resource type="PackedScene" uid="uid://dr7hss4w17q6r" path="res://Ship/Gun/Bullet.tscn" id="3_bv82c"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_qsskr"]
 size = Vector3(1, 1, 0.5)
@@ -8,6 +10,9 @@ size = Vector3(1, 1, 0.5)
 [sub_resource type="SphereShape3D" id="SphereShape3D_wo1jh"]
 
 [node name="Ship" type="RigidBody3D" unique_id=1651256213]
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 linear_damp = 2.0
 angular_damp = 10.0
 script = ExtResource("1_wo1jh")
@@ -18,3 +23,8 @@ mesh = SubResource("PrismMesh_qsskr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=103843045]
 shape = SubResource("SphereShape3D_wo1jh")
+
+[node name="Gun" type="Node3D" parent="." unique_id=1331141947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5733783)
+script = ExtResource("2_qsskr")
+bullet = ExtResource("3_bv82c")

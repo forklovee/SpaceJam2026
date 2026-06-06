@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dr7hss4w17q6r"]
+
+[ext_resource type="Script" uid="uid://d13jij43ge31q" path="res://Ship/Gun/bullet.gd" id="1_hqplu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hqplu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7r6st"]
+
+[node name="Bullet" type="Area3D" unique_id=895270872]
+script = ExtResource("1_hqplu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=941067108]
+shape = SubResource("SphereShape3D_hqplu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2146594858]
+mesh = SubResource("SphereMesh_7r6st")
