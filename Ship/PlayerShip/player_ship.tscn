@@ -1,14 +1,34 @@
 [gd_scene format=3 uid="uid://ekk6qgvepctd"]
 
 [ext_resource type="PackedScene" uid="uid://idcyet8cqbav" path="res://Ship/base_ship.tscn" id="1_4ff6c"]
+[ext_resource type="Script" uid="uid://dxo8tkdtd822e" path="res://Ship/PlayerShip/score_label.gd" id="2_d1b4h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ff6c"]
 albedo_color = Color(0.3372549, 1, 1, 1)
 
 [node name="PlayerShip" unique_id=1525440035 instance=ExtResource("1_4ff6c")]
+is_allay = true
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1993636732]
 surface_material_override/0 = SubResource("StandardMaterial3D_4ff6c")
 
 [node name="Gun" parent="." index="2" unique_id=1331141947]
 contorl_by_player = true
+
+[node name="ColorRect" type="ColorRect" parent="." index="3" unique_id=299499538]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -206.0
+offset_bottom = 159.0
+grow_horizontal = 0
+color = Color(0.33055663, 0.2231215, 0.3273466, 1)
+
+[node name="ScoreLabel" type="Label" parent="ColorRect" index="0" unique_id=1516610155]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 34.0
+offset_right = 106.0
+offset_bottom = 57.0
+text = "Score:xxx"
+script = ExtResource("2_d1b4h")

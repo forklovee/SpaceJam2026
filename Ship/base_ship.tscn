@@ -24,7 +24,8 @@ mesh = SubResource("PrismMesh_qsskr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=103843045]
 shape = SubResource("SphereShape3D_wo1jh")
 
-[node name="Gun" type="Node3D" parent="." unique_id=1331141947]
+[node name="Gun" type="Node3D" parent="." unique_id=1331141947 node_paths=PackedStringArray("ship")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5733783)
 script = ExtResource("2_qsskr")
 bullet = ExtResource("3_bv82c")
+ship = NodePath("..")

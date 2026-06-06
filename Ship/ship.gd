@@ -16,6 +16,11 @@ var fuel: int = max_fuel
 
 var steering_direction: Vector2
 var movement_direction: Vector2
+@export var is_allay:bool
+
+func collect():
+	if is_allay:
+		Game.player_score+=1
 
 func _physics_process(delta: float) -> void:
 	var current_angle: float = rotation.y
