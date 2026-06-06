@@ -2,6 +2,7 @@ extends Node
 
 var pc: PlayerController
 var level
+var player_score=0
 
 func _ready() -> void:
 	# Create PlayerController
