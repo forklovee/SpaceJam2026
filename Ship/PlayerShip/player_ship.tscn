@@ -9,7 +9,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ff6c"]
 albedo_color = Color(0.3372549, 1, 1, 1)
 
-[node name="PlayerShip" unique_id=1525440035 instance=ExtResource("1_4ff6c")]
+[node name="PlayerShip" unique_id=1525440035 groups=["PlayerShip"] instance=ExtResource("1_4ff6c")]
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1993636732]
 surface_material_override/0 = SubResource("StandardMaterial3D_4ff6c")

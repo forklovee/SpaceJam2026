@@ -13,10 +13,13 @@ func _ready() -> void:
 func damage(instigator: Ship, value: int):
 	durability -= value
 	if durability <= 0:
-		Game.level_end.cristal_left-=1
-		_destroy(instigator)
+		if instigator.can_collect(value):
+			Game.level_end.cristal_left-=1
+			_destroy(instigator)
 
 func _destroy(instigator: Ship):
 	collision.disabled = true
 	queue_free()
 	gathered.emit(instigator)
+	instigator.gather_crystal(self,1)
+	print(instigator.storage)

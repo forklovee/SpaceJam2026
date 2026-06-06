@@ -17,6 +17,7 @@ var fuel: int = max_fuel
 @export_group("Movement")
 @export var speed: float = 20.0
 
+
 var weapons: Array[Gun] = [] 
 
 var steering_direction: Vector2
@@ -99,7 +100,8 @@ func can_gather_crystals(amount: int) -> bool:
 
 #TODO: define crystal piece
 func gather_crystal(crystal_piece: Node3D, amount: int):
-	if can_gather_crystals(amount):
+	print("CRRII")
+	if !can_gather_crystals(amount):
 		return
 	
 	if !crystal_piece.is_inside_tree():
@@ -117,3 +119,7 @@ func use_fuel(value: int):
 		return
 	fuel = clamp(fuel-value, 0, max_fuel)
 	fuel_changed.emit(self)
+
+func can_collect(value):
+	print("cooo,",storage+value<=max_storage)
+	return storage+value<=max_storage

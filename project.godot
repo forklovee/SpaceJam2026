@@ -22,6 +22,7 @@ Game="*uid://bmd84awadrgp1"
 [global_group]
 
 Crystal=""
+PlayerShip=""
 
 [input]
 
