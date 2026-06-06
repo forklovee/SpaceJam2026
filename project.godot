@@ -23,6 +23,7 @@ Game="*uid://bmd84awadrgp1"
 
 Crystal=""
 PlayerShip=""
+EnemyShip=""
 
 [input]
 

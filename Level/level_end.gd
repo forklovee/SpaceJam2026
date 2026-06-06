@@ -11,4 +11,10 @@ var cristal_total=0
 func _process(delta: float) -> void:
 	if cristal_left==0 and cristal_total>0:
 		#get_tree().change_scene_to_file("res://MainMenu/win.tscn")
+		for eg in get_tree().get_nodes_in_group("EnemyShip"):
+			if eg.storage>0:
+				return
+		for eg in get_tree().get_nodes_in_group("PlayerShip"):
+			if eg.storage>0:
+				return
 		Game.open_level(menu)
