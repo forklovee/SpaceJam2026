@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dm0bccipgvts3"]
 
+[ext_resource type="Script" uid="uid://dtjafdhh3lask" path="res://Player/Camera/player_camera.gd" id="1_xxw0e"]
+
 [node name="PlayerCamera" type="Camera3D" unique_id=591022296]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 projection = 1
 size = 9.5
+script = ExtResource("1_xxw0e")

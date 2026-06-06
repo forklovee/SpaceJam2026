@@ -9,12 +9,9 @@ func _physics_process(delta: float) -> void:
 	
 	if movement_direction.length() > 0.01:
 		apply_central_force(20.0*get_forward())
-		
-	else:
-		print("no movement")
 	
+	# y rotation
 	apply_torque(50.0*Vector3.UP * angle_difference(current_angle, target_angle))	
-	# TODO: convert to physics based
 
 func get_forward() -> Vector3:
 	return -global_basis.z
