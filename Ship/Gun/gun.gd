@@ -1,6 +1,6 @@
 class_name Gun extends Node3D
 
-@export var bullet_res: PackedScene
+@export var bullet_type: Bullet3D.Type
 
 @export var damage: int = 5
 @export var firerate_sec: float = 0.1
@@ -10,8 +10,11 @@ var ammo := max_ammo
 
 var last_shoot_time: int = -1
 
+func has_ammo() -> bool:
+	return ammo > 0
+
 func can_shoot() -> bool:
-	return (Time.get_ticks_msec() - last_shoot_time) * 0.001 > firerate_sec
+	return has_ammo() && (Time.get_ticks_msec() - last_shoot_time) * 0.001 > firerate_sec
 
 func shoot(instigator: Ship):
 	if !can_shoot():
@@ -19,8 +22,9 @@ func shoot(instigator: Ship):
 	
 	last_shoot_time = Time.get_ticks_msec()
 	
-	var bullet: Bullet3D = bullet_res.instantiate()
+	var bullet: Bullet3D = Data.get_bullet_resource(bullet_type).instantiate()
 	Game.level.add_child(bullet)
+	ammo -= 1
 	
 	bullet.global_transform = global_transform
 	bullet.shoot(instigator, bullet_speed*instigator.get_forward())

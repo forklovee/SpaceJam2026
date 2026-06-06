@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://ekk6qgvepctd"]
 
 [ext_resource type="PackedScene" uid="uid://idcyet8cqbav" path="res://Ship/base_ship.tscn" id="1_4ff6c"]
-[ext_resource type="Script" uid="uid://dxo8tkdtd822e" path="res://Ship/PlayerShip/score_label.gd" id="2_d1b4h"]
-[ext_resource type="Script" uid="uid://dd63v2ojxwq4p" path="res://Ship/PlayerShip/rad_label.gd" id="3_wtuya"]
 [ext_resource type="Script" uid="uid://bty5ejl7c7k30" path="res://Ship/Gun/gun.gd" id="4_bmidl"]
 [ext_resource type="PackedScene" uid="uid://dr7hss4w17q6r" path="res://Ship/Gun/Bullet.tscn" id="5_sui1w"]
 
@@ -14,40 +12,7 @@ albedo_color = Color(0.3372549, 1, 1, 1)
 [node name="MeshInstance3D" parent="." index="0" unique_id=1993636732]
 surface_material_override/0 = SubResource("StandardMaterial3D_4ff6c")
 
-[node name="ColorRect" type="ColorRect" parent="." index="3" unique_id=299499538]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -234.0
-offset_bottom = 265.0
-grow_horizontal = 0
-color = Color(0.33055663, 0.2231215, 0.3273466, 1)
-
-[node name="ScoreLabel" type="Label" parent="ColorRect" index="0" unique_id=1516610155]
-layout_mode = 0
-offset_left = 66.0
-offset_top = 34.0
-offset_right = 106.0
-offset_bottom = 57.0
-text = "Score:xxx"
-script = ExtResource("2_d1b4h")
-
-[node name="RadLabel" type="Label" parent="ColorRect" index="1" unique_id=165582564]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 76.0
-offset_right = 205.0
-offset_bottom = 255.0
-text = "var RAD_FUEL=0.0
-var RAD_SHILD=0.0
-var RAD_AMMO=0.0
-var RAD_PACE=0.0
-var RAD_TOKSIC=0.0
-var RAD_FUEL_BEAM=0.0
-"
-script = ExtResource("3_wtuya")
-
-[node name="GunSlot" parent="." index="5" unique_id=886972490]
+[node name="GunSlot" parent="." index="4" unique_id=886972490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.54223883)
 
 [node name="Gun" type="Node3D" parent="GunSlot" index="0" unique_id=1212398569]

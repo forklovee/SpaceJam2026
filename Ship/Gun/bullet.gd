@@ -1,5 +1,12 @@
 class_name Bullet3D extends Area3D
 
+enum Type{
+	Regular,
+	PLSL,
+	Rocket,
+	Railgun
+}
+
 const AUTOKILL_TIME: float = 3.0
 
 var instigator = null

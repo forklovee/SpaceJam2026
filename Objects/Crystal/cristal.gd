@@ -18,6 +18,9 @@ func damage(instigator: Ship, value: int):
 			_destroy(instigator)
 
 func _destroy(instigator: Ship):
+	if is_instance_valid(instigator):
+		instigator.gather_crystal(null, 1)
+	
 	collision.disabled = true
 	queue_free()
 	gathered.emit(instigator)

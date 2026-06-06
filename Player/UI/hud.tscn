@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://drkjnd0qbefol"]
+
+[ext_resource type="Script" uid="uid://cs4sbi2wnw7bq" path="res://Player/UI/hud.gd" id="1_lrp3x"]
+[ext_resource type="Script" uid="uid://dxo8tkdtd822e" path="res://Ship/PlayerShip/score_label.gd" id="2_f2qnc"]
+[ext_resource type="Script" uid="uid://dd63v2ojxwq4p" path="res://Ship/PlayerShip/rad_label.gd" id="3_q0jle"]
+[ext_resource type="PackedScene" uid="uid://b7nmuufk6vgfh" path="res://Player/UI/AmmoGauge/ammo_type_gauge.tscn" id="4_q0jle"]
+
+[node name="HUD" type="Control" unique_id=1409684581]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lrp3x")
+metadata/_custom_type_script = "uid://cs4sbi2wnw7bq"
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1800354293]
+custom_minimum_size = Vector2(260, 120)
+layout_mode = 1
+offset_right = 261.0
+offset_bottom = 120.0
+text = "Score:xxx"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_f2qnc")
+
+[node name="TimeLabel" type="Label" parent="." unique_id=279498096]
+custom_minimum_size = Vector2(260, 120)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -292.0
+offset_bottom = 120.0
+grow_horizontal = 0
+text = "Time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RadDebugInfo" type="Label" parent="." unique_id=1249103710]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -230.0
+offset_top = 97.0
+offset_right = -15.0
+offset_bottom = 432.0
+grow_horizontal = 0
+text = "var RAD_FUEL=0.0
+var RAD_SHILD=0.0
+var RAD_AMMO=0.0
+var RAD_PACE=0.0
+var RAD_TOKSIC=0.0
+var RAD_FUEL_BEAM=0.0
+"
+script = ExtResource("3_q0jle")
+
+[node name="Radar" type="Control" parent="." unique_id=536445211]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -223.0
+offset_right = 235.0
+grow_vertical = 0
+
+[node name="ShipStats" type="Control" parent="." unique_id=836041721]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -235.0
+offset_top = -226.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShipStats" unique_id=1996723806]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Health" type="Label" parent="ShipStats/VBoxContainer" unique_id=40199184]
+layout_mode = 2
+text = "Health: 100/100"
+
+[node name="Shield" type="Label" parent="ShipStats/VBoxContainer" unique_id=1381667324]
+layout_mode = 2
+text = "Health: 100/100"
+
+[node name="Fuel" type="Label" parent="ShipStats/VBoxContainer" unique_id=234375552]
+layout_mode = 2
+text = "Fuel: 100/100"
+
+[node name="Storage" type="Label" parent="ShipStats/VBoxContainer" unique_id=1122416449]
+layout_mode = 2
+text = "Storage: 100/100"
+
+[node name="GridContainer" type="GridContainer" parent="ShipStats/VBoxContainer" unique_id=1419909740]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="RegularAmmo" parent="ShipStats/VBoxContainer/GridContainer" unique_id=1824773762 instance=ExtResource("4_q0jle")]
+layout_mode = 2
+
+[node name="PLSLAmmo" parent="ShipStats/VBoxContainer/GridContainer" unique_id=864875065 instance=ExtResource("4_q0jle")]
+layout_mode = 2
+
+[node name="RocketAmmo" parent="ShipStats/VBoxContainer/GridContainer" unique_id=1310404072 instance=ExtResource("4_q0jle")]
+layout_mode = 2
+
+[node name="RailgunAmmo" parent="ShipStats/VBoxContainer/GridContainer" unique_id=60718657 instance=ExtResource("4_q0jle")]
+layout_mode = 2

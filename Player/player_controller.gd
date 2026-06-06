@@ -5,12 +5,18 @@ var _ship_scene: PackedScene
 var input_direction: Vector2
 
 var camera: PlayerCamera
+var hud: HUD
 var ship: Ship
 
 func _ready() -> void:
 	set_name("PlayerController")
 	camera = ResourceLoader.load("res://Player/Camera/player_camera.tscn").instantiate()
 	add_child(camera)
+	
+	hud = ResourceLoader.load("res://Player/UI/hud.tscn").instantiate()
+	add_child(hud)
+	
+	Game.player_score_changed.connect(hud._on_player_score_changed)
 
 func _input(_event: InputEvent) -> void:
 	if !is_instance_valid(ship):
@@ -21,10 +27,12 @@ func _process(_delta: float) -> void:
 		return
 	
 	if Input.is_action_pressed("Fire"):
-		ship.shoot()
+		ship.shoot(0)
 	
 	input_direction = Input.get_vector("Left", "Right", "Down", "Up")
 	ship.steer(input_direction)
+	
+	hud.update_labels()
 
 
 func spawn(transform: Transform3D, new_ship_scene: PackedScene = null):
@@ -38,13 +46,13 @@ func spawn(transform: Transform3D, new_ship_scene: PackedScene = null):
 	ship = _ship_scene.instantiate()
 	add_child(ship)
 	
-	#ship.radiation_query.data
-	
 	ship.global_transform = transform
-	
 	camera.follow_target = ship
+	
+	hud.bind_ship(ship)
 
 func destroy_ship():
 	if !is_instance_valid(ship):
 		return
+	hud.unbind_ship(ship)
 	ship.queue_free()
