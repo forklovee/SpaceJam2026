@@ -2,6 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://idcyet8cqbav" path="res://Ship/base_ship.tscn" id="1_4ff6c"]
 [ext_resource type="PackedScene" uid="uid://cnkt4114trhuc" path="res://Ship/Gun/regular_gun.tscn" id="2_d1b4h"]
+[ext_resource type="PackedScene" uid="uid://vit26vtugxqg" path="res://Ship/Gun/plsl_gun.tscn" id="3_wtuya"]
+[ext_resource type="Texture2D" uid="uid://ce7ywcbkyruob" path="res://Arty/spaceship.png" id="4_wbcs4"]
+[ext_resource type="Texture2D" uid="uid://bqvh4y0cenci2" path="res://Arty/Statki z nazwami/SCF-1 Student.png" id="5_bmidl"]
 [ext_resource type="Texture2D" uid="uid://bpwufxnubl5ay" path="res://Ship/Sprites/Spaceship2.png" id="2_wbcs4"]
 [ext_resource type="PackedScene" uid="uid://dggubpuu36kb3" path="res://Ship/Gun/rocket_gun.tscn" id="4_bmidl"]
 
@@ -9,6 +12,21 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sui1w"]
 transparency = 1
+blend_mode = 1
+shading_mode = 0
+diffuse_mode = 3
+albedo_color = Color(0.99086446, 0.5362912, 0.7762043, 1)
+albedo_texture = ExtResource("4_wbcs4")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bmidl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sui1w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c3n1n"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("5_bmidl")
+
 shading_mode = 0
 diffuse_mode = 3
 albedo_texture = ExtResource("2_wbcs4")
