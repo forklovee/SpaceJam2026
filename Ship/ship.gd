@@ -1,6 +1,7 @@
 class_name Ship extends RigidBody3D
 
 signal health_changed(ship: Ship)
+signal got_damage(ship: Ship, instigator: Ship)
 signal shield_changed(ship: Ship)
 signal died(ship: Ship)
 signal storage_changed(ship: Ship)
@@ -31,7 +32,7 @@ var movement_direction: Vector2
 func _ready() -> void:
 	health = max_health
 	shield = max_shield
-	storage = 0#max_storage
+	storage = 0
 	fuel = max_fuel
 	update_weapons_and_gunslots()
 
@@ -126,7 +127,8 @@ func damage(instigator: Node3D, value: int):
 	if shield<=0:
 		health = clamp(health-value, 0, max_health)
 		#print(self, "(", health, "/", max_health,")"," damaged by ", instigator, " with ", value, "DMG")
-		health_changed.emit(self) 
+		health_changed.emit(self)
+		got_damage.emit(self, instigator)
 		if health <= 0:
 			_on_died()
 	else:
@@ -172,7 +174,6 @@ func gather_crystal(crystal_piece: Node3D, amount: int):
 	
 	storage_changed.emit(self)
 
-#TODO: oddawanie kryształów (metoda!)
 func transfer_crystal():
 	storage_changed.emit(self)
 
