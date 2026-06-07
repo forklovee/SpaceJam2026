@@ -354,18 +354,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9371481, -0.08077848, 22.0
 [node name="EnemyRespawn" type="Node3D" parent="Base2" unique_id=2054981514]
 script = ExtResource("8_i5g78")
 
-[node name="cristal" parent="." unique_id=599004292 instance=ExtResource("8_wqlfs")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.4770496, 0.013561487, -0.21904063)
-
-[node name="cristal2" parent="." unique_id=1181513035 instance=ExtResource("8_wqlfs")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -2.670039, 0.013561487, -0.21904063)
-
-[node name="cristal3" parent="." unique_id=686372781 instance=ExtResource("9_py82k")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -2.715034, 0.064817905, 0.7861613)
-
-[node name="cristal4" parent="." unique_id=1646615569 instance=ExtResource("10_py82k")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.718091, 0.024409592, -0.20307237)
-
 [node name="BaseEnemyShip" parent="." unique_id=1525440035 instance=ExtResource("11_1teg4")]
 transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 6.680936, 0, 17.553808)
 max_health = 30
@@ -391,13 +379,37 @@ transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.2354
 max_health = 30
 
 [node name="BaseEnemyShip7" parent="." unique_id=534632788 instance=ExtResource("11_1teg4")]
-transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 6.680936, 0, -0.4461918)
+transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 10.641317, 0, -0.4461918)
 max_health = 30
 
 [node name="BaseEnemyShip8" parent="." unique_id=1701762162 instance=ExtResource("11_1teg4")]
-transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 6.680936, 0, 2.343193)
+transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 10.641317, 0, 2.343193)
 max_health = 30
 
 [node name="BaseEnemyShip9" parent="." unique_id=1254339928 instance=ExtResource("11_1teg4")]
-transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 6.680936, 0, -3.0240707)
+transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 10.641317, 0, -3.0240707)
 max_health = 30
+
+[node name="star7" type="MeshInstance3D" parent="." unique_id=1644905426]
+transform = Transform3D(0.07329019, 0, -0.2909701, 0, 0.3, 0, 0.2909701, 0, 0.07329019, 4.4284444, 0, -1.0171165)
+mesh = SubResource("SphereMesh_7dm0k")
+script = ExtResource("1_jglls")
+color = Color(1, 1, 1, 1)
+flag = 6
+rad = 1.0
+anim = true
+freq_profile = SubResource("CurveTexture_h2yge")
+rot = 2.0
+neg = true
+
+[node name="cristal" parent="star7" unique_id=599004292 instance=ExtResource("8_wqlfs")]
+transform = Transform3D(0.24420553, 0, 0.9695228, 0, 0.99999994, 0, -0.9695228, 0, 0.24420553, 1.907387, 0.045204952, 3.3167233)
+
+[node name="cristal2" parent="star7" unique_id=1181513035 instance=ExtResource("8_wqlfs")]
+transform = Transform3D(0.24420553, 0, 0.9695228, 0, 0.99999994, 0, -0.9695228, 0, 0.24420553, 0.93627167, 0.045204952, 7.172158)
+
+[node name="cristal3" parent="star7" unique_id=686372781 instance=ExtResource("9_py82k")]
+transform = Transform3D(0.24420553, 0, 0.9695228, 0, 0.99999994, 0, -0.9695228, 0, 0.24420553, 4.1481986, 0.21605967, 8.135822)
+
+[node name="cristal4" parent="star7" unique_id=1646615569 instance=ExtResource("10_py82k")]
+transform = Transform3D(0.24420553, 0, 0.9695228, 0, 0.99999994, 0, -0.9695228, 0, 0.24420553, 4.5598955, 0.0813653, -6.9961495)
