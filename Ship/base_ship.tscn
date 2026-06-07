@@ -8,6 +8,23 @@
 [sub_resource type="PrismMesh" id="PrismMesh_qsskr"]
 size = Vector3(1, 1, 0.5)
 
+[sub_resource type="Gradient" id="Gradient_1gmcr"]
+offsets = PackedFloat32Array(0.091603056, 0.5954198)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pimxe"]
+gradient = SubResource("Gradient_1gmcr")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gmcr"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.16862746)
+albedo_texture = SubResource("GradientTexture2D_pimxe")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1gmcr"]
+size = Vector2(2.5, 2.5)
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_wo1jh"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_bv82c"]
@@ -21,10 +38,16 @@ axis_lock_angular_z = true
 linear_damp = 1.0
 angular_damp = 10.0
 script = ExtResource("1_wo1jh")
+speed = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1993636732]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("PrismMesh_qsskr")
+
+[node name="Shadow" type="MeshInstance3D" parent="." unique_id=982390825]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.13272563, 0)
+material_override = SubResource("StandardMaterial3D_1gmcr")
+mesh = SubResource("QuadMesh_1gmcr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=103843045]
 shape = SubResource("SphereShape3D_wo1jh")
@@ -34,6 +57,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5733783)
 script = ExtResource("2_qsskr")
 
 [node name="RaddiationQuerry" type="Node3D" parent="." unique_id=541083656]
+visible = false
 script = ExtResource("4_1gmcr")
 
 [node name="Querry_point" type="Node3D" parent="RaddiationQuerry" unique_id=159868433]
@@ -62,13 +86,13 @@ script = ExtResource("4_pimxe")
 metadata/_custom_type_script = "uid://d4hsl8ystudtd"
 
 [node name="WingL_GunSlot" type="Marker3D" parent="." unique_id=1491398764]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52874917, 0, 0.5044121)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.53461844, 0, 0.30681467)
 script = ExtResource("4_pimxe")
 type = 1
 metadata/_custom_type_script = "uid://d4hsl8ystudtd"
 
 [node name="WingR_GunSlot" type="Marker3D" parent="." unique_id=1193505125]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.529, 0, 0.504)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.58964866, 0, 0.30640256)
 script = ExtResource("4_pimxe")
 type = 2
 metadata/_custom_type_script = "uid://d4hsl8ystudtd"

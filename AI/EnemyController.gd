@@ -95,6 +95,8 @@ func _combat_task(_delta: float):
 	var global_position := ship.global_position
 	var nearest_target = bodies_in_sight.reduce(
 		func(nearest, body): 
+			if !is_instance_valid(body):
+				return nearest
 			if nearest == null:
 				return body
 			var distance_nearest := global_position.distance_to(nearest.global_position)

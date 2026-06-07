@@ -31,4 +31,4 @@ func shoot(instigator: Ship):
 		
 	bullet.global_transform = target_slot.global_transform
 	var forward := instigator.get_forward()
-	bullet.shoot(instigator, damage, target_range, target_speed*forward)
+	bullet.shoot(instigator, self, damage, target_range, target_speed*forward)

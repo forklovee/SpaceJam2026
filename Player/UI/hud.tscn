@@ -4,6 +4,17 @@
 [ext_resource type="Script" uid="uid://dxo8tkdtd822e" path="res://Ship/PlayerShip/score_label.gd" id="2_f2qnc"]
 [ext_resource type="Script" uid="uid://dd63v2ojxwq4p" path="res://Ship/PlayerShip/rad_label.gd" id="3_q0jle"]
 [ext_resource type="PackedScene" uid="uid://b7nmuufk6vgfh" path="res://Player/UI/AmmoGauge/ammo_type_gauge.tscn" id="4_q0jle"]
+[ext_resource type="Script" uid="uid://p5bq8thehq4" path="res://Player/UI/minimap_rect.gd" id="5_3jxqv"]
+[ext_resource type="Script" uid="uid://th4nipsgj88u" path="res://Player/UI/status_bar.gd" id="6_knqcs"]
+[ext_resource type="Texture2D" uid="uid://bcchmmb260obl" path="res://Player/UI/Sprites/ProgressBar_Block.png" id="6_nk8mj"]
+[ext_resource type="Texture2D" uid="uid://diwjr33ed83gt" path="res://Player/UI/Sprites/chargingIconWhite.png" id="8_1rscr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1rscr"]
+font_size = 21
+outline_size = 1
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(-1.5, 1.5)
 
 [node name="HUD" type="Control" unique_id=1409684581]
 layout_mode = 3
@@ -74,7 +85,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -235.0
-offset_top = -226.0
+offset_top = -148.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -85,18 +96,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Health" type="Label" parent="ShipStats/VBoxContainer" unique_id=40199184]
-layout_mode = 2
-text = "Health: 100/100"
-
-[node name="Shield" type="Label" parent="ShipStats/VBoxContainer" unique_id=1381667324]
-layout_mode = 2
-text = "Health: 100/100"
-
-[node name="Fuel" type="Label" parent="ShipStats/VBoxContainer" unique_id=234375552]
-layout_mode = 2
-text = "Fuel: 100/100"
 
 [node name="Storage" type="Label" parent="ShipStats/VBoxContainer" unique_id=1122416449]
 layout_mode = 2
@@ -118,3 +117,78 @@ layout_mode = 2
 
 [node name="RailgunAmmo" parent="ShipStats/VBoxContainer/GridContainer" unique_id=60718657 instance=ExtResource("4_q0jle")]
 layout_mode = 2
+
+[node name="MinimapRect" type="TextureRect" parent="." unique_id=563543283]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -400.0
+offset_right = 400.0
+grow_vertical = 0
+script = ExtResource("5_3jxqv")
+
+[node name="StatusBar" type="Control" parent="." unique_id=456314579]
+anchors_preset = 0
+offset_right = 464.0
+offset_bottom = 122.0
+script = ExtResource("6_knqcs")
+
+[node name="Health" type="TextureProgressBar" parent="StatusBar" unique_id=1769975033]
+texture_filter = 3
+texture_repeat = 2
+layout_mode = 1
+offset_left = 94.380005
+offset_top = 14.0
+offset_right = 478.38
+offset_bottom = 46.0
+value = 90.0
+nine_patch_stretch = true
+stretch_margin_left = 384
+stretch_margin_bottom = 32
+texture_under = ExtResource("6_nk8mj")
+texture_progress = ExtResource("6_nk8mj")
+tint_under = Color(0.16475117, 0.102166705, 0.06709584, 1)
+tint_progress = Color(0.75, 1, 0, 1)
+
+[node name="Shield" type="TextureProgressBar" parent="StatusBar" unique_id=923569084]
+texture_filter = 3
+texture_repeat = 2
+layout_mode = 1
+offset_left = 94.0
+offset_top = 21.765
+offset_right = 478.0
+offset_bottom = 43.97503
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 384
+texture_under = ExtResource("6_nk8mj")
+texture_progress = ExtResource("6_nk8mj")
+tint_under = Color(0.16, 0.100213334, 0.0656, 0)
+tint_progress = Color(0, 0.61666656, 1, 1)
+
+[node name="Energy" type="TextureProgressBar" parent="StatusBar" unique_id=251443700]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -1.0
+offset_right = 127.0
+offset_bottom = 150.0
+value = 50.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("8_1rscr")
+texture_progress = ExtResource("8_1rscr")
+tint_under = Color(0.19, 0.0063333386, 0, 0.6392157)
+tint_over = Color(1, 1, 1, 0)
+tint_progress = Color(1, 0.9333334, 0, 1)
+
+[node name="EnergyPercent" type="Label" parent="StatusBar/Energy" unique_id=525381646]
+z_index = -317
+layout_mode = 0
+offset_left = 94.0
+offset_top = 88.0
+offset_right = 148.0
+offset_bottom = 118.0
+text = "100%"
+label_settings = SubResource("LabelSettings_1rscr")

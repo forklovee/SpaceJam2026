@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://m5rpmfcrugdv"]
+
+[ext_resource type="Script" uid="uid://c0bq257vib83j" path="res://Level/star.gd" id="1_nwp1n"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7dm0k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+shading_mode = 0
+albedo_color = Color(0.31398752, 0.70897424, 0.6122957, 1)
+
+[node name="star_white" type="MeshInstance3D" unique_id=2068162764 groups=["Star"]]
+transform = Transform3D(-0.33089122, 0, 0.94416934, 0, 0.99999994, 0, -0.94416934, 0, -0.33089122, 0, 0, 0)
+mesh = SubResource("SphereMesh_7dm0k")
+surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
+script = ExtResource("1_nwp1n")
+color = Color(1, 1, 1, 1)
+flag = 6
+rot = 0.165
+pause = false

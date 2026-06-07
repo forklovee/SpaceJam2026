@@ -2,22 +2,40 @@
 
 [ext_resource type="Script" uid="uid://bidrk7yxxeqbs" path="res://Objects/Base/base.gd" id="1_j1vqp"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_i283b"]
-radius = 1.615857
+[sub_resource type="BoxShape3D" id="BoxShape3D_uypch"]
+size = Vector3(38.625, 15.895, 14.96)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_j1vqp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y72cj"]
 albedo_color = Color(0.43817, 0.1315285, 0.16110122, 1)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_rfn0f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8jswd"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_uypch")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ddjd"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("3_7ckc5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83pwm"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("3_7ckc5")
+
 [node name="Base" type="Area3D" unique_id=1098030614]
 script = ExtResource("1_j1vqp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1477887116]
-shape = SubResource("SphereShape3D_i283b")
+shape = SubResource("BoxShape3D_uypch")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1661012511]
 transform = Transform3D(1, 0, 0, 0, 0.7486318, 0.662986, 0, -0.662986, 0.7486318, 0, 0, 0)
+visible = false
 mesh = SubResource("CylinderMesh_j1vqp")
 surface_material_override/0 = SubResource("StandardMaterial3D_y72cj")
 
@@ -25,5 +43,35 @@ surface_material_override/0 = SubResource("StandardMaterial3D_y72cj")
 transform = Transform3D(0.9999994, 0.0008362296, 0.0007405623, -0.0008362296, 0.9999997, -3.5762787e-07, -0.00074056233, -2.682209e-07, 0.99999976, -0.12520051, 1.1369506, 0.88720554)
 light_color = Color(1, 0.91916394, 0.4435601, 1)
 light_energy = 2.515
+
+[node name="enemy_gfx" type="Node3D" parent="." unique_id=1035539713]
+
+[node name="en_normal" type="MeshInstance3D" parent="enemy_gfx" unique_id=1752228247]
+transform = Transform3D(24.028, 0, 0, 0, 9.14, 0, 0, 0, 9.14, 0, 0.21128988, 0)
+mesh = SubResource("PlaneMesh_rfn0f")
+surface_material_override/0 = SubResource("StandardMaterial3D_8jswd")
+
+[node name="en_map" type="MeshInstance3D" parent="enemy_gfx" unique_id=1460704917]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0.68455744, 0)
+visible = false
+layers = 1024
+mesh = SubResource("PlaneMesh_rfn0f")
+surface_material_override/0 = SubResource("StandardMaterial3D_8jswd")
+
+[node name="allay_gfx" type="Node3D" parent="." unique_id=1562472723]
+
+[node name="en_normal" type="MeshInstance3D" parent="allay_gfx" unique_id=290256895]
+transform = Transform3D(24.263, 0, 0, 0, 11.49, 0, 0, 0, 11.49, -3.0210211, 0.211, -3.886741)
+mesh = SubResource("PlaneMesh_rfn0f")
+surface_material_override/0 = SubResource("StandardMaterial3D_3ddjd")
+
+[node name="en_map" type="MeshInstance3D" parent="allay_gfx" unique_id=1695916580]
+transform = Transform3D(3.905, 0, 0, 0, 3.905, 0, 0, 0, 3.905, 0, 0.68455744, 0)
+visible = false
+mesh = SubResource("PlaneMesh_rfn0f")
+surface_material_override/0 = SubResource("StandardMaterial3D_83pwm")
+
+[node name="Spawnpoint" type="Marker3D" parent="." unique_id=1548549864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.46793, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

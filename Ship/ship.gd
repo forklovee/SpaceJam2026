@@ -23,11 +23,15 @@ var fuel: int = max_fuel
 @export_group("Movement")
 @export var speed: float = 12.0
 
+const RADIATION_PROCESS_UPDATE_COOLDOWN_MSEC = 500.0
+
 var weapons: Array[Gun] = []
 var gun_slots: Dictionary[GunSlot.GunSlotTargets, GunSlot] = {}
 
 var steering_direction: Vector2
 var movement_direction: Vector2
+
+var last_radiation_process_update: int = 0
 
 func _ready() -> void:
 	health = max_health
@@ -43,10 +47,39 @@ func _physics_process(delta: float) -> void:
 	var target_angle: float = lerp_angle(current_angle, steering_direction.angle(), 2.0*delta) 
 	
 	if movement_direction.length() > 0.01:
-		apply_central_force(15.0*Vector3(movement_direction.x, 0, movement_direction.y))
-	
+		apply_central_force(speed*Vector3(movement_direction.x, 0, movement_direction.y))
+		if self.is_in_group("PlayerShip"): #TODO ememies use fuel
+			use_fuel(delta*1.0)
 	# y rotation
 	apply_torque(250.0*Vector3.UP * angle_difference(current_angle, target_angle))	
+
+	if fuel<=0.0:
+		queue_free()
+
+func radiation_process(delta):
+	if Time.get_ticks_msec() - last_radiation_process_update < RADIATION_PROCESS_UPDATE_COOLDOWN_MSEC:
+		return
+	
+	var e_fuel=300.0*delta*radiation_query.data[Star3D.RaditionType.FUEL_BEAM]
+	refill_fuel(e_fuel, false)
+	
+	var fuel=15.0*delta*radiation_query.data[Star3D.RaditionType.FUEL]
+	refill_fuel(fuel)
+	var sh=30.0*delta*radiation_query.data[Star3D.RaditionType.SHILD]
+	if sh > 0.0:
+		add_shield(self, 5)
+		
+	var tok=30.0*delta*radiation_query.data[Star3D.RaditionType.TOKSIC]
+	if tok > 0.0:
+		damage(self, 4)
+	var amm=10.0*delta*radiation_query.data[Star3D.RaditionType.AMMO]
+	if randf()<amm:
+		for w in weapons:
+			if w.name=="PLSLGun":
+				w.ammo=min(w.ammo+1,w.max_ammo)
+				Game.pc.hud._on_ammo_amount_changed(self,Bullet3D.Type.PLSL)
+	
+	last_radiation_process_update = Time.get_ticks_msec()
 
 func get_forward() -> Vector3:
 	return -global_basis.z
@@ -161,6 +194,15 @@ func use_fuel(value: int):
 		return
 	fuel = clamp(fuel-value, 0, max_fuel)
 	fuel_changed.emit(self)
+
+func refill_fuel(value: float, is_clamping = true):
+	if is_clamping:
+		fuel = clamp(fuel+value, 0, max_fuel)
+	else:
+		fuel = fuel+value
+	fuel_changed.emit(self)
+	
+	
 
 func can_collect(value):
 	return storage+value<=max_storage

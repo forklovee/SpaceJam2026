@@ -5,17 +5,22 @@
 [ext_resource type="Script" uid="uid://igrhyjykhvyq" path="res://Ship/EnemyShip/enemy_ship.gd" id="2_ur6lp"]
 [ext_resource type="Script" uid="uid://nncr2juntu8h" path="res://AI/EnemyController.gd" id="2_uweob"]
 [ext_resource type="PackedScene" uid="uid://cnkt4114trhuc" path="res://Ship/Gun/regular_gun.tscn" id="3_vvrke"]
+[ext_resource type="Texture2D" uid="uid://bitn87o8ivhty" path="res://Ship/Sprites/spaceship4.png" id="4_fmewf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uweob"]
 radius = 4.0
 
+[sub_resource type="QuadMesh" id="QuadMesh_fi8xv"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25uhw"]
-albedo_color = Color(1, 0, 0, 1)
+transparency = 1
+diffuse_mode = 3
+albedo_texture = ExtResource("4_fmewf")
 
 [node name="BaseEnemyShip" unique_id=1525440035 groups=["EnemyShip"] instance=ExtResource("1_25uhw")]
 script = ExtResource("2_ur6lp")
 max_shield = 0
-speed = 8.0
+speed = 6.0
 
 [node name="EnemyController" type="Node" parent="." index="0" unique_id=1545785271]
 script = ExtResource("2_uweob")
@@ -29,6 +34,8 @@ monitorable = false
 shape = SubResource("CylinderShape3D_uweob")
 
 [node name="MeshInstance3D" parent="." index="2" unique_id=1993636732]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0, 0)
+mesh = SubResource("QuadMesh_fi8xv")
 surface_material_override/0 = SubResource("StandardMaterial3D_25uhw")
 
 [node name="Nose_GunSlot" parent="." index="6" unique_id=886972490]

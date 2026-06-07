@@ -1,6 +1,23 @@
 [gd_scene format=3 uid="uid://bkdrwitep8mwq"]
 
 [ext_resource type="PackedScene" uid="uid://dr7hss4w17q6r" path="res://Ship/Gun/Bullets/Bullet.tscn" id="1_6ry1u"]
+[ext_resource type="Texture2D" uid="uid://c646366qhpjqr" path="res://Ship/Gun/Bullets/Sprites/PociskPSLSL.png" id="2_uqmtw"]
 
+[sub_resource type="QuadMesh" id="QuadMesh_idi0a"]
+orientation = 1
 
-[node name="RegularBullet" unique_id=895270872 instance=ExtResource("1_6ry1u")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35roa"]
+transparency = 1
+diffuse_mode = 3
+albedo_color = Color(0, 1, 0.9666667, 1)
+albedo_texture = ExtResource("2_uqmtw")
+emission_enabled = true
+emission = Color(0, 1, 0.9666667, 1)
+emission_energy_multiplier = 0.0
+
+[node name="PLSLBullet" unique_id=895270872 instance=ExtResource("1_6ry1u")]
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=2146594858]
+transform = Transform3D(-6.0850546e-08, 0, 0.9410748, 0, 1, 0, -1.3920981, 0, -4.113568e-08, 0.0006814003, 0, -0.058341563)
+mesh = SubResource("QuadMesh_idi0a")
+surface_material_override/0 = SubResource("StandardMaterial3D_35roa")

@@ -4,9 +4,8 @@ class_name HUD extends Control
 @onready var time_label: Label = $TimeLabel
 @onready var rad_debug_info: Label = $RadDebugInfo
 
-@onready var health_label: Label = $ShipStats/VBoxContainer/Health
-@onready var shield_label: Label = $ShipStats/VBoxContainer/Shield
-@onready var fuel_label: Label = $ShipStats/VBoxContainer/Fuel
+@onready var status_bar: StatusBar = $StatusBar
+
 @onready var storage_label: Label = $ShipStats/VBoxContainer/Storage
 
 @onready var regular_ammo: AmmoTypeGauge = $ShipStats/VBoxContainer/GridContainer/RegularAmmo
@@ -15,14 +14,10 @@ class_name HUD extends Control
 @onready var railgun_ammo: AmmoTypeGauge = $ShipStats/VBoxContainer/GridContainer/RailgunAmmo
 
 func bind_ship(ship: Ship):
-	ship.health_changed.connect(_on_health_changed)
-	ship.shield_changed.connect(_on_shield_changed)
-	ship.fuel_changed.connect(_on_fuel_changed)
+	status_bar.bind(ship)
+
 	ship.storage_changed.connect(_on_storage_changed)
 	ship.used_weapon.connect(_on_ammo_amount_changed)
-	_on_health_changed(ship)
-	_on_shield_changed(ship)
-	_on_fuel_changed(ship)
 	_on_storage_changed(ship)
 	
 	_on_ammo_amount_changed(ship, Bullet3D.Type.Regular)
@@ -31,9 +26,8 @@ func bind_ship(ship: Ship):
 	_on_ammo_amount_changed(ship, Bullet3D.Type.Railgun)
 
 func unbind_ship(ship: Ship):
-	ship.health_changed.disconnect(_on_health_changed)
-	ship.shield_changed.disconnect(_on_shield_changed)
-	ship.fuel_changed.disconnect(_on_fuel_changed)
+	status_bar.unbind(ship)
+	
 	ship.storage_changed.disconnect(_on_storage_changed)
 	ship.used_weapon.disconnect(_on_ammo_amount_changed)
 
@@ -47,15 +41,6 @@ func update_labels():
 
 func _on_player_score_changed():
 	score_label.update()
-
-func _on_health_changed(ship: Ship):
-	health_label.text = "Health: "+str(ship.health)+"/"+str(ship.max_health)
-
-func _on_shield_changed(ship: Ship):
-	shield_label.text = "Shield: "+str(ship.shield)+"/"+str(ship.max_shield)
-	
-func _on_fuel_changed(ship: Ship):
-	fuel_label.text = "Fuel: "+str(ship.fuel)+"/"+str(ship.max_fuel)
 	
 func _on_storage_changed(ship: Ship):
 	storage_label.text = "Storage: "+str(ship.storage)+"/"+str(ship.max_storage)
