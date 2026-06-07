@@ -78,6 +78,8 @@ func _gather_task(delta: float):
 			ship.move(Vector2.ZERO)
 			ship.shoot(0)
 	else:
+		if !Game.level is Level:
+			return
 		target_crystal = Game.level.register_target_crystal(ship)
 	
 	# probably all crystals are destroyed
