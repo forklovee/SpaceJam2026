@@ -6,6 +6,7 @@ class_name HUD extends Control
 
 @onready var status_bar: StatusBar = $StatusBar
 
+@onready var radiation_icons: RadiationIcons = $RadiationIcons
 @onready var storage_label: Label = $ShipStats/VBoxContainer/Storage
 
 @onready var regular_ammo: AmmoTypeGauge = $ShipStats/VBoxContainer/GridContainer/RegularAmmo
@@ -33,24 +34,16 @@ func unbind_ship(ship: Ship):
 
 
 func update_labels():
-	if !Game.pc.ship: return
-	var rad_type := Game.pc.ship.radiation_query.data
-	if rad_type.is_empty():
+	var ship := Game.pc.ship
+	if !ship: return
+	var rad_data := ship.radiation_query.data
+	if rad_data.is_empty():
 		return
-	rad_debug_info.update(rad_type)
+	radiation_icons.update(ship, rad_data)
+	rad_debug_info.update(rad_data)
 
 func _on_player_score_changed():
 	score_label.update()
-
-func _on_health_changed(ship: Ship):
-	health_label.text = "Health: "+str(ship.health)+"/"+str(ship.max_health)
-
-func _on_shield_changed(ship: Ship):
-	shield_label.text = "Shield: "+str(ship.shield)+"/"+str(ship.max_shield)
-	
-func _on_fuel_changed(ship: Ship):
-	#print("******88")
-	fuel_label.text = "Fuel: "+str(int(ship.fuel))+"/"+str(int(ship.max_fuel))
 	
 func _on_storage_changed(ship: Ship):
 	storage_label.text = "Storage: "+str(ship.storage)+"/"+str(ship.max_storage)

@@ -8,6 +8,11 @@
 [ext_resource type="Script" uid="uid://th4nipsgj88u" path="res://Player/UI/status_bar.gd" id="6_knqcs"]
 [ext_resource type="Texture2D" uid="uid://bcchmmb260obl" path="res://Player/UI/Sprites/ProgressBar_Block.png" id="6_nk8mj"]
 [ext_resource type="Texture2D" uid="uid://diwjr33ed83gt" path="res://Player/UI/Sprites/chargingIconWhite.png" id="8_1rscr"]
+[ext_resource type="Script" uid="uid://jpfb15xhdxse" path="res://Player/UI/RadiationIcons/radiation_icons.gd" id="9_w0req"]
+[ext_resource type="Texture2D" uid="uid://li20sl1fu6qa" path="res://Player/UI/Sprites/LaserIconWhite.png" id="10_egnu7"]
+[ext_resource type="Texture2D" uid="uid://d3v12ikciof2d" path="res://Player/UI/Sprites/PacifistIconWhite.png" id="11_p3lpy"]
+[ext_resource type="Texture2D" uid="uid://dab00li53fknu" path="res://Player/UI/Sprites/ShieldIconWhite.png" id="12_0x0ms"]
+[ext_resource type="Texture2D" uid="uid://dxwj8f0wlcci0" path="res://Player/UI/Sprites/ToxinIconWhite.png" id="13_n45c7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1rscr"]
 font_size = 21
@@ -50,6 +55,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RadDebugInfo" type="Label" parent="." unique_id=1249103710]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -150,7 +156,7 @@ stretch_margin_bottom = 32
 texture_under = ExtResource("6_nk8mj")
 texture_progress = ExtResource("6_nk8mj")
 tint_under = Color(0.16475117, 0.102166705, 0.06709584, 1)
-tint_progress = Color(0.75, 1, 0, 1)
+tint_progress = Color(0, 1, 1, 1)
 
 [node name="Shield" type="TextureProgressBar" parent="StatusBar" unique_id=923569084]
 texture_filter = 3
@@ -170,9 +176,9 @@ tint_progress = Color(0, 0.61666656, 1, 1)
 
 [node name="Energy" type="TextureProgressBar" parent="StatusBar" unique_id=251443700]
 layout_mode = 0
-offset_left = -24.0
+offset_left = -23.0
 offset_top = -1.0
-offset_right = 127.0
+offset_right = 128.0
 offset_bottom = 150.0
 value = 50.0
 fill_mode = 3
@@ -181,7 +187,7 @@ texture_under = ExtResource("8_1rscr")
 texture_progress = ExtResource("8_1rscr")
 tint_under = Color(0.19, 0.0063333386, 0, 0.6392157)
 tint_over = Color(1, 1, 1, 0)
-tint_progress = Color(1, 0.9333334, 0, 1)
+tint_progress = Color(0.26666665, 1, 0, 1)
 
 [node name="EnergyPercent" type="Label" parent="StatusBar/Energy" unique_id=525381646]
 z_index = -317
@@ -192,3 +198,157 @@ offset_right = 148.0
 offset_bottom = 118.0
 text = "100%"
 label_settings = SubResource("LabelSettings_1rscr")
+
+[node name="RadiationIcons" type="Control" parent="." unique_id=9959933]
+anchors_preset = 0
+offset_left = 461.0
+offset_top = 262.0
+offset_right = 687.0
+offset_bottom = 304.0
+script = ExtResource("9_w0req")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RadiationIcons" unique_id=351073618]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="EnergyIcon" type="TextureRect" parent="RadiationIcons/HBoxContainer" unique_id=1015029363]
+self_modulate = Color(0.26666665, 1, 0, 1)
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture = ExtResource("8_1rscr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnergyIcon" type="TextureRect" parent="RadiationIcons/HBoxContainer/EnergyIcon" unique_id=1900734743]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -1
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 0
+offset_top = 3.0
+offset_right = 42.0
+offset_bottom = 45.0
+texture = ExtResource("8_1rscr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnergyBeamIcon" type="TextureRect" parent="RadiationIcons/HBoxContainer" unique_id=1010274574]
+self_modulate = Color(1, 0.7666667, 0, 1)
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture = ExtResource("8_1rscr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnergyIcon" type="TextureRect" parent="RadiationIcons/HBoxContainer/EnergyBeamIcon" unique_id=993650903]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -1
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 0
+offset_top = 3.0
+offset_right = 42.0
+offset_bottom = 45.0
+texture = ExtResource("8_1rscr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LaserIcon" type="TextureRect" parent="RadiationIcons/HBoxContainer" unique_id=1494001094]
+self_modulate = Color(0.89, 0.38566667, 0, 1)
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture = ExtResource("10_egnu7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnergyIcon2" type="TextureRect" parent="RadiationIcons/HBoxContainer/LaserIcon" unique_id=1581744614]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -1
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 0
+offset_top = 3.0
+offset_right = 42.0
+offset_bottom = 45.0
+texture = ExtResource("10_egnu7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="RadiationIcons/HBoxContainer/LaserIcon" unique_id=479593919]
+layout_mode = 0
+offset_left = 28.0
+offset_top = -10.0
+offset_right = 68.0
+offset_bottom = 13.0
+theme_override_colors/font_color = Color(1, 0.43137255, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+text = "++"
+
+[node name="PacifistIcon" type="TextureRect" parent="RadiationIcons/HBoxContainer" unique_id=430672451]
+self_modulate = Color(1, 0.42000002, 0.9710002, 1)
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture = ExtResource("11_p3lpy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnergyIcon3" type="TextureRect" parent="RadiationIcons/HBoxContainer/PacifistIcon" unique_id=35989905]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -1
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 0
+offset_top = 3.0
+offset_right = 42.0
+offset_bottom = 45.0
+texture = ExtResource("11_p3lpy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ShieldIcon" type="TextureRect" parent="RadiationIcons/HBoxContainer" unique_id=1912064154]
+self_modulate = Color(0, 0.38500014, 0.7, 1)
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture = ExtResource("12_0x0ms")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnergyIcon4" type="TextureRect" parent="RadiationIcons/HBoxContainer/ShieldIcon" unique_id=2108786660]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -1
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 0
+offset_top = 3.0
+offset_right = 42.0
+offset_bottom = 45.0
+texture = ExtResource("12_0x0ms")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ToxicIcon" type="TextureRect" parent="RadiationIcons/HBoxContainer" unique_id=589752486]
+self_modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+texture = ExtResource("13_n45c7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnergyIcon6" type="TextureRect" parent="RadiationIcons/HBoxContainer/ToxicIcon" unique_id=1527806883]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -3
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_n45c7")
+expand_mode = 1
+stretch_mode = 5

@@ -8,3 +8,5 @@ damage = 10
 range = 12.0
 bullet_speed = 20.0
 metadata/_custom_type_script = "uid://bty5ejl7c7k30"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=559387314]

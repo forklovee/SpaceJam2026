@@ -59,7 +59,7 @@ func register_target_crystal(ship: Ship) -> Crystal:
 	)
 	
 	var first_crystal: Crystal = keys[0]
-	if ship.tree_exiting.is_connected(_on_ship_destroyed):
+	if !ship.tree_exiting.is_connected(_on_ship_destroyed):
 		ship.tree_exiting.connect(_on_ship_destroyed.bind(ship))
 	crystal_to_enemies_blackboard[first_crystal].append(ship)
 	

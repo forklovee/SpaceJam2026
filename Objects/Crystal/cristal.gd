@@ -49,11 +49,3 @@ func _destroy(instigator: Ship):
 	gathered.emit(instigator)
 	#instigator.gather_crystal(self,1)
 	print(instigator.storage)
-
-func _exit_tree() -> void:
-	var e:AnimatedSprite3D=Data.exp.instantiate()
-	Game.level.add_child(e)
-	e.global_position=self.global_position
-	e.play()
-	#var f=func():e.queue_free()
-	#e.animation_finished.connect(f)

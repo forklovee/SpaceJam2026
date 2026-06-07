@@ -10,6 +10,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sui1w"]
 transparency = 1
 diffuse_mode = 3
+albedo_color = Color(0.7497805, 0.7497799, 0.74977994, 1)
 albedo_texture = ExtResource("2_wbcs4")
 
 [node name="PlayerShip" unique_id=1525440035 groups=["PlayerShip"] instance=ExtResource("1_4ff6c")]
@@ -22,7 +23,7 @@ transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 
 mesh = SubResource("QuadMesh_bmidl")
 surface_material_override/0 = SubResource("StandardMaterial3D_sui1w")
 
-[node name="Nose_GunSlot" parent="." index="4" unique_id=886972490]
+[node name="Nose_GunSlot" parent="." index="5" unique_id=886972490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.54223883)
 
 [node name="RegularGun" parent="Nose_GunSlot" index="0" unique_id=325331390 instance=ExtResource("2_d1b4h")]

@@ -210,16 +210,22 @@ func refill_fuel(value: float, is_clamping = true):
 func can_collect(value):
 	return storage+value<=max_storage
 
+
 func _notification(what: int) -> void:
+	if !is_instance_valid(Data):
+		return
 	if what == NOTIFICATION_PREDELETE:
-		if is_instance_valid(Data):
-			for st in range(storage):
-				var p=self.global_position
-				var a=randf()*2*PI
-				p+=Vector3(sin(a),0.0,cos(a))*0.3
-				var s:Node3D=Data.cristal_shard.instantiate()
-				Game.level.add_child(s)#.call_deferred(s)
-				s.global_position=p
-				s.scale=Vector3(1,1,1)*0.2
-				
-			self.storage=0
+		var e:AnimatedSprite3D=Data.exp.instantiate()
+		Game.level.add_child(e)
+		e.global_position=self.global_position
+		e.play()
+		
+		for st in range(storage):
+			var p=self.global_position
+			var a=randf()*2*PI
+			p+=Vector3(sin(a),0.0,cos(a))*0.3
+			var s:Node3D=Data.cristal_shard.instantiate()
+			Game.level.add_child(s)#.call_deferred(s)
+			s.global_position=p
+			s.scale=Vector3(1,1,1)*0.2
+		self.storage=0

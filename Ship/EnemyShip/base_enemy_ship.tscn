@@ -16,6 +16,9 @@ radius = 4.0
 transparency = 1
 diffuse_mode = 3
 albedo_texture = ExtResource("4_fmewf")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
 
 [node name="BaseEnemyShip" unique_id=1525440035 groups=["EnemyShip"] instance=ExtResource("1_25uhw")]
 script = ExtResource("2_ur6lp")

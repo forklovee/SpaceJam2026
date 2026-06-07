@@ -27,9 +27,13 @@ class BulletColors extends RefCounted:
 		level2_mat.set("albedo_color", Color(0.733, 0.0, 1.0, 1.0))
 		level3_mat = enemy_mat.duplicate(true)
 		level3_mat.set("albedo_color", Color(0.417, 1.0, 0.0, 1.0))
-		
 
 var bullets: Dictionary[Bullet3D.Type, PackedScene] = {}
+var bullet_icons: Dictionary[Bullet3D.Type, Texture2D] = {
+	Bullet3D.Type.Regular: null,
+	Bullet3D.Type.PLSL: ResourceLoader.load("res://Player/UI/Sprites/LaserIconWhite.png"),
+	Bullet3D.Type.Rocket: null
+}
 
 var bullet_materials: Dictionary[Bullet3D.Type, BulletColors]
 
@@ -38,7 +42,6 @@ var cristal_shard = ResourceLoader.load( "res://Objects/Crystal/CristalShard/cri
 var enemies:Dictionary[EnemyRespawn.EnemyType, PackedScene] = {
 	EnemyRespawn.EnemyType.Normal:ResourceLoader.load("res://Ship/EnemyShip/base_enemy_ship.tscn"),
 	EnemyRespawn.EnemyType.Big:ResourceLoader.load("res://Ship/EnemyShip/big_enemy_ship.tscn")
-	
 }
 
 var player_to_respawn = ResourceLoader.load( "res://Ship/PlayerShip/player_ship.tscn")

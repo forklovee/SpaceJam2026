@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://idcyet8cqbav"]
 
 [ext_resource type="Script" uid="uid://cdg783r88enja" path="res://Ship/ship.gd" id="1_wo1jh"]
-[ext_resource type="Script" uid="uid://bty5ejl7c7k30" path="res://Ship/Gun/gun.gd" id="2_qsskr"]
 [ext_resource type="Script" uid="uid://b38mgx1q35sbh" path="res://Ship/raddiation_querry.gd" id="4_1gmcr"]
 [ext_resource type="Script" uid="uid://d4hsl8ystudtd" path="res://Ship/Gun/gun_slot.gd" id="4_pimxe"]
 
@@ -51,10 +50,6 @@ mesh = SubResource("QuadMesh_1gmcr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=103843045]
 shape = SubResource("SphereShape3D_wo1jh")
-
-[node name="Gun" type="Node3D" parent="." unique_id=1331141947]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5733783)
-script = ExtResource("2_qsskr")
 
 [node name="RaddiationQuerry" type="Node3D" parent="." unique_id=541083656]
 visible = false
