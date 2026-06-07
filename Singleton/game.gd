@@ -4,7 +4,7 @@ signal player_score_changed
 signal enemy_score_changed
 
 var pc: PlayerController
-var level: Level
+var level
 
 var level_end=null
 
@@ -24,7 +24,7 @@ func _ready() -> void:
 	pc = PlayerController.new()
 	add_child(pc)
 
-func open_level(level_scene: PackedScene) -> Level:
+func open_level(level_scene: PackedScene) :
 	assert(level_scene)
 	if is_instance_valid(level):
 		level.queue_free()

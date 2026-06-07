@@ -38,6 +38,6 @@ func _process(delta: float) -> void:
 			var e=Data.enemies[current_wave[id]].instantiate()
 			id=(id+1)%(current_wave.size())
 			
-			var level := Game.level
+			var level = Game.level
 			level.add_child(e)
 			e.global_position = p
