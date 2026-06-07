@@ -4,6 +4,7 @@ signal crystal_amount_changed(level: Level)
 
 @onready var query_plane: SpacePlane = $Space_BG
 @onready var enemyRespawn:EnemyRespawn = $Base2/EnemyRespawn
+@onready var view:SubViewport=$SubViewport
 
 var crystals_to_gather: Array = []
 

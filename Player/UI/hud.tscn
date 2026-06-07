@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dxo8tkdtd822e" path="res://Ship/PlayerShip/score_label.gd" id="2_f2qnc"]
 [ext_resource type="Script" uid="uid://dd63v2ojxwq4p" path="res://Ship/PlayerShip/rad_label.gd" id="3_q0jle"]
 [ext_resource type="PackedScene" uid="uid://b7nmuufk6vgfh" path="res://Player/UI/AmmoGauge/ammo_type_gauge.tscn" id="4_q0jle"]
+[ext_resource type="Script" uid="uid://p5bq8thehq4" path="res://Player/UI/minimap_rect.gd" id="5_3jxqv"]
 
 [node name="HUD" type="Control" unique_id=1409684581]
 layout_mode = 3
@@ -118,3 +119,13 @@ layout_mode = 2
 
 [node name="RailgunAmmo" parent="ShipStats/VBoxContainer/GridContainer" unique_id=60718657 instance=ExtResource("4_q0jle")]
 layout_mode = 2
+
+[node name="MinimapRect" type="TextureRect" parent="." unique_id=563543283]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -400.0
+offset_right = 400.0
+grow_vertical = 0
+script = ExtResource("5_3jxqv")

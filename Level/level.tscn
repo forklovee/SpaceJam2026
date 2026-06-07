@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b1n61jmdup3bb" path="res://Objects/Crystal/CristalTypes/cristal_pas.tscn" id="9_py82k"]
 [ext_resource type="PackedScene" uid="uid://cdyvodqui4521" path="res://Objects/Crystal/CristalTypes/cristal_py.tscn" id="10_py82k"]
 [ext_resource type="PackedScene" uid="uid://bclhb4dyt4q6o" path="res://Ship/EnemyShip/base_enemy_ship.tscn" id="11_1teg4"]
+[ext_resource type="PackedScene" uid="uid://dm0bccipgvts3" path="res://Player/Camera/player_camera.tscn" id="14_dx36h"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_7dm0k"]
 
@@ -417,3 +418,10 @@ transform = Transform3D(0.24420553, 0, 0.9695228, 0, 0.99999994, 0, -0.9695228, 
 
 [node name="cristal4" parent="star7" unique_id=1646615569 instance=ExtResource("10_py82k")]
 transform = Transform3D(0.24420553, 0, 0.9695228, 0, 0.99999994, 0, -0.9695228, 0, 0.24420553, 4.5598955, 0.0813653, -6.9961495)
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1902059578]
+size = Vector2i(400, 400)
+
+[node name="PlayerCamera" parent="SubViewport" unique_id=591022296 instance=ExtResource("14_dx36h")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.8273735, 9.134518)
+size = 66.68003
