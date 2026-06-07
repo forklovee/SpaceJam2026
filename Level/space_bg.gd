@@ -6,7 +6,7 @@ class_name SpacePlane extends MeshInstance3D
 func _ready() -> void:
 	input_stars=get_tree().get_nodes_in_group("Star")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var m:ShaderMaterial=get_surface_override_material(0)
 	var stars=PackedVector2Array([])
 	var stars_color=PackedVector3Array([])
@@ -32,6 +32,7 @@ func querry(poss) -> Dictionary[Star3D.RaditionType, float]:
 	di[Star3D.RaditionType.PACE]=0.0
 	di[Star3D.RaditionType.TOKSIC]=0.0
 	di[Star3D.RaditionType.FUEL_BEAM]=0.0
+	di[Star3D.RaditionType.NONE]=0.0
 	for id in range(input_stars.size()):
 		var t=input_stars[id].flag
 		if t!=Star3D.RaditionType.NONE:

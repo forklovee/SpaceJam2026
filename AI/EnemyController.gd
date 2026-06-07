@@ -95,6 +95,8 @@ func _combat_task(_delta: float):
 	var global_position := ship.global_position
 	var nearest_target = bodies_in_sight.reduce(
 		func(nearest, body): 
+			if !is_instance_valid(body):
+				return nearest
 			if nearest == null:
 				return body
 			var distance_nearest := global_position.distance_to(nearest.global_position)
@@ -150,7 +152,8 @@ func _on_sight_sense_body_entered(body: Node):
 	if body in bodies_in_sight || !body.is_in_group(&"PlayerShip"):
 		return
 	bodies_in_sight.append(body)
-	body.tree_exiting.connect(_on_sight_sense_body_destroyed.bind(body))
+	if !body.tree_exited.is_connected(_on_sight_sense_body_destroyed):
+		body.tree_exiting.connect(_on_sight_sense_body_destroyed.bind(body))
 
 func _on_sight_sense_body_destroyed(body: Node):
 	if body in bodies_in_sight:

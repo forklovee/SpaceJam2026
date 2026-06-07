@@ -8,7 +8,7 @@ func _process(_delta: float) -> void:
 	if (Time.get_ticks_msec() - shoot_time) * 0.001 > DURATION_SEC:
 		queue_free()
 
-func shoot(new_instigator: Node3D, new_damage: int, new_max_range: float, new_velocity: Vector3):
+func shoot(new_instigator: Node3D, gun: Gun, new_damage: int, new_max_range: float, new_velocity: Vector3):
 	instigator = new_instigator
 	damage = new_damage
 	max_range = new_max_range

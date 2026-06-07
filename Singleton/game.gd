@@ -37,4 +37,4 @@ func spawn_explosion(instigator: Ship, damage: int, max_range: float, target_pos
 	if !explosion.is_inside_tree():
 		await explosion.tree_entered
 	explosion.global_position = target_position
-	explosion.shoot(instigator, damage, max_range, Vector3.ZERO)
+	explosion.shoot(instigator, null, damage, max_range, Vector3.ZERO)

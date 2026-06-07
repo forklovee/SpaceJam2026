@@ -15,12 +15,26 @@ var max_range: float
 
 var start_position: Vector3
 
-func shoot(new_instigator: Node3D, new_damage: int, new_max_range: float, new_velocity: Vector3):
+func _get_material() -> StandardMaterial3D:
+	return $MeshInstance3D.get_surface_override_material(0)
+
+func shoot(new_instigator: Node3D, gun: Gun, new_damage: int, new_max_range: float, new_velocity: Vector3):
 	instigator = new_instigator
 	damage = new_damage
 	max_range = new_max_range
 	velocity = new_velocity
 	start_position = global_position
+	
+	var material: StandardMaterial3D = Data.bullet_materials[gun.bullet_type].enemy_mat
+	if instigator.is_in_group(&"PlayerShip"):
+		match gun.level:
+			1:
+				material = Data.bullet_materials[gun.bullet_type].level1_mat
+			2:
+				material = Data.bullet_materials[gun.bullet_type].level2_mat
+			3:
+				material = Data.bullet_materials[gun.bullet_type].level3_mat
+	$MeshInstance3D.set_surface_override_material(0, material)
 
 func _process(delta: float) -> void:
 	if is_queued_for_deletion():

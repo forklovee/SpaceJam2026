@@ -40,4 +40,4 @@ func shoot(instigator: Ship):
 			instigator.global_basis,
 			instigator.global_position + (0.2*forward)
 		)
-		bullet.shoot(instigator, target_damage, target_range, target_speed*forward)
+		bullet.shoot(instigator, self, target_damage, target_range, target_speed*forward)

@@ -23,11 +23,15 @@ var fuel: float = max_fuel
 @export_group("Movement")
 @export var speed: float = 12.0
 
+const RADIATION_PROCESS_UPDATE_COOLDOWN_MSEC = 500.0
+
 var weapons: Array[Gun] = []
 var gun_slots: Dictionary[GunSlot.GunSlotTargets, GunSlot] = {}
 
 var steering_direction: Vector2
 var movement_direction: Vector2
+
+var last_radiation_process_update: int = 0
 
 func _ready() -> void:
 	health = max_health
@@ -44,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	var target_angle: float = lerp_angle(current_angle, steering_direction.angle(), 2.0*delta) 
 	apply_central_force(1.0*Vector3(radiation_query.f.x, 0, radiation_query.f.y))
 	if movement_direction.length() > 0.01:
-		apply_central_force(15.0*Vector3(movement_direction.x, 0, movement_direction.y))
+		apply_central_force(speed*Vector3(movement_direction.x, 0, movement_direction.y))
 		if self.is_in_group("PlayerShip"): #TODO ememies use fuel
 			use_fuel(delta*1.0)
 	# y rotation
@@ -54,22 +58,29 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func radiation_process(delta):
-	var e_fuel=300.0*delta*radiation_query.data[Star3D.RaditionType.FUEL_BEAM]
-	fuel+=e_fuel
+	if Time.get_ticks_msec() - last_radiation_process_update < RADIATION_PROCESS_UPDATE_COOLDOWN_MSEC:
+		return
 	
-	var fuel=30.0*delta*radiation_query.data[Star3D.RaditionType.FUEL]
-	self.use_fuel(-fuel)
+	var e_fuel=300.0*delta*radiation_query.data[Star3D.RaditionType.FUEL_BEAM]
+	refill_fuel(e_fuel, false)
+	
+	var fuel=15.0*delta*radiation_query.data[Star3D.RaditionType.FUEL]
+	refill_fuel(fuel)
 	var sh=30.0*delta*radiation_query.data[Star3D.RaditionType.SHILD]
-	self.add_shield(self,1 if randf()<sh else 0)
-	var tok_multi=30.0 if self.is_in_group("PlayerShip") else 10.0
-	var tok=tok_multi*delta*radiation_query.data[Star3D.RaditionType.TOKSIC]
-	self.damage(self,4 if randf()<tok else 0)
+	if sh > 0.0:
+		add_shield(self, 5)
+		
+	var tok=30.0*delta*radiation_query.data[Star3D.RaditionType.TOKSIC]
+	if tok > 0.0:
+		damage(self, 4)
 	var amm=10.0*delta*radiation_query.data[Star3D.RaditionType.AMMO]
 	if randf()<amm:
 		for w in weapons:
 			if w.name=="PLSLGun":
 				w.ammo=min(w.ammo+1,w.max_ammo)
 				Game.pc.hud._on_ammo_amount_changed(self,Bullet3D.Type.PLSL)
+	
+	last_radiation_process_update = Time.get_ticks_msec()
 
 func get_forward() -> Vector3:
 	return -global_basis.z
@@ -188,19 +199,34 @@ func use_fuel(value: float):
 	fuel = clamp(fuel-value, 0, max_fuel)
 	fuel_changed.emit(self)
 
+func refill_fuel(value: float, is_clamping = true):
+	if is_clamping:
+		fuel = clamp(fuel+value, 0, max_fuel)
+	else:
+		fuel = fuel+value
+	fuel_changed.emit(self)
+	
+	
+
 func can_collect(value):
 	return storage+value<=max_storage
 
+
 func _notification(what: int) -> void:
+	if !is_instance_valid(Data):
+		return
 	if what == NOTIFICATION_PREDELETE:
-		if is_instance_valid(Data):
-			for st in range(storage):
-				var p=self.global_position
-				var a=randf()*2*PI
-				p+=Vector3(sin(a),0.0,cos(a))*0.3
-				var s:Node3D=Data.cristal_shard.instantiate()
-				Game.level.add_child(s)#.call_deferred(s)
-				s.global_position=p
-				s.scale=Vector3(1,1,1)*0.2
-				
-			self.storage=0
+		var e:AnimatedSprite3D=Data.exp.instantiate()
+		Game.level.add_child(e)
+		e.global_position=self.global_position
+		e.play()
+		
+		for st in range(storage):
+			var p=self.global_position
+			var a=randf()*2*PI
+			p+=Vector3(sin(a),0.0,cos(a))*0.3
+			var s:Node3D=Data.cristal_shard.instantiate()
+			Game.level.add_child(s)#.call_deferred(s)
+			s.global_position=p
+			s.scale=Vector3(1,1,1)*0.2
+		self.storage=0
