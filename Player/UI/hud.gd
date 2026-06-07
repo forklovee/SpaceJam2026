@@ -38,7 +38,11 @@ func unbind_ship(ship: Ship):
 
 
 func update_labels():
-	rad_debug_info.update(Game.pc.ship.radiation_query.data)
+	if !Game.pc.ship: return
+	var rad_type := Game.pc.ship.radiation_query.data
+	if rad_type.is_empty():
+		return
+	rad_debug_info.update(rad_type)
 
 func _on_player_score_changed():
 	score_label.update()

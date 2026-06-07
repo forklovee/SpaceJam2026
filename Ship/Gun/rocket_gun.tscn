@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dggubpuu36kb3"]
+
+[ext_resource type="Script" uid="uid://bruifjc2awegh" path="res://Ship/Gun/rocket_gun.gd" id="1_epjrh"]
+
+[node name="RocketGun" type="Node3D" unique_id=325331390]
+script = ExtResource("1_epjrh")
+bullet_type = 2
+damage = 50
+range = 5.0
+firerate_sec = 2.0
+bullet_speed = 30.0
+max_ammo = 10
+metadata/_custom_type_script = "uid://bty5ejl7c7k30"

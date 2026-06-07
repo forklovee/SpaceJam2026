@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cp0mfj25tw50"]
 
-[ext_resource type="PackedScene" uid="uid://dr7hss4w17q6r" path="res://Ship/Gun/Bullet.tscn" id="1_ev7vb"]
+[ext_resource type="PackedScene" uid="uid://dr7hss4w17q6r" path="res://Ship/Gun/Bullets/Bullet.tscn" id="1_ev7vb"]
+[ext_resource type="Script" uid="uid://bmbebped3daa2" path="res://Ship/Gun/Bullets/rocket_bullet.gd" id="2_m02vq"]
 
-[node name="RegularBullet" unique_id=895270872 instance=ExtResource("1_ev7vb")]
+[node name="RocketBullet" unique_id=895270872 instance=ExtResource("1_ev7vb")]
+script = ExtResource("2_m02vq")

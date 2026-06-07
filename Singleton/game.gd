@@ -29,3 +29,14 @@ func open_level(level_scene: PackedScene):
 	
 	level = level_scene.instantiate()
 	add_child(level)
+
+
+
+
+func spawn_explosion(instigator: Ship, damage: int, max_range: float, target_position: Vector3):
+	var explosion: Bullet3D = Data.get_bullet_resource(Bullet3D.Type.RocketExplosion).instantiate()
+	level.call_deferred("add_child", explosion)
+	if !explosion.is_inside_tree():
+		await explosion.tree_entered
+	explosion.global_position = target_position
+	explosion.shoot(instigator, damage, max_range, Vector3.ZERO)

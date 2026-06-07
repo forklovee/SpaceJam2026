@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dr7hss4w17q6r"]
 
-[ext_resource type="Script" uid="uid://d13jij43ge31q" path="res://Ship/Gun/bullet.gd" id="1_hqplu"]
+[ext_resource type="Script" uid="uid://d13jij43ge31q" path="res://Ship/Gun/Bullets/bullet.gd" id="1_hqplu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hqplu"]
 
