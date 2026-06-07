@@ -1,6 +1,19 @@
 [gd_scene format=3 uid="uid://8s2c3kns8i8q"]
 
 [ext_resource type="Script" uid="uid://bwv233eydj00c" path="res://Player/UI/equipment_menu.gd" id="1_yapah"]
+[ext_resource type="Script" uid="uid://btxaaxskflxvo" path="res://Ship/ShipStore/ShipProduct.gd" id="2_d2vkx"]
+[ext_resource type="Resource" uid="uid://bwsc48jrilati" path="res://Ship/ShipStore/data/SCF-1 Student.tres" id="3_3dciq"]
+[ext_resource type="Resource" uid="uid://dyfarp6qhvs4v" path="res://Ship/ShipStore/data/SCF-2 Magister.tres" id="4_d2vkx"]
+
+[sub_resource type="Resource" id="Resource_sbpbq"]
+script = ExtResource("2_d2vkx")
+based_ship = ExtResource("3_3dciq")
+metadata/_custom_type_script = "uid://btxaaxskflxvo"
+
+[sub_resource type="Resource" id="Resource_27oab"]
+script = ExtResource("2_d2vkx")
+based_ship = ExtResource("4_d2vkx")
+metadata/_custom_type_script = "uid://btxaaxskflxvo"
 
 [node name="Equipment_menu" type="ColorRect" unique_id=6535177]
 anchors_preset = 8
@@ -15,6 +28,9 @@ offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yapah")
+currentShip = SubResource("Resource_sbpbq")
+allYourShip = Array[ExtResource("2_d2vkx")]([SubResource("Resource_sbpbq")])
+storeShip = Array[ExtResource("2_d2vkx")]([SubResource("Resource_27oab")])
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1500512140]
 layout_mode = 1
@@ -23,29 +39,176 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -227.0
-offset_top = -230.0
-offset_right = 229.0
-offset_bottom = 233.0
+offset_left = -226.0
+offset_top = -181.0
+offset_right = 230.0
+offset_bottom = -59.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.29529542, 0.36722022, 0.72512126, 1)
 
 [node name="LaserButton" type="Button" parent="ColorRect2" unique_id=358851448]
 layout_mode = 0
-offset_left = 19.0
-offset_top = 22.0
-offset_right = 207.0
-offset_bottom = 92.0
+offset_left = 15.0
+offset_top = 26.0
+offset_right = 203.0
+offset_bottom = 96.0
 text = "USE LASERS"
 
 [node name="RocketButton" type="Button" parent="ColorRect2" unique_id=2076952280]
 layout_mode = 0
-offset_left = 239.0
-offset_top = 20.0
-offset_right = 427.0
-offset_bottom = 90.0
+offset_left = 229.0
+offset_top = 28.0
+offset_right = 417.0
+offset_bottom = 98.0
 text = "USE ROCKET"
+
+[node name="UPGRADES4" type="ColorRect" parent="." unique_id=1835969469]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.0
+offset_top = -40.0
+offset_right = 225.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.29529542, 0.36722022, 0.72512126, 1)
+
+[node name="UPG1" type="Button" parent="UPGRADES4" unique_id=1306979048]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 26.0
+offset_right = 203.0
+offset_bottom = 96.0
+text = "USE LASERS"
+
+[node name="ColorRect" type="ColorRect" parent="UPGRADES4/UPG1" unique_id=1248217492]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 17.0
+offset_right = 207.0
+offset_bottom = 57.0
+
+[node name="UPG2" type="Button" parent="UPGRADES4" unique_id=1778169865]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 28.0
+offset_right = 417.0
+offset_bottom = 98.0
+text = "USE ROCKET"
+
+[node name="ColorRect2" type="ColorRect" parent="UPGRADES4/UPG2" unique_id=1726009972]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 16.0
+offset_right = 201.0
+offset_bottom = 56.0
+
+[node name="UPG3" type="Button" parent="UPGRADES4" unique_id=1955504416]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 110.0
+offset_right = 202.0
+offset_bottom = 180.0
+text = "USE ROCKET"
+
+[node name="ColorRect3" type="ColorRect" parent="UPGRADES4/UPG3" unique_id=1394987171]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 15.0
+offset_right = 202.0
+offset_bottom = 55.0
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=934369]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 252.0
+offset_top = -239.0
+offset_right = 481.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.52419424, 0.37586695, 2.8878452e-07, 1)
+
+[node name="SHIP1" type="Button" parent="ColorRect3" unique_id=288158990]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 22.0
+offset_right = 207.0
+offset_bottom = 92.0
+text = "ship1"
+
+[node name="SHIP2" type="Button" parent="ColorRect3" unique_id=1077876238]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 126.0
+offset_right = 206.0
+offset_bottom = 196.0
+text = "ship2"
+
+[node name="SHIP3" type="Button" parent="ColorRect3" unique_id=1822305014]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 222.0
+offset_right = 204.0
+offset_bottom = 292.0
+text = "ship3"
+
+[node name="Label" type="Label" parent="." unique_id=1609589297]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -237.0
+offset_top = 64.0
+offset_right = -29.0
+offset_bottom = 106.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "MONEY SXXXX"
+
+[node name="Label3" type="Label" parent="." unique_id=953919146]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.0
+offset_top = 13.0
+offset_right = 106.0
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "saddsaSXXXX"
+
+[node name="Label2" type="RichTextLabel" parent="." unique_id=1341041087]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -233.0
+offset_top = 419.0
+offset_right = 230.0
+offset_bottom = 489.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "asdsasd"
 
 [connection signal="pressed" from="ColorRect2/LaserButton" to="." method="_on_laser_button_pressed"]
 [connection signal="pressed" from="ColorRect2/RocketButton" to="." method="_on_rocket_button_pressed"]
+[connection signal="pressed" from="UPGRADES4/UPG1" to="." method="_on_upg_1_pressed"]
+[connection signal="pressed" from="UPGRADES4/UPG2" to="." method="_on_upg_2_pressed"]
+[connection signal="pressed" from="UPGRADES4/UPG3" to="." method="_on_upg_3_pressed"]
+[connection signal="pressed" from="ColorRect3/SHIP1" to="." method="_on_laser_button_pressed"]
+[connection signal="pressed" from="ColorRect3/SHIP2" to="." method="_on_rocket_button_pressed"]
+[connection signal="pressed" from="ColorRect3/SHIP3" to="." method="_on_rocket_button_pressed"]

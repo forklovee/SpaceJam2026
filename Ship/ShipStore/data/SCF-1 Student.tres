@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ShipModel" format=3 uid="uid://bwsc48jrilati"]
+
+[ext_resource type="Script" uid="uid://vcm2rq5por08" path="res://Ship/ShipStore/ShipModel.gd" id="1_7h3bs"]
+[ext_resource type="Script" uid="uid://cfwgma8qj4hy8" path="res://Ship/ShipStore/ShipModelUpgrade.gd" id="2_g127n"]
+
+[sub_resource type="Resource" id="Resource_sdkmh"]
+script = ExtResource("2_g127n")
+ExtraMass = 1.0
+ExtraStorage = 10
+BrandName = "HeavyMode"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[sub_resource type="Resource" id="Resource_3baj7"]
+script = ExtResource("2_g127n")
+ExtraMass = -0.9
+BrandName = "LightWeightTunning"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[sub_resource type="Resource" id="Resource_hubhe"]
+script = ExtResource("2_g127n")
+ExtraHealth = 100
+ExtraShield = 100
+BrandName = "Tank"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[resource]
+script = ExtResource("1_7h3bs")
+BrandName = "SCF-1 Student"
+upgrades = Array[ExtResource("2_g127n")]([SubResource("Resource_sdkmh"), SubResource("Resource_3baj7"), SubResource("Resource_hubhe")])
+marketing_text = "podstawowy statek kosmiczny wykorzystywany przez siły Unii iArmii. Sprawdzony w wielu bitwach, jest koniem roboczym, na którym można polegać."
+metadata/_custom_type_script = "uid://vcm2rq5por08"

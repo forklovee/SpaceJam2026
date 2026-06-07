@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ShipModel" format=3 uid="uid://dyfarp6qhvs4v"]
+
+[ext_resource type="Script" uid="uid://vcm2rq5por08" path="res://Ship/ShipStore/ShipModel.gd" id="1_deynd"]
+[ext_resource type="Script" uid="uid://cfwgma8qj4hy8" path="res://Ship/ShipStore/ShipModelUpgrade.gd" id="2_eop4f"]
+
+[sub_resource type="Resource" id="Resource_sdkmh"]
+script = ExtResource("2_eop4f")
+ExtraMass = 1.0
+ExtraStorage = 10
+BrandName = "HeavyMode"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[sub_resource type="Resource" id="Resource_3baj7"]
+script = ExtResource("2_eop4f")
+ExtraMass = -0.9
+BrandName = "LightWeightTunning"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[sub_resource type="Resource" id="Resource_hubhe"]
+script = ExtResource("2_eop4f")
+ExtraHealth = 100
+ExtraShield = 100
+BrandName = "Tank"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[resource]
+script = ExtResource("1_deynd")
+BaseMass = 1.5
+BaseStorage = 15
+BaseHealth = 150
+BaseShield = 150
+BaseFuel = 150.0
+BrandName = "SCF-2 Magister"
+upgrades = Array[ExtResource("2_eop4f")]([SubResource("Resource_sdkmh"), SubResource("Resource_3baj7"), SubResource("Resource_hubhe")])
+marketing_text = "ciągłe walki pokazały, że osiągi SCF-1 są niewystarczające,dlatego Wytwórnia Materiałów i Interkomów opracowała zupełnie nowy pojazd.Oznaczony jako model 2, jest on potężniejszy od swojego poprzednika."
+metadata/_custom_type_script = "uid://vcm2rq5por08"
