@@ -1,7 +1,7 @@
 class_name RadiationQuery extends Node3D
 
 var data: Dictionary
-
+var f:Vector2
 func update() -> void:
 	if !Game.level: return
 	if !Game.level is Level: return
@@ -14,3 +14,4 @@ func update() -> void:
 		a.append(Vector2(c.global_position.x,c.global_position.z))
 	
 	data = sp.querry(a)
+	f=sp.querry_f(Vector2(global_position.x,global_position.z))

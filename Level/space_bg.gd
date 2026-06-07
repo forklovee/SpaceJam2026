@@ -40,3 +40,16 @@ func querry(poss) -> Dictionary[Star3D.RaditionType, float]:
 					value+=(3.0-dist)/3.0;
 			di[t]+=value
 	return di
+
+func querry_f(pos:Vector2) -> Vector2:
+	var cs=Vector2.INF
+	var best_dist=1000000.0
+	for id in range(input_stars.size()):
+		var p:Vector2=Vector2(input_stars[id].global_position.x,input_stars[id].global_position.z)
+		var dist=p.distance_to(pos) 
+		if dist<best_dist:
+			best_dist=dist
+			cs=p
+	if pos.distance_to(cs)>8.0:
+		return (cs-pos)-8.0*(cs-pos).normalized()
+	return Vector2.ZERO
