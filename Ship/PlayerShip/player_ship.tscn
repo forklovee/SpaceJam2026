@@ -3,9 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://idcyet8cqbav" path="res://Ship/base_ship.tscn" id="1_4ff6c"]
 [ext_resource type="PackedScene" uid="uid://cnkt4114trhuc" path="res://Ship/Gun/regular_gun.tscn" id="2_d1b4h"]
 [ext_resource type="PackedScene" uid="uid://vit26vtugxqg" path="res://Ship/Gun/plsl_gun.tscn" id="3_wtuya"]
+[ext_resource type="Texture2D" uid="uid://ce7ywcbkyruob" path="res://Arty/spaceship.png" id="4_wbcs4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ff6c"]
 albedo_color = Color(0.3372549, 1, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bmidl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sui1w"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(0.99086446, 0.5362912, 0.7762043, 1)
+albedo_texture = ExtResource("4_wbcs4")
 
 [node name="PlayerShip" unique_id=1525440035 groups=["PlayerShip"] instance=ExtResource("1_4ff6c")]
 collision_layer = 1
@@ -22,3 +32,9 @@ bullets_per_shot = 7
 spread_deg = 18.289
 
 [node name="PLSLGun" parent="WingL_GunSlot" parent_id_path=PackedInt32Array(1491398764) index="0" unique_id=1435125892 instance=ExtResource("3_wtuya")]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="7" unique_id=1228452602]
+transform = Transform3D(0.12641177, 0, -2.9973354, 0, 3, 0, 2.9973354, 0, 0.12641177, 0, 0.4, 0)
+layers = 1024
+mesh = SubResource("PlaneMesh_bmidl")
+surface_material_override/0 = SubResource("StandardMaterial3D_sui1w")
