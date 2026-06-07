@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://cs4sbi2wnw7bq" path="res://Player/UI/hud.gd" id="1_lrp3x"]
 [ext_resource type="Script" uid="uid://dxo8tkdtd822e" path="res://Ship/PlayerShip/score_label.gd" id="2_f2qnc"]
 [ext_resource type="Script" uid="uid://dd63v2ojxwq4p" path="res://Ship/PlayerShip/rad_label.gd" id="3_q0jle"]
+[ext_resource type="PackedScene" uid="uid://8s2c3kns8i8q" path="res://Player/UI/equipment_menu.tscn" id="4_egnu7"]
 [ext_resource type="PackedScene" uid="uid://b7nmuufk6vgfh" path="res://Player/UI/AmmoGauge/ammo_type_gauge.tscn" id="4_q0jle"]
 [ext_resource type="Script" uid="uid://p5bq8thehq4" path="res://Player/UI/minimap_rect.gd" id="5_3jxqv"]
-[ext_resource type="PackedScene" uid="uid://8s2c3kns8i8q" path="res://Player/UI/equipment_menu.tscn" id="6_nk8mj"]
 [ext_resource type="Script" uid="uid://th4nipsgj88u" path="res://Player/UI/status_bar.gd" id="6_knqcs"]
 [ext_resource type="Texture2D" uid="uid://bcchmmb260obl" path="res://Player/UI/Sprites/ProgressBar_Block.png" id="6_nk8mj"]
 [ext_resource type="Texture2D" uid="uid://diwjr33ed83gt" path="res://Player/UI/Sprites/chargingIconWhite.png" id="8_1rscr"]
@@ -136,20 +136,6 @@ offset_right = 400.0
 grow_vertical = 0
 script = ExtResource("5_3jxqv")
 
-[node name="Equipment_menu" parent="." unique_id=6535177 instance=ExtResource("6_nk8mj")]
-visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 500.0
-offset_bottom = 500.0
-grow_horizontal = 1
-grow_vertical = 1
 [node name="StatusBar" type="Control" parent="." unique_id=456314579]
 anchors_preset = 0
 offset_right = 464.0
@@ -367,3 +353,7 @@ grow_vertical = 2
 texture = ExtResource("13_n45c7")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Equipment_menu" parent="." unique_id=6535177 instance=ExtResource("4_egnu7")]
+layout_mode = 0
+anchors_preset = 0

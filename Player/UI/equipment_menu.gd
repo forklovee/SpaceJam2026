@@ -5,8 +5,8 @@ extends ColorRect
 @export var storeShip:Array[ShipProduct]
 
 
-
-
+func _ready() -> void:
+	hide()
 
 func _process(delta: float) -> void:
 	if self!=null:
