@@ -4,7 +4,7 @@ signal player_score_changed
 signal enemy_score_changed
 
 var pc: PlayerController
-var level
+var level: Level
 
 var level_end=null
 

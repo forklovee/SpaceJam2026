@@ -15,7 +15,7 @@ func e_process(delta: float) -> void:
 			time=0.0
 			
 			var pl=Data.player_to_respawn.instantiate()
-			var p=self.global_position
+			var p=self.global_position*Vector3(1.0, 0.0, 1.0)
 			var a=randf()*2*PI
 			p+=Vector3(sin(a),0.0,cos(a))*2.0
 			Game.level.add_child(pl)

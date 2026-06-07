@@ -78,7 +78,7 @@ func radiation_process(delta):
 		for w in weapons:
 			if w.name=="PLSLGun":
 				w.ammo=min(w.ammo+1,w.max_ammo)
-				Game.pc.hud._on_ammo_amount_changed(self,Bullet3D.Type.PLSL)
+				used_weapon.emit(self, Bullet3D.Type.PLSL)
 	
 	last_radiation_process_update = Time.get_ticks_msec()
 

@@ -3,6 +3,7 @@ class_name EnemyController extends Node
 enum Task{
 	ReturnToBase,
 	Gather,
+	Search,
 	Combat
 }
 
@@ -15,6 +16,8 @@ var nervousness: float = 0.0
 var bodies_in_sight: Array[Node3D]
 
 var target_crystal: Crystal
+var is_flying_to_search_position: bool = false
+var search_position: Vector3
 
 func _ready() -> void:
 	possess(get_parent())
@@ -26,6 +29,8 @@ func _process(delta: float) -> void:
 	match task:
 		Task.ReturnToBase:
 			_return_to_base_task(delta)
+		Task.Search:
+			_search_task(delta)
 		Task.Gather:
 			_gather_task(delta)
 		Task.Combat:
@@ -51,18 +56,19 @@ func _return_to_base_task(_delta: float):
 		ship.move(Vector2.ZERO)
 
 func _gather_task(delta: float):
-	if ship.is_storage_full():
+	if ship.storage >= 5:
 		task = Task.ReturnToBase
 		return
 	
 	if is_instance_valid(target_crystal):
-		var global_position := ship.global_position
-		var target_position := target_crystal.global_position
+		var global_position := ship.global_position*Vector3(1.0, 0.0, 1.0)
+		var target_position := target_crystal.global_position*Vector3(1.0, 0.0, 1.0)
 		var direction_to_target := global_position.direction_to(target_position)
 		var move_direction := Vector2(
 			direction_to_target.x,
 			-direction_to_target.z
 		)
+		
 		ship.steer(move_direction)
 		
 		if global_position.distance_to(target_position) > 2.0:
@@ -72,6 +78,11 @@ func _gather_task(delta: float):
 			ship.shoot(0)
 	else:
 		target_crystal = Game.level.register_target_crystal(ship)
+	
+	# probably all crystals are destroyed
+	if target_crystal == null:
+		task = Task.Search
+		return
 	
 	if !bodies_in_sight.is_empty():
 		var global_position: Vector3 = ship.global_position
@@ -84,12 +95,52 @@ func _gather_task(delta: float):
 			max_sight_range = sight_collision_shape.shape.radius
 		
 		var distance_ratio: float = clamp(avg_distance_to_bodies/max_sight_range, 0.0, 1.0)
-		nervousness = clamp(lerp(nervousness, nervousness+distance_ratio, 0.5*delta), 0.0, 1.0)
+		nervousness = clamp(lerp(nervousness, nervousness+distance_ratio, 0.75*delta), 0.0, 1.0)
 	else:
 		nervousness = lerp(nervousness, 0.0, delta)
 	
 	if nervousness >= 1.0:
 		task = Task.Combat
+
+
+func _search_task(_delta: float):
+	var global_position := ship.global_position*Vector3(1.0, 0.0, 1.0)
+	
+	if ship.storage > 5:
+		task = Task.ReturnToBase
+		return
+	
+	if !is_flying_to_search_position:
+		var crystal_shards := get_tree().get_nodes_in_group(&"CrystalShard")
+		if !crystal_shards.is_empty():
+			crystal_shards.sort_custom(
+				func(a, b):
+					return a.global_position.distance_to(global_position) < b.global_position.distance_to(global_position)
+			)
+			search_position = crystal_shards[0].global_position*Vector3(1.0, 0.0, 1.0)
+			is_flying_to_search_position = true
+			return
+		if is_instance_valid(ship):
+			search_position = ship.global_position
+			is_flying_to_search_position = true
+		else:
+			is_flying_to_search_position = false
+	
+	var direction_to_target := global_position.direction_to(search_position)
+	var move_direction := Vector2(
+		direction_to_target.x,
+		-direction_to_target.z
+	)
+	ship.move(move_direction)
+	ship.steer(move_direction)
+	if global_position.distance_to(search_position) < 1.5:
+		is_flying_to_search_position = false
+	
+	if !bodies_in_sight.is_empty():
+		task = Task.Combat
+		return
+	
+
 
 func _combat_task(_delta: float):
 	var global_position := ship.global_position

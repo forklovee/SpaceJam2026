@@ -7,30 +7,21 @@ class_name HUD extends Control
 @onready var status_bar: StatusBar = $StatusBar
 
 @onready var radiation_icons: RadiationIcons = $RadiationIcons
-@onready var storage_label: Label = $ShipStats/VBoxContainer/Storage
-
-@onready var regular_ammo: AmmoTypeGauge = $ShipStats/VBoxContainer/GridContainer/RegularAmmo
-@onready var plsl_ammo: AmmoTypeGauge = $ShipStats/VBoxContainer/GridContainer/PLSLAmmo
-@onready var rocket_ammo: AmmoTypeGauge = $ShipStats/VBoxContainer/GridContainer/RocketAmmo
-@onready var railgun_ammo: AmmoTypeGauge = $ShipStats/VBoxContainer/GridContainer/RailgunAmmo
+@onready var storage_label: Label = $WeaponAmmo/VBoxContainer/Storage
+@onready var weapon_ammo: WeaponAmmo = $WeaponAmmo
 
 func bind_ship(ship: Ship):
 	status_bar.bind(ship)
-
-	ship.storage_changed.connect(_on_storage_changed)
-	ship.used_weapon.connect(_on_ammo_amount_changed)
-	_on_storage_changed(ship)
+	weapon_ammo.bind(ship)
 	
-	_on_ammo_amount_changed(ship, Bullet3D.Type.Regular)
-	_on_ammo_amount_changed(ship, Bullet3D.Type.PLSL)
-	_on_ammo_amount_changed(ship, Bullet3D.Type.Rocket)
-	_on_ammo_amount_changed(ship, Bullet3D.Type.Railgun)
+	ship.storage_changed.connect(_on_storage_changed)
+	_on_storage_changed(ship)
 
 func unbind_ship(ship: Ship):
 	status_bar.unbind(ship)
+	weapon_ammo.unbind(ship)
 	
 	ship.storage_changed.disconnect(_on_storage_changed)
-	ship.used_weapon.disconnect(_on_ammo_amount_changed)
 
 
 func update_labels():
@@ -47,17 +38,6 @@ func _on_player_score_changed():
 	
 func _on_storage_changed(ship: Ship):
 	storage_label.text = "Storage: "+str(ship.storage)+"/"+str(ship.max_storage)
-
-func _on_ammo_amount_changed(ship: Ship, ammo_type: Bullet3D.Type):
-	match ammo_type:
-		Bullet3D.Type.Regular:
-			regular_ammo.update_amount(ship, ammo_type)
-		Bullet3D.Type.PLSL:
-			plsl_ammo.update_amount(ship, ammo_type)
-		Bullet3D.Type.Rocket:
-			rocket_ammo.update_amount(ship, ammo_type)
-		Bullet3D.Type.Railgun:
-			railgun_ammo.update_amount(ship, ammo_type)
 
 var b1:Node3D
 var b2:Node3D

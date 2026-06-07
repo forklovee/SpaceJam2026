@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d0pdf2ktfivuy" path="res://icon.svg" id="2_bpk0r"]
 
 [node name="AmmoTypeGauge" type="Control" unique_id=1824773762]
-custom_minimum_size = Vector2(116, 57)
+custom_minimum_size = Vector2(116, 42)
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 3
@@ -24,7 +24,7 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_right = -6.0
-offset_bottom = 23.0
+offset_bottom = 20.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -56,5 +56,5 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 size_flags_stretch_ratio = 0.75
 text = "0/0"
-horizontal_alignment = 1
-vertical_alignment = 1
+horizontal_alignment = 2
+vertical_alignment = 2
