@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	if movement_direction.length() > 0.01:
 		apply_central_force(15.0*Vector3(movement_direction.x, 0, movement_direction.y))
 		if self.is_in_group("PlayerShip"): #TODO ememies use fuel
-			use_fuel(delta*10.0)
+			use_fuel(delta*1.0)
 	# y rotation
 	apply_torque(250.0*Vector3.UP * angle_difference(current_angle, target_angle))	
 

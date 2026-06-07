@@ -41,7 +41,7 @@ func _gather_task(delta: float):
 		
 		var distance_ratio: float = clamp(avg_distance_to_bodies/max_sight_range, 0.0, 1.0)
 		nervousness = clamp(lerp(nervousness, nervousness+distance_ratio, 0.5*delta), 0.0, 1.0)
-		print(nervousness)
+		#print(nervousness)
 	else:
 		nervousness = lerp(nervousness, 0.0, delta)
 	
