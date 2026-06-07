@@ -37,7 +37,6 @@ func _process(_delta: float) -> void:
 		#	print(get_overlapping_bodies())
 		for b in get_overlapping_bodies():
 			if b.is_in_group("EnemyShip"):
-				#print("##########333")
 				var ship:Ship=b
 				$MeshInstance3D/OmniLight3D.visible=true
 				var c=ship.storage
@@ -46,10 +45,6 @@ func _process(_delta: float) -> void:
 				ship.storage=0
 				ship.transfer_crystal()
 				Game.enemy_score+=c
-				#TMP
-				if c>0:
-					print("FAKE DIE")
-					ship.damage(null,10000.0)#TODO 
 
 
 #func _on_body_entered(body: Node3D) -> void:

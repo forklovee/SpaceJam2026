@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://vit26vtugxqg" path="res://Ship/Gun/plsl_gun.tscn" id="3_wtuya"]
 [ext_resource type="Texture2D" uid="uid://ce7ywcbkyruob" path="res://Arty/spaceship.png" id="4_wbcs4"]
 [ext_resource type="Texture2D" uid="uid://bqvh4y0cenci2" path="res://Arty/Statki z nazwami/SCF-1 Student.png" id="5_bmidl"]
+[ext_resource type="Texture2D" uid="uid://bpwufxnubl5ay" path="res://Ship/Sprites/Spaceship2.png" id="2_wbcs4"]
+[ext_resource type="PackedScene" uid="uid://dggubpuu36kb3" path="res://Ship/Gun/rocket_gun.tscn" id="4_bmidl"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_bmidl"]
 
@@ -25,6 +27,12 @@ transparency = 1
 shading_mode = 0
 albedo_texture = ExtResource("5_bmidl")
 
+shading_mode = 0
+diffuse_mode = 3
+albedo_texture = ExtResource("2_wbcs4")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bmidl"]
+
 [node name="PlayerShip" unique_id=1525440035 groups=["PlayerShip"] instance=ExtResource("1_4ff6c")]
 collision_layer = 1
 collision_mask = 10
@@ -43,7 +51,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.54223883)
 bullets_per_shot = 7
 spread_deg = 18.289
 
-[node name="PLSLGun" parent="WingL_GunSlot" parent_id_path=PackedInt32Array(1491398764) index="0" unique_id=1435125892 instance=ExtResource("3_wtuya")]
+[node name="RocketGun" parent="WingL_GunSlot" parent_id_path=PackedInt32Array(1491398764) index="0" unique_id=852764000 instance=ExtResource("4_bmidl")]
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="7" unique_id=1228452602]
 transform = Transform3D(0.12641177, 0, -2.9973354, 0, 3, 0, 2.9973354, 0, 0.12641177, 0, 0.4, 0)

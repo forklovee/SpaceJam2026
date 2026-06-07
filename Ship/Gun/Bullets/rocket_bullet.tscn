@@ -2,6 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://dr7hss4w17q6r" path="res://Ship/Gun/Bullets/Bullet.tscn" id="1_ev7vb"]
 [ext_resource type="Script" uid="uid://bmbebped3daa2" path="res://Ship/Gun/Bullets/rocket_bullet.gd" id="2_m02vq"]
+[ext_resource type="Texture2D" uid="uid://2v0ytxbmdjqw" path="res://Ship/Gun/Bullets/Sprites/missile.png" id="3_eylc7"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_keo6e"]
+size = Vector2(0.545, 1.23)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d2iti"]
+transparency = 1
+diffuse_mode = 3
+albedo_texture = ExtResource("3_eylc7")
 
 [node name="RocketBullet" unique_id=895270872 instance=ExtResource("1_ev7vb")]
 script = ExtResource("2_m02vq")
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=2146594858]
+mesh = SubResource("PlaneMesh_keo6e")
+surface_material_override/0 = SubResource("StandardMaterial3D_d2iti")

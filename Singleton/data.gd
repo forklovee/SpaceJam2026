@@ -12,6 +12,7 @@ class BulletColors extends RefCounted:
 		type = new_type
 		var bullet: Bullet3D = bullet_res.instantiate()
 		Data.add_child(bullet)
+		bullet.global_position.y = -100
 		var bullet_mat := bullet._get_material()
 		if !bullet_mat:
 			bullet.queue_free()
@@ -30,9 +31,9 @@ class BulletColors extends RefCounted:
 
 var bullets: Dictionary[Bullet3D.Type, PackedScene] = {}
 var bullet_icons: Dictionary[Bullet3D.Type, Texture2D] = {
-	Bullet3D.Type.Regular: null,
+	Bullet3D.Type.Regular: ResourceLoader.load("res://Player/UI/Sprites/ammoIconWhite.png"),
 	Bullet3D.Type.PLSL: ResourceLoader.load("res://Player/UI/Sprites/LaserIconWhite.png"),
-	Bullet3D.Type.Rocket: null
+	Bullet3D.Type.Rocket: ResourceLoader.load("res://Player/UI/Sprites/missileIconWhite.png")
 }
 
 var bullet_materials: Dictionary[Bullet3D.Type, BulletColors]
@@ -40,13 +41,13 @@ var bullet_materials: Dictionary[Bullet3D.Type, BulletColors]
 var cristal_shard = ResourceLoader.load( "res://Objects/Crystal/CristalShard/cristal_shard.tscn")
 
 var enemies:Dictionary[EnemyRespawn.EnemyType, PackedScene] = {
-	EnemyRespawn.EnemyType.Normal:ResourceLoader.load("res://Ship/EnemyShip/base_enemy_ship.tscn"),
-	EnemyRespawn.EnemyType.Big:ResourceLoader.load("res://Ship/EnemyShip/big_enemy_ship.tscn")
+	EnemyRespawn.EnemyType.Normal: ResourceLoader.load("res://Ship/EnemyShip/base_enemy_ship.tscn"),
+	EnemyRespawn.EnemyType.Big: ResourceLoader.load("res://Ship/EnemyShip/big_enemy_ship.tscn")
 }
 
 var player_to_respawn = ResourceLoader.load( "res://Ship/PlayerShip/player_ship.tscn")
 
-var exp=ResourceLoader.load("res://Arty/explode.tscn")
+var exp = ResourceLoader.load("res://Arty/explode.tscn")
 
 func _ready() -> void:
 	bullets = {

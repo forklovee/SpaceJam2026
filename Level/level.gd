@@ -27,6 +27,16 @@ func _ready() -> void:
 		enemy = enemy as EnemyShip
 		enemy.ai_controller.target_crystal = register_target_crystal(enemy)
 
+func get_player_spawn_transform() -> Transform3D:
+	if player_base:
+		return Transform3D(
+			player_base.spawnpoint.global_basis,
+			player_base.spawnpoint.global_position*Vector3(1.0, 0.0, 1.0)
+		)
+	printerr(self, " no player base set!")
+	return Transform3D.IDENTITY
+		
+
 func _on_crystal_gathered(_ship, crystal: Crystal):
 	if crystal in crystals_to_gather:
 		crystals_to_gather.erase(crystal)

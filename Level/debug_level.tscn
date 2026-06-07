@@ -1,10 +1,86 @@
 [gd_scene format=3 uid="uid://dqyem6geyier2"]
 
 [ext_resource type="Script" uid="uid://dpeoqhvxehnv7" path="res://Level/level.gd" id="1_8h5wu"]
-[ext_resource type="PackedScene" uid="uid://bclhb4dyt4q6o" path="res://Ship/EnemyShip/base_enemy_ship.tscn" id="2_r47fj"]
+[ext_resource type="PackedScene" uid="uid://bl8836kmpng65" path="res://Ship/EnemyShip/big_enemy_ship.tscn" id="2_r47fj"]
+[ext_resource type="Script" uid="uid://dm1nvh7d4k27x" path="res://Level/space_bg.gd" id="3_ic5iq"]
+[ext_resource type="PackedScene" uid="uid://cmcwrxxhrlkj3" path="res://Objects/Base/Base.tscn" id="4_524xf"]
+[ext_resource type="Script" uid="uid://cm2brwbb0ogq1" path="res://Level/player_respawn.gd" id="5_58g3i"]
+[ext_resource type="Script" uid="uid://c4pkp6t5soa0b" path="res://Level/enemy_respawn.gd" id="6_ftsy6"]
 
-[node name="DebugLevel" type="Node3D" unique_id=1980545195]
+[sub_resource type="PlaneMesh" id="PlaneMesh_pigj4"]
+
+[sub_resource type="Shader" id="Shader_0xm2m"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, unshaded;
+
+uniform vec4 albedo : source_color;
+uniform float scale=100.0;
+uniform vec2 stars[40];
+uniform vec3 stars_color[40];
+uniform int stars_ani[40];
+void vertex() {
+}
+
+void fragment() {
+	vec2 pos = (UV-vec2(0.5,0.5))*scale*2.0;
+	ALBEDO = albedo.rgb;
+	float far_l=0.0;
+	for(int id=0;id<40;id++){
+		vec2 star=stars[id];
+		float dist=length(pos-star);
+		if(dist<3.0){
+			if (stars_ani[id]==0){
+				float l=(3.0-dist)/3.0;
+				float f=(0.8+0.2*sin(TIME+l*10.0));
+				ALBEDO += l*stars_color[id]*f;
+				
+			}
+			else{
+				float l=(3.0-dist)/3.0;
+				float f=(0.5+0.5*sin(TIME+l*10.0))*(0.5+0.5*sin(TIME*0.4));
+				ALBEDO += l*stars_color[id]*f*f*2.0;
+			}
+			
+		}
+		far_l+=1.0/(1.0+dist*dist);
+	}
+	ALBEDO += vec3(1.0+0.1*sin(pos.x),1.0+0.1*sin(pos.y),1.0)*min(far_l,0.1)*1.3;
+	
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t06dv"]
+render_priority = 0
+shader = SubResource("Shader_0xm2m")
+shader_parameter/albedo = Color(0.08627451, 0.08627451, 0.11372549, 1)
+shader_parameter/scale = 100.0
+shader_parameter/stars = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/stars_color = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/stars_ani = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="DebugLevel" type="Node3D" unique_id=1980545195 node_paths=PackedStringArray("player_base", "enemy_base")]
 script = ExtResource("1_8h5wu")
+player_base = NodePath("PlayerBase")
+enemy_base = NodePath("EnemyBase")
 
-[node name="BaseEnemyShip" parent="." unique_id=1525440035 instance=ExtResource("2_r47fj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.156834, 0, -1.5045869)
+[node name="BaseEnemyShip2" parent="." unique_id=1525440035 instance=ExtResource("2_r47fj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.66184, 0, 0.84308183)
+
+[node name="Space_BG" type="MeshInstance3D" parent="." unique_id=1993099703]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0.148, -5.670802, -0.1)
+mesh = SubResource("PlaneMesh_pigj4")
+surface_material_override/0 = SubResource("ShaderMaterial_t06dv")
+script = ExtResource("3_ic5iq")
+
+[node name="PlayerBase" parent="." unique_id=1098030614 instance=ExtResource("4_524xf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9371481, -5.8755507, -54.701855)
+is_allay = true
+
+[node name="PlayerRespawn" type="Node3D" parent="PlayerBase" unique_id=625839170]
+script = ExtResource("5_58g3i")
+
+[node name="EnemyBase" parent="." unique_id=2045530990 instance=ExtResource("4_524xf")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.9371497, -5.6602654, 51.964336)
+
+[node name="EnemyRespawn" type="Node3D" parent="EnemyBase" unique_id=1468701276]
+script = ExtResource("6_ftsy6")

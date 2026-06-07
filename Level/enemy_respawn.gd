@@ -32,10 +32,12 @@ func _process(delta: float) -> void:
 					wave_type+=1
 			to_spawn-=1
 			time=0.0
-			var p=self.global_position
+			var p = global_position * Vector3(1.0, 0, 1.0)
 			var a=randf()*2*PI
 			p+=Vector3(sin(a),0.0,cos(a))*2.0
 			var e=Data.enemies[current_wave[id]].instantiate()
 			id=(id+1)%(current_wave.size())
-			Game.level.add_child(e)
-			e.global_position=p
+			
+			var level := Game.level
+			level.add_child(e)
+			e.global_position = p

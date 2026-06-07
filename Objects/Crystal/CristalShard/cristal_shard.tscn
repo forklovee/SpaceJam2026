@@ -14,11 +14,12 @@ section_length = 0.5
 albedo_color = Color(4.1873755e-06, 0.5089053, 0.5611632, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_x0f5b"]
-radius = 8.225488
+radius = 12.0
 
 [node name="cristal" type="StaticBody3D" unique_id=1058605122 groups=["Crystal"]]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_ifhdi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1030377784]
@@ -30,6 +31,11 @@ mesh = SubResource("TubeTrailMesh_1bvp3")
 surface_material_override/0 = SubResource("StandardMaterial3D_lquwl")
 
 [node name="PickUpArea" type="Area3D" parent="." unique_id=485974809]
+collision_layer = 0
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpArea" unique_id=1111126258]
 shape = SubResource("SphereShape3D_x0f5b")
+
+[connection signal="body_entered" from="PickUpArea" to="." method="_on_pick_up_area_body_entered"]
+[connection signal="body_exited" from="PickUpArea" to="." method="_on_pick_up_area_body_exited"]

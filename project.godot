@@ -31,6 +31,7 @@ Crystal=""
 PlayerShip=""
 EnemyShip=""
 Star=""
+CrystalShard=""
 
 [gui]
 

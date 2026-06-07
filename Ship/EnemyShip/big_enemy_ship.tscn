@@ -4,9 +4,28 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_fae2k"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_fae2k"]
+radius = 1.0001233
+
 [node name="BaseEnemyShip" unique_id=1525440035 instance=ExtResource("1_fae2k")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+collision_mask = 9
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="0" unique_id=1445449167]
 transform = Transform3D(0.5, 0, 0, 0, 0.030167114, 0.49908912, 0, -0.49908912, 0.030167114, 0, 0.258736, 0.17163652)
+visible = false
 mesh = SubResource("SphereMesh_fae2k")
+
+[node name="MeshInstance3D" parent="." index="3" unique_id=1993636732]
+transform = Transform3D(-9.3760924e-08, 2.145, 9.3760924e-08, 0, -9.3760924e-08, 2.145, 2.145, 9.3760924e-08, 4.09842e-15, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="." index="5" unique_id=103843045]
+shape = SubResource("SphereShape3D_fae2k")
+
+[node name="Nose_GunSlot" parent="." index="7" unique_id=886972490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8539074)
+
+[node name="WingL_GunSlot" parent="." index="9" unique_id=1491398764]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82734966, 0, 0.30681467)
+
+[node name="WingR_GunSlot" parent="." index="10" unique_id=1193505125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82856137, 0, 0.30640256)
