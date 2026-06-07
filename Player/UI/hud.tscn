@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://d3v12ikciof2d" path="res://Player/UI/Sprites/PacifistIconWhite.png" id="11_p3lpy"]
 [ext_resource type="Texture2D" uid="uid://dab00li53fknu" path="res://Player/UI/Sprites/ShieldIconWhite.png" id="12_0x0ms"]
 [ext_resource type="Texture2D" uid="uid://dxwj8f0wlcci0" path="res://Player/UI/Sprites/ToxinIconWhite.png" id="13_n45c7"]
+[ext_resource type="Texture2D" uid="uid://8n4r5gkhhv2v" path="res://Player/UI/keyboard_tab_outline.svg" id="15_0x0ms"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1rscr"]
 font_size = 21
@@ -369,19 +370,19 @@ texture = ExtResource("13_n45c7")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Equipment_popup" type="TextureRect" parent="." unique_id=1932382081]
+layout_mode = 0
+offset_left = 341.0
+offset_top = 248.0
+offset_right = 405.0
+offset_bottom = 312.0
+texture = ExtResource("15_0x0ms")
+
 [node name="Equipment_menu" parent="." unique_id=6535177 instance=ExtResource("4_egnu7")]
 layout_mode = 1
 anchors_preset = 4
 anchor_left = 0.0
 anchor_right = 0.0
-offset_left = 27.0
-offset_right = 527.0
+offset_left = 0.0
+offset_right = 500.0
 grow_horizontal = 1
-
-[node name="Equipment_popup" type="TextureRect" parent="." unique_id=1943267496]
-layout_mode = 0
-offset_left = 397.0
-offset_top = 186.0
-offset_right = 461.0
-offset_bottom = 250.0
-texture = ExtResource("15_p3lpy")

@@ -4,7 +4,7 @@ extends Node3D
 @export var debug_level: PackedScene
 
 func start() -> void:
-	var level := Game.open_level(debug_level)
+	var level = Game.open_level(debug_level)
 	if !level.is_node_ready():
 		await level.ready
 	
