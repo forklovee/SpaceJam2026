@@ -38,6 +38,8 @@ func apllay(s:Ship):
 		s.max_storage=h
 		
 	var mi:MeshInstance3D=s.get_node("2dView")
+	if mi==null:
+		return
 	var mat:StandardMaterial3D=mi.get_surface_override_material(0)
 	mat.albedo_texture=based_ship.view2D
 

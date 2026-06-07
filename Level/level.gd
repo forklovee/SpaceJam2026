@@ -18,8 +18,11 @@ var enemy_to_crystal_blackboard: Dictionary[Ship, Crystal] = {}
 func _ready() -> void:
 	crystals_to_gather = get_tree().get_nodes_in_group(&"Crystal")
 	for crystal in crystals_to_gather:
-		crystal = crystal as Crystal
-		crystal.gathered.connect(_on_crystal_gathered.bind(crystal))
+		if is_instance_valid(crystal):
+			crystal = crystal as Crystal
+			if crystal==null:
+				return
+			crystal.gathered.connect(_on_crystal_gathered.bind(crystal))
 	
 	print(self, " registered ", crystals_to_gather.size(), " crystals.")
 	
