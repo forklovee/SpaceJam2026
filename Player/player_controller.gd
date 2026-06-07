@@ -26,11 +26,17 @@ func _process(_delta: float) -> void:
 	if !is_instance_valid(ship):
 		return
 	
-	if Input.is_action_pressed("Fire"):
+	if Input.is_action_pressed("BaseWeapon"):
 		ship.shoot(0)
+	if Input.is_action_pressed("SpecialWeapon"):
+		ship.shoot(1)
+	
+	var look_direction = (hud.size*.5).direction_to(hud.get_global_mouse_position())
+	look_direction.y = -look_direction.y
+	ship.steer(look_direction)
 	
 	input_direction = Input.get_vector("Left", "Right", "Down", "Up")
-	ship.steer(input_direction)
+	ship.move(input_direction)
 	
 	hud.update_labels()
 

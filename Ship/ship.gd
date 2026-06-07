@@ -21,7 +21,7 @@ var storage: int = 0
 var fuel: int = max_fuel
 
 @export_group("Movement")
-@export var speed: float = 20.0
+@export var speed: float = 12.0
 
 var weapons: Array[Gun] = [] 
 
@@ -38,10 +38,10 @@ func _physics_process(delta: float) -> void:
 	var target_angle: float = lerp_angle(current_angle, steering_direction.angle(), 2.0*delta) 
 	
 	if movement_direction.length() > 0.01:
-		apply_central_force(15.0*get_forward())
+		apply_central_force(15.0*Vector3(movement_direction.x, 0, movement_direction.y))
 	
 	# y rotation
-	apply_torque(100.0*Vector3.UP * angle_difference(current_angle, target_angle))	
+	apply_torque(150.0*Vector3.UP * angle_difference(current_angle, target_angle))	
 
 func get_forward() -> Vector3:
 	return -global_basis.z
@@ -49,7 +49,7 @@ func get_forward() -> Vector3:
 # y-axis: forward-back
 # x-axis: sides
 func move(input_direction: Vector2):
-	movement_direction = input_direction
+	movement_direction = Vector2(input_direction.x, -input_direction.y)
 
 func steer(input_direction: Vector2):
 	# fix axises
@@ -57,11 +57,6 @@ func steer(input_direction: Vector2):
 		input_direction.y,
 		-input_direction.x
 	)
-	
-	if input_direction.length() > 0.01:
-		move(Vector2.UP)
-	else:
-		move(Vector2.ZERO)
 	
 	var pre_target_direction = (steering_direction + input_direction).normalized()
 	steering_direction = steering_direction.lerp(
@@ -87,8 +82,7 @@ func get_ammo_count(bullet_type: Bullet3D.Type) -> int:
 	return gun.ammo if gun != null else 0
 
 func shoot(weapon_id: int):
-	if weapon_id > weapons.size():
-		printerr(self, " ", weapon_id, " out of bounds")
+	if weapon_id >= weapons.size():
 		return
 	var weapon: Gun = weapons[weapon_id]
 	weapon.shoot(self)
