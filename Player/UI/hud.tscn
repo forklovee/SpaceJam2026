@@ -89,10 +89,10 @@ grow_vertical = 0
 [node name="WeaponAmmo" type="Control" parent="." unique_id=836041721]
 layout_mode = 1
 anchors_preset = 0
-offset_left = 199.0
-offset_top = 83.0
-offset_right = 434.0
-offset_bottom = 124.0
+offset_left = 198.0
+offset_top = 68.0
+offset_right = 433.0
+offset_bottom = 109.0
 script = ExtResource("4_p3lpy")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="WeaponAmmo" unique_id=1996723806]
@@ -102,11 +102,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Storage" type="Label" parent="WeaponAmmo/VBoxContainer" unique_id=1122416449]
-visible = false
-layout_mode = 2
-text = "Storage: 100/100"
+theme_override_constants/separation = -1
 
 [node name="GridContainer" type="GridContainer" parent="WeaponAmmo/VBoxContainer" unique_id=1419909740]
 layout_mode = 2
@@ -127,6 +123,10 @@ layout_mode = 2
 [node name="RailgunAmmo" parent="WeaponAmmo/VBoxContainer/GridContainer" unique_id=60718657 instance=ExtResource("4_q0jle")]
 visible = false
 layout_mode = 2
+
+[node name="Storage" type="Label" parent="WeaponAmmo/VBoxContainer" unique_id=1122416449]
+layout_mode = 2
+text = "Storage: 100/100"
 
 [node name="MinimapRect" type="TextureRect" parent="." unique_id=563543283]
 visible = false

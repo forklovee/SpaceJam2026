@@ -22,13 +22,15 @@ func _ready() -> void:
 	pc = PlayerController.new()
 	add_child(pc)
 
-func open_level(level_scene: PackedScene):
+func open_level(level_scene: PackedScene) -> Level:
 	assert(level_scene)
 	if is_instance_valid(level):
 		level.queue_free()
 	
 	level = level_scene.instantiate()
 	add_child(level)
+	
+	return level
 
 
 func spawn_explosion(instigator: Ship, damage: int, max_range: float, target_position: Vector3):

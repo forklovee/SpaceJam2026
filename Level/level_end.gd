@@ -17,4 +17,6 @@ func _process(delta: float) -> void:
 		for eg in get_tree().get_nodes_in_group("PlayerShip"):
 			if eg.storage>0:
 				return
+		for c in get_tree().get_nodes_in_group("Crystal"):
+			return
 		Game.open_level(menu)
