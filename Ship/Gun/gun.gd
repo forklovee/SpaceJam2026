@@ -34,5 +34,7 @@ func shoot(instigator: Ship):
 	ammo -= 1
 	
 	var slot := instigator.get_gun_slot(GunSlot.GunSlotTargets.Nose)
+	var forward := -slot.global_basis.z
 	bullet.global_transform = slot.global_transform
-	bullet.shoot(instigator, damage, range, bullet_speed*instigator.get_forward())
+	print(instigator.get_forward(), " ", forward)
+	bullet.shoot(instigator, damage, range, bullet_speed*forward)

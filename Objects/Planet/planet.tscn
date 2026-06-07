@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c6mo1qdt786aw"]
+
+[ext_resource type="Script" uid="uid://c0bq257vib83j" path="res://Level/star.gd" id="1_7o1j8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iincs"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7muqe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7o1j8"]
+albedo_color = Color(0.25278595, 0.10047678, 0.013183145, 1)
+
+[node name="Planet" type="StaticBody3D" unique_id=1534775064]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_7o1j8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1332598129]
+shape = SubResource("SphereShape3D_iincs")
+
+[node name="planet3" type="MeshInstance3D" parent="." unique_id=863898608]
+transform = Transform3D(-0.78179556, 0, -0.62353486, 0, 1, 0, 0.62353486, 0, -0.78179556, 0, 0, 0)
+mesh = SubResource("SphereMesh_7muqe")
+surface_material_override/0 = SubResource("StandardMaterial3D_7o1j8")
