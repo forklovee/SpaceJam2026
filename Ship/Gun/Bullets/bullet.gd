@@ -45,7 +45,10 @@ func _process(delta: float) -> void:
 	global_position += velocity*delta
 
 func can_get_hurt(node: Node):
-	return node.has_method("damage") && node.get_method_argument_count("damage") >= 2
+	return is_instance_valid(instigator) && is_instance_valid(node) &&\
+			node.has_method("damage") && node.get_method_argument_count("damage") >= 2 &&\
+			(instigator.is_in_group(&"EnemyShip") != node.is_in_group(&"EnemyShip") ||\
+			instigator.is_in_group(&"PlayerShip") != node.is_in_group(&"PlayerShip"))
 
 func _on_body_entered(body: Node3D) -> void:
 	if body == instigator:

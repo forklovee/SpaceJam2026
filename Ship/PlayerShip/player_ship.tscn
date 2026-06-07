@@ -2,28 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://idcyet8cqbav" path="res://Ship/base_ship.tscn" id="1_4ff6c"]
 [ext_resource type="PackedScene" uid="uid://cnkt4114trhuc" path="res://Ship/Gun/regular_gun.tscn" id="2_d1b4h"]
-[ext_resource type="PackedScene" uid="uid://vit26vtugxqg" path="res://Ship/Gun/plsl_gun.tscn" id="3_wtuya"]
-[ext_resource type="Texture2D" uid="uid://ce7ywcbkyruob" path="res://Arty/spaceship.png" id="4_wbcs4"]
-[ext_resource type="Texture2D" uid="uid://bqvh4y0cenci2" path="res://Arty/Statki z nazwami/SCF-1 Student.png" id="5_bmidl"]
+[ext_resource type="Texture2D" uid="uid://bpwufxnubl5ay" path="res://Ship/Sprites/Spaceship2.png" id="2_wbcs4"]
+[ext_resource type="PackedScene" uid="uid://dggubpuu36kb3" path="res://Ship/Gun/rocket_gun.tscn" id="4_bmidl"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_bmidl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sui1w"]
 transparency = 1
-blend_mode = 1
 shading_mode = 0
 diffuse_mode = 3
-albedo_color = Color(0.99086446, 0.5362912, 0.7762043, 1)
-albedo_texture = ExtResource("4_wbcs4")
+albedo_texture = ExtResource("2_wbcs4")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bmidl"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_sui1w"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c3n1n"]
-transparency = 1
-shading_mode = 0
-albedo_texture = ExtResource("5_bmidl")
 
 [node name="PlayerShip" unique_id=1525440035 groups=["PlayerShip"] instance=ExtResource("1_4ff6c")]
 collision_layer = 1
@@ -32,7 +22,6 @@ speed = 12.0
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1993636732]
 transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0, 0)
-visible = false
 mesh = SubResource("QuadMesh_bmidl")
 surface_material_override/0 = SubResource("StandardMaterial3D_sui1w")
 
@@ -43,7 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.54223883)
 bullets_per_shot = 7
 spread_deg = 18.289
 
-[node name="PLSLGun" parent="WingL_GunSlot" parent_id_path=PackedInt32Array(1491398764) index="0" unique_id=1435125892 instance=ExtResource("3_wtuya")]
+[node name="RocketGun" parent="WingL_GunSlot" parent_id_path=PackedInt32Array(1491398764) index="0" unique_id=852764000 instance=ExtResource("4_bmidl")]
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="7" unique_id=1228452602]
 transform = Transform3D(0.12641177, 0, -2.9973354, 0, 3, 0, 2.9973354, 0, 0.12641177, 0, 0.4, 0)
@@ -51,8 +40,3 @@ visible = false
 layers = 1024
 mesh = SubResource("PlaneMesh_bmidl")
 surface_material_override/0 = SubResource("StandardMaterial3D_sui1w")
-
-[node name="2dView" type="MeshInstance3D" parent="." index="8" unique_id=1847978110]
-transform = Transform3D(0.010960488, 0, -0.9999399, 0, 1, 0, 0.9999399, 0, 0.010960488, 0, 0, 0)
-mesh = SubResource("PlaneMesh_sui1w")
-surface_material_override/0 = SubResource("StandardMaterial3D_c3n1n")
