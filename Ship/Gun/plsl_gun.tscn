@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://vit26vtugxqg"]
+
+[ext_resource type="Script" uid="uid://pn1fqvb4dgxr" path="res://Ship/Gun/plsl_gun.gd" id="1_yg8dt"]
+
+[node name="PLSLGun" type="Node3D" unique_id=325331390]
+script = ExtResource("1_yg8dt")
+bullet_type = 1
+target_gun_slots = Array[int]([1, 2])
+damage = 25
+range = 10.0
+firerate_sec = 0.2
+bullet_speed = 35.0
+metadata/_custom_type_script = "uid://bty5ejl7c7k30"

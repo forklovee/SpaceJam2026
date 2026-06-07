@@ -55,6 +55,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5135968, 0, 0.49816626)
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = SubResource("SphereMesh_bv82c")
 
-[node name="GunSlot" type="Marker3D" parent="." unique_id=886972490]
+[node name="Nose_GunSlot" type="Marker3D" parent="." unique_id=886972490]
 script = ExtResource("4_pimxe")
+metadata/_custom_type_script = "uid://d4hsl8ystudtd"
+
+[node name="WingL_GunSlot" type="Marker3D" parent="." unique_id=1491398764]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.376, 0, 0)
+script = ExtResource("4_pimxe")
+type = 1
+metadata/_custom_type_script = "uid://d4hsl8ystudtd"
+
+[node name="WingR_GunSlot" type="Marker3D" parent="." unique_id=1193505125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37567693, 0, 0)
+script = ExtResource("4_pimxe")
+type = 2
 metadata/_custom_type_script = "uid://d4hsl8ystudtd"

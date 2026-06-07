@@ -11,15 +11,17 @@ const AUTOKILL_TIME: float = 3.0
 
 var instigator = null
 var velocity: Vector3
+var damage: int
+var max_range: float
 
-var spawn_time: int
+var start_position: Vector3
 
-func _ready() -> void:
-	spawn_time = Time.get_ticks_msec()
-
-func shoot(new_instigator: Node3D, new_velocity: Vector3):
+func shoot(new_instigator: Node3D, new_damage: int, new_max_range: float, new_velocity: Vector3):
 	instigator = new_instigator
+	damage = new_damage
+	max_range = new_max_range
 	velocity = new_velocity
+	start_position = global_position
 
 func _process(delta: float) -> void:
 	if instigator == null:
@@ -27,7 +29,7 @@ func _process(delta: float) -> void:
 	
 	if is_queued_for_deletion():
 		return
-	if (Time.get_ticks_msec() - spawn_time) * 0.001 > AUTOKILL_TIME:
+	if start_position.distance_to(global_position) > max_range:
 		queue_free()
 		return
 	

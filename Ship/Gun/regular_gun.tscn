@@ -4,4 +4,6 @@
 
 [node name="RegularGun" type="Node3D" unique_id=325331390]
 script = ExtResource("1_pq7ms")
+damage = 10
+range = 12.0
 metadata/_custom_type_script = "uid://bty5ejl7c7k30"

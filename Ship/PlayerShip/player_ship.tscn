@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://idcyet8cqbav" path="res://Ship/base_ship.tscn" id="1_4ff6c"]
 [ext_resource type="PackedScene" uid="uid://cnkt4114trhuc" path="res://Ship/Gun/regular_gun.tscn" id="2_d1b4h"]
+[ext_resource type="PackedScene" uid="uid://vit26vtugxqg" path="res://Ship/Gun/plsl_gun.tscn" id="3_wtuya"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ff6c"]
 albedo_color = Color(0.3372549, 1, 1, 1)
@@ -11,9 +12,12 @@ albedo_color = Color(0.3372549, 1, 1, 1)
 [node name="MeshInstance3D" parent="." index="0" unique_id=1993636732]
 surface_material_override/0 = SubResource("StandardMaterial3D_4ff6c")
 
-[node name="GunSlot" parent="." index="4" unique_id=886972490]
+[node name="Nose_GunSlot" parent="." index="4" unique_id=886972490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.54223883)
 
-[node name="RegularGun" parent="GunSlot" index="0" unique_id=325331390 instance=ExtResource("2_d1b4h")]
+[node name="RegularGun" parent="Nose_GunSlot" index="0" unique_id=325331390 instance=ExtResource("2_d1b4h")]
 bullets_per_shot = 7
 spread_deg = 18.289
+
+[node name="PLSLGun" parent="WingL_GunSlot" parent_id_path=PackedInt32Array(1491398764) index="0" unique_id=1145110875 instance=ExtResource("3_wtuya")]
+target_gun_slots = Array[int]([1, 2])

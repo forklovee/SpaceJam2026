@@ -11,6 +11,18 @@ func shoot(instigator: Ship):
 	
 	ammo -= 1
 	
+	var target_range := range
+	var target_damage := damage
+	var target_speed := bullet_speed
+	match level:
+		2:
+			target_range *= 1.1
+			target_speed *= 1.05
+		3:
+			target_damage *= 1.05
+			target_range *= 1.1
+			target_speed *= 1.05
+	
 	var angle_step_deg: float = (spread_deg * 2.0) / bullets_per_shot
 	var forward := instigator.get_forward().rotated(Vector3.UP, -deg_to_rad(spread_deg))
 	for i in range(bullets_per_shot):
@@ -22,4 +34,4 @@ func shoot(instigator: Ship):
 			instigator.global_basis,
 			instigator.global_position + (0.2*forward)
 		)
-		bullet.shoot(instigator, bullet_speed*forward)
+		bullet.shoot(instigator, target_damage, target_range, target_speed*forward)

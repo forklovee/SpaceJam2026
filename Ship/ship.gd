@@ -23,13 +23,14 @@ var fuel: int = max_fuel
 @export_group("Movement")
 @export var speed: float = 12.0
 
-var weapons: Array[Gun] = [] 
+var weapons: Array[Gun] = []
+var gun_slots: Dictionary[GunSlot.GunSlotTargets, GunSlot] = {}
 
 var steering_direction: Vector2
 var movement_direction: Vector2
 
 func _ready() -> void:
-	update_weapons()
+	update_weapons_and_gunslots()
 
 func _physics_process(delta: float) -> void:
 	radiation_query.update()
@@ -63,9 +64,12 @@ func steer(input_direction: Vector2):
 		pre_target_direction, 0.1
 	)
 
-func update_weapons():
+func update_weapons_and_gunslots():
 	weapons = []
+	gun_slots = {}
 	for slot in get_children().filter(func(ch): return ch is GunSlot):
+		slot = slot as GunSlot
+		gun_slots[slot.type] = slot
 		if slot.get_child_count() > 0 && slot.get_child(0) is Gun:
 			weapons.append(slot.get_child(0))
 
@@ -80,6 +84,9 @@ func get_max_ammo_count(bullet_type: Bullet3D.Type) -> int:
 func get_ammo_count(bullet_type: Bullet3D.Type) -> int:
 	var gun: Gun = get_gun_of_ammo_type(bullet_type)
 	return gun.ammo if gun != null else 0
+
+func get_gun_slot(gun_slot_enum: GunSlot.GunSlotTargets) -> GunSlot:
+	return gun_slots.get(gun_slot_enum, null)
 
 func shoot(weapon_id: int):
 	if weapon_id >= weapons.size():
