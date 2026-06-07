@@ -2,16 +2,42 @@
 
 [ext_resource type="PackedScene" uid="uid://idcyet8cqbav" path="res://Ship/base_ship.tscn" id="1_25uhw"]
 [ext_resource type="Script" uid="uid://b0kioegk77m42" path="res://Ship/EnemyShip/enemy_on_die.gd" id="2_8qru5"]
+[ext_resource type="Script" uid="uid://nncr2juntu8h" path="res://AI/EnemyController.gd" id="2_uweob"]
+[ext_resource type="PackedScene" uid="uid://cnkt4114trhuc" path="res://Ship/Gun/regular_gun.tscn" id="3_vvrke"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uweob"]
+radius = 4.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25uhw"]
 albedo_color = Color(1, 0, 0, 1)
 
 [node name="BaseEnemyShip" unique_id=1525440035 groups=["EnemyShip"] instance=ExtResource("1_25uhw")]
+speed = 8.0
 
-[node name="MeshInstance3D" parent="." index="0" unique_id=1993636732]
+[node name="EnemyController" type="Node" parent="." index="0" unique_id=1545785271]
+script = ExtResource("2_uweob")
+metadata/_custom_type_script = "uid://nncr2juntu8h"
+
+[node name="SightSense" type="Area3D" parent="." index="1" unique_id=422832701]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SightSense" index="0" unique_id=587176488]
+shape = SubResource("CylinderShape3D_uweob")
+
+[node name="MeshInstance3D" parent="." index="2" unique_id=1993636732]
 surface_material_override/0 = SubResource("StandardMaterial3D_25uhw")
 
-[node name="EnemyOnDie" type="Node" parent="." index="5" unique_id=1262769558]
+[node name="Nose_GunSlot" parent="." index="6" unique_id=886972490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.50761557)
+
+[node name="RegularGun" parent="Nose_GunSlot" index="0" unique_id=325331390 instance=ExtResource("3_vvrke")]
+firerate_sec = 0.25
+max_ammo = 1000
+
+[node name="EnemyOnDie" type="Node" parent="." index="7" unique_id=1262769558]
 script = ExtResource("2_8qru5")
 
 [connection signal="died" from="." to="EnemyOnDie" method="_on_base_enemy_ship_died"]
+[connection signal="body_entered" from="SightSense" to="EnemyController" method="_on_sight_sense_body_entered"]
+[connection signal="body_exited" from="SightSense" to="EnemyController" method="_on_sight_sense_body_exited"]

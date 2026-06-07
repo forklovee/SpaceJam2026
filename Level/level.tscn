@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://8pks5lg5crwq" path="res://Level/level_end.gd" id="2_iincs"]
 [ext_resource type="Script" uid="uid://dm1nvh7d4k27x" path="res://Level/space_bg.gd" id="3_7a20f"]
 [ext_resource type="PackedScene" uid="uid://bao2jybtf0idi" path="res://MainMenu/win.tscn" id="3_nk1il"]
+[ext_resource type="PackedScene" uid="uid://c6mo1qdt786aw" path="res://Objects/Planet/planet.tscn" id="6_q47le"]
 [ext_resource type="PackedScene" uid="uid://cmcwrxxhrlkj3" path="res://Objects/Base/Base.tscn" id="7_d6qko"]
 [ext_resource type="Script" uid="uid://c4pkp6t5soa0b" path="res://Level/enemy_respawn.gd" id="8_i5g78"]
 [ext_resource type="Script" uid="uid://cm2brwbb0ogq1" path="res://Level/player_respawn.gd" id="8_q47le"]
@@ -25,14 +26,14 @@ point_count = 3
 texture_mode = 1
 curve = SubResource("Curve_0xm2m")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+shading_mode = 0
+albedo_color = Color(0.31398752, 0.70897424, 0.6122957, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
 albedo_color = Color(0.25278595, 0.10047678, 0.013183145, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iincs"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
-shading_mode = 0
-albedo_color = Color(0.31398752, 0.70897424, 0.6122957, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ig7tw"]
 
@@ -81,7 +82,7 @@ render_priority = 0
 shader = SubResource("Shader_0xm2m")
 shader_parameter/albedo = Color(0.08627451, 0.08627451, 0.11372549, 1)
 shader_parameter/scale = 100.0
-shader_parameter/stars = PackedVector2Array(-0.2955556, 5.8263283, -5.2654057, 4.834378, 3.3067617, -8.424185, -1.9044629, -9.04546, -0.651775, -1.0171165, -7.3141007, -3.9872112, -12.602741, 1.0127888, -0.651775, 24.829266, 3.3067617, 17.422197, -12.602741, 26.85917, 0, 0, 0, 0)
+shader_parameter/stars = PackedVector2Array(-0.2955556, 5.8263283, -5.2654057, 4.834378, 3.3067617, -8.424185, -2.834095, -10.553265, -0.651775, -1.0171165, -7.3141007, -3.9872112, -12.602741, 1.0127888, -0.651775, 24.829266, 3.7291331, 31.995436, 3.6532607, 13.496256, 0, 0, 0, 0)
 shader_parameter/stars_color = PackedVector3Array(0.9196297, 0.25485146, 1.92523e-07, 0.24118897, 0.2929656, 1, 0.13692334, 0.5227604, 4.813075e-07, 0.7621092, 0.26604587, 0.6329997, -1, -1, -1, 1, 0, 0, 0.95807534, 0.63139933, 1.1551381e-06, -1, -1, -1, 0.13692334, 0.5227604, 4.813075e-07, 0.95807534, 0.63139933, 1.1551381e-06, 0, 0, 0, 0, 0, 0)
 shader_parameter/stars_ani = PackedInt32Array(0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0)
 
@@ -105,174 +106,99 @@ rot = 0.1
 neg = true
 
 [node name="star_f" type="MeshInstance3D" parent="star5" unique_id=1891473443]
-transform = Transform3D(-0.995389, 0, 0.09814362, 0, 0.9999998, 0, -0.09814362, 0, -0.995389, -20.715414, 0, -18.822462)
+transform = Transform3D(0.9512109, 0, 0.30897385, 0, 0.9999998, 0, -0.30897385, 0, 0.9512109, -20.715414, 0, -18.822462)
 mesh = SubResource("SphereMesh_7dm0k")
 script = ExtResource("1_jglls")
 color = Color(0.13692334, 0.5227604, 4.813075e-07, 1)
-rad = 1.0
+rad = 2.005
 freq_profile = SubResource("CurveTexture_h2yge")
-rot = 2.5
+rot = 0.085
+pause = false
 
-[node name="planet3" type="MeshInstance3D" parent="star5/star_f" unique_id=3176532]
-transform = Transform3D(-2.6060572, 0, -2.0785065, 0, 3.3333325, 0, 2.0785065, 0, -2.6060572, 1.2704945, 0, 2.4257987)
-mesh = SubResource("SphereMesh_7dm0k")
-surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
-
-[node name="cristal" parent="star5/star_f/planet3" unique_id=1058605122 instance=ExtResource("2_e6b4q")]
-transform = Transform3D(-0.070359685, 0, 0.056116596, 0, 0.09000003, 0, -0.056116596, 0, -0.070359685, 0.050939083, 0, 1.0288982)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="star5/star_f/planet3" unique_id=1713550978]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="star5/star_f/planet3/StaticBody3D" unique_id=1423554044]
-shape = SubResource("SphereShape3D_iincs")
+[node name="Planet" parent="star5/star_f" unique_id=1534775064 instance=ExtResource("6_q47le")]
+transform = Transform3D(7.144947, 0, 5.541434, 0, 9.043, 0, -5.541434, 0, 7.144947, 9.014397, 0, 12.106629)
+rad = 2.99
+rot = 0.065
 
 [node name="star2" type="MeshInstance3D" parent="star5" unique_id=1066390521]
-transform = Transform3D(-0.3673054, 0, -0.9300919, 0, 0.99999994, 0, 0.9300919, 0, -0.3673054, 15.154943, 0, 19.673292)
+transform = Transform3D(0.4733383, 0, -0.88085145, 0, 0.99999994, 0, 0.88085145, 0, 0.4733383, 15.154943, 0, 19.673292)
 mesh = SubResource("SphereMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
 script = ExtResource("1_jglls")
 color = Color(0.24118897, 0.2929656, 1, 1)
 flag = 1
-rot = 1.0
+rot = 0.165
+pause = false
 
-[node name="planet2" type="MeshInstance3D" parent="star5/star2" unique_id=721897847]
-transform = Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, -2.2791185, 0, -4.92052)
-mesh = SubResource("SphereMesh_7dm0k")
-surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
+[node name="Planet2" parent="star5/star2" unique_id=1096460178 instance=ExtResource("6_q47le")]
+transform = Transform3D(7.290221, 0, -5.3522887, 0, 9.042999, 0, 5.3522887, 0, 7.290221, 9.070602, 0, -12.354846)
+rad = 2.99
+rot = 0.065
 
-[node name="cristal" parent="star5/star2/planet2" unique_id=648142832 instance=ExtResource("2_e6b4q")]
-transform = Transform3D(-0.07035968, 0, 0.05611659, 0, 0.09000002, 0, -0.05611659, 0, -0.07035968, -1.6227894, 0, -0.2274189)
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="star5/star2/planet2" unique_id=945543169]
-transform = Transform3D(-0.8142528, 0, 0.58094317, 0, 0.9999997, 0, -0.58094317, 0, -0.8142528, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="star5/star2/planet2/StaticBody3D2" unique_id=981710983]
-shape = SubResource("SphereShape3D_iincs")
+[node name="Planet3" parent="star5/star2" unique_id=291853374 instance=ExtResource("6_q47le")]
+transform = Transform3D(4.2512755, 0, -3.1211748, 0, 5.273, 0, 3.1211748, 0, 4.2512755, -0.2909994, 0, 14.928317)
+rad = 2.99
+rot = 0.065
 
 [node name="star3" type="MeshInstance3D" parent="star5" unique_id=1862060780]
-transform = Transform3D(0.033869796, 0, 0.99901557, 0, 0.9999998, 0, -0.99901557, 0, 0.033869796, 22.406221, 0, 4.4194813)
+transform = Transform3D(-0.8158686, 0, 0.5774948, 0, 0.9999998, 0, -0.5774948, 0, -0.8158686, 22.406221, 0, 4.4194813)
 mesh = SubResource("SphereMesh_7dm0k")
 script = ExtResource("1_jglls")
 color = Color(0.9196297, 0.25485146, 1.92523e-07, 1)
 flag = 2
-rot = -0.5
+rot = -0.185
+pause = false
 
-[node name="planet2" type="MeshInstance3D" parent="star5/star3" unique_id=1853410261]
-transform = Transform3D(2.95006, 0, 1.552099, 0, 3.3333328, 0, -1.552099, 0, 2.95006, 4.729884, 0, 0.6264181)
-mesh = SubResource("SphereMesh_7dm0k")
-surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
-
-[node name="cristal" parent="star5/star3/planet2" unique_id=732239225 instance=ExtResource("2_e6b4q")]
-transform = Transform3D(-0.07035967, 0, 0.05611659, 0, 0.090000026, 0, -0.05611659, 0, -0.07035967, -1.2954202, 0, 2.1673498)
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="star5/star3/planet2" unique_id=383212279]
-transform = Transform3D(0.12429261, 0, -0.9928705, 0, 0.9999999, 0, 0.9928705, 0, 0.12429261, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="star5/star3/planet2/StaticBody3D3" unique_id=1028988339]
-shape = SubResource("SphereShape3D_iincs")
+[node name="Planet4" parent="star5/star3" unique_id=1852146633 instance=ExtResource("6_q47le")]
+transform = Transform3D(-4.1421785, 0, 6.116382, 0, 7.383, 0, -6.116382, 0, -4.1421785, 9.253, 0, -6.2663817)
+rad = 2.99
+rot = 0.065
 
 [node name="star4" type="MeshInstance3D" parent="star5" unique_id=765289077]
-transform = Transform3D(0.014255054, 0, -0.9998896, 0, 0.99999994, 0, 0.9998896, 0, 0.014255054, -26.965248, 0, -2.4868546)
+transform = Transform3D(-0.11670499, 0, -0.9930563, 0, 0.99999994, 0, 0.9930563, 0, -0.11670499, -32.594826, 0, -0.7099037)
 mesh = SubResource("SphereMesh_7dm0k")
 script = ExtResource("1_jglls")
 color = Color(0.7621092, 0.26604587, 0.6329997, 1)
 flag = 3
-rot = -1.0
+rot = -0.34
+pause = false
 
-[node name="planet" type="MeshInstance3D" parent="star5/star4" unique_id=548929316]
-transform = Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, 7.889954, 0, -1.3240018)
-mesh = SubResource("SphereMesh_7dm0k")
-surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
-
-[node name="StaticBody3D4" type="StaticBody3D" parent="star5/star4/planet" unique_id=1259136333]
-transform = Transform3D(-0.53192985, 0, 0.8470862, 0, 0.9999998, 0, -0.8470862, 0, -0.53192985, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="star5/star4/planet/StaticBody3D4" unique_id=1029389968]
-shape = SubResource("SphereShape3D_iincs")
-
-[node name="planet2" type="MeshInstance3D" parent="star5/star4" unique_id=1712991058]
-transform = Transform3D(-0.97782123, 0, 3.1866837, 0, 3.3333328, 0, -3.1866837, 0, -0.97782123, 1.2412391, 0, 7.575736)
-mesh = SubResource("SphereMesh_7dm0k")
-surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
-
-[node name="cristal" parent="star5/star4/planet2" unique_id=654610449 instance=ExtResource("2_e6b4q")]
-transform = Transform3D(-0.07035967, 0, 0.056116585, 0, 0.090000026, 0, -0.056116585, 0, -0.07035967, 0.82098484, 0, 1.4172401)
-
-[node name="StaticBody3D5" type="StaticBody3D" parent="star5/star4/planet2" unique_id=595522691]
-transform = Transform3D(0.9658604, 0, 0.2600385, 0, 0.9999999, 0, -0.2600385, 0, 0.9658604, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="star5/star4/planet2/StaticBody3D5" unique_id=216665059]
-shape = SubResource("SphereShape3D_iincs")
+[node name="Planet4" parent="star5/star4" unique_id=1405766068 instance=ExtResource("6_q47le")]
+transform = Transform3D(-6.6469994, 0, 9.815025, 0, 11.848, 0, -9.815025, 0, -6.6469994, -10.872459, 0, 7.363122)
+rad = 2.99
+rot = 0.065
 
 [node name="star5" type="MeshInstance3D" parent="star5" unique_id=566852442]
-transform = Transform3D(0.014255077, 0, -0.99988943, 0, 0.99999976, 0, 0.99988943, 0, 0.014255077, -15.021837, 0, 19.11321)
+transform = Transform3D(0.060502544, 0, -0.99806005, 0, 0.99999976, 0, 0.99806005, 0, 0.060502544, -15.021837, 0, 19.11321)
 mesh = SubResource("SphereMesh_7dm0k")
 script = ExtResource("1_jglls")
 color = Color(1, 0, 0, 1)
 flag = 4
-rot = -1.0
+rot = -0.07
+pause = false
 
-[node name="planet" type="MeshInstance3D" parent="star5/star5" unique_id=1606286471]
-transform = Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, 7.889954, 0, -1.3240018)
-mesh = SubResource("SphereMesh_7dm0k")
-surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
-
-[node name="StaticBody3D6" type="StaticBody3D" parent="star5/star5/planet" unique_id=478832421]
-transform = Transform3D(-0.5319299, 0, 0.8470863, 0, 0.9999999, 0, -0.8470863, 0, -0.5319299, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="star5/star5/planet/StaticBody3D6" unique_id=1089319811]
-shape = SubResource("SphereShape3D_iincs")
-
-[node name="planet2" type="MeshInstance3D" parent="star5/star5" unique_id=2115384691]
-transform = Transform3D(-0.97782123, 0, 3.1866837, 0, 3.3333328, 0, -3.1866837, 0, -0.97782123, 1.2412391, 0, 7.575736)
-mesh = SubResource("SphereMesh_7dm0k")
-surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
-
-[node name="cristal" parent="star5/star5/planet2" unique_id=181679973 instance=ExtResource("2_e6b4q")]
-transform = Transform3D(-0.07035967, 0, 0.056116585, 0, 0.090000026, 0, -0.056116585, 0, -0.07035967, 0.82098484, 0, 1.4172401)
-
-[node name="StaticBody3D7" type="StaticBody3D" parent="star5/star5/planet2" unique_id=2096895724]
-transform = Transform3D(0.96586055, 0, 0.2600386, 0, 1, 0, -0.2600386, 0, 0.96586055, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="star5/star5/planet2/StaticBody3D7" unique_id=1124335486]
-shape = SubResource("SphereShape3D_iincs")
+[node name="Planet4" parent="star5/star5" unique_id=1256205746 instance=ExtResource("6_q47le")]
+transform = Transform3D(-4.1421785, 0, 6.116382, 0, 7.383, 0, -6.116382, 0, -4.1421785, 9.253, 0, -6.2663817)
+rad = 2.99
+rot = 0.065
 
 [node name="star6" type="MeshInstance3D" parent="star5" unique_id=1373520543]
-transform = Transform3D(0.014255017, 0, -0.99988943, 0, 0.99999976, 0, 0.99988943, 0, 0.014255017, -3.1681757, 0, 40.274826)
+transform = Transform3D(0.9033208, 0, -0.4286872, 0, 0.99999976, 0, 0.4286872, 0, 0.9033208, -3.1681757, 0, 40.274826)
 mesh = SubResource("SphereMesh_7dm0k")
 script = ExtResource("1_jglls")
 color = Color(0.95807534, 0.63139933, 1.1551381e-06, 1)
 flag = 5
 anim = true
-rot = -1.0
+rot = -0.25
+pause = false
 
-[node name="planet" type="MeshInstance3D" parent="star5/star6" unique_id=1878863084]
-transform = Transform3D(3.333333, 0, 0, 0, 3.333333, 0, 0, 0, 3.333333, 7.889954, 0, -1.3240018)
-mesh = SubResource("SphereMesh_7dm0k")
-surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
-
-[node name="StaticBody3D8" type="StaticBody3D" parent="star5/star6/planet" unique_id=1532822728]
-transform = Transform3D(-0.53193, 0, 0.8470863, 0, 0.99999994, 0, -0.8470863, 0, -0.53193, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="star5/star6/planet/StaticBody3D8" unique_id=1495030266]
-shape = SubResource("SphereShape3D_iincs")
-
-[node name="planet2" type="MeshInstance3D" parent="star5/star6" unique_id=1969309056]
-transform = Transform3D(-0.97782123, 0, 3.1866837, 0, 3.3333328, 0, -3.1866837, 0, -0.97782123, 1.2412391, 0, 7.575736)
-mesh = SubResource("SphereMesh_7dm0k")
-surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
-
-[node name="cristal" parent="star5/star6/planet2" unique_id=889540705 instance=ExtResource("2_e6b4q")]
-transform = Transform3D(-0.07035967, 0, 0.056116585, 0, 0.090000026, 0, -0.056116585, 0, -0.07035967, 0.82098484, 0, 1.4172401)
-
-[node name="StaticBody3D9" type="StaticBody3D" parent="star5/star6/planet2" unique_id=1740355708]
-transform = Transform3D(0.9658606, 0, 0.26003867, 0, 1, 0, -0.26003867, 0, 0.9658606, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="star5/star6/planet2/StaticBody3D9" unique_id=1078550607]
-shape = SubResource("SphereShape3D_iincs")
+[node name="Planet4" parent="star5/star6" unique_id=574801345 instance=ExtResource("6_q47le")]
+transform = Transform3D(-4.1421785, 0, 6.116382, 0, 7.383, 0, -6.116382, 0, -4.1421785, 8.307045, 0, -5.6257553)
+rad = 2.99
+rot = 0.065
 
 [node name="star6" type="MeshInstance3D" parent="." unique_id=657441473]
-transform = Transform3D(0.07329019, 0, -0.2909701, 0, 0.3, 0, 0.2909701, 0, 0.07329019, -0.651775, 0, 24.829266)
+transform = Transform3D(-0.28801814, 0, 0.08423483, 0, 0.3, 0, -0.08423483, 0, -0.28801814, -0.651775, 0, 24.829266)
 mesh = SubResource("SphereMesh_7dm0k")
 script = ExtResource("1_jglls")
 color = Color(1, 1, 1, 1)
@@ -281,6 +207,7 @@ rad = 1.0
 anim = true
 freq_profile = SubResource("CurveTexture_h2yge")
 rot = 0.1
+pause = false
 neg = true
 
 [node name="star_f" type="MeshInstance3D" parent="star6" unique_id=1187860289]

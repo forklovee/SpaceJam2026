@@ -13,6 +13,8 @@ size = Vector3(1, 1, 0.5)
 [sub_resource type="SphereMesh" id="SphereMesh_bv82c"]
 
 [node name="Ship" type="RigidBody3D" unique_id=1651256213]
+collision_layer = 2
+collision_mask = 11
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true

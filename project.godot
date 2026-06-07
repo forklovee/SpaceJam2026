@@ -64,6 +64,13 @@ SpecialWeapon={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Player"
+3d_physics/layer_2="Enemy"
+3d_physics/layer_3="Resources"
+3d_physics/layer_4="Object"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

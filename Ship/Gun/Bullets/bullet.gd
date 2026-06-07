@@ -23,15 +23,11 @@ func shoot(new_instigator: Node3D, new_damage: int, new_max_range: float, new_ve
 	start_position = global_position
 
 func _process(delta: float) -> void:
-	if instigator == null:
-		return
-	
 	if is_queued_for_deletion():
 		return
 	if start_position.distance_to(global_position) > max_range:
 		queue_free()
 		return
-	
 	global_position += velocity*delta
 
 func can_get_hurt(node: Node):
@@ -42,5 +38,7 @@ func _on_body_entered(body: Node3D) -> void:
 		return
 	if !can_get_hurt(body):
 		return
-	body.damage(instigator, damage)
+	
+	if is_instance_valid(instigator):
+		body.damage(instigator, damage)
 	queue_free()
