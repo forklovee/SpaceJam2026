@@ -28,6 +28,9 @@ func _process(delta: float) -> void:
 				$ColorRect3/SHIP1,
 				$ColorRect3/SHIP2,
 				$ColorRect3/SHIP3,
+				$ColorRect3/SHIP4,
+				$ColorRect3/SHIP5,
+				$ColorRect3/SHIP6,
 			]
 			var all_ship=[]
 			for s in allYourShip:
@@ -123,3 +126,15 @@ func _on_ship_2_pressed() -> void:
 
 func _on_ship_3_pressed() -> void:
 	buy_ship(2)
+
+
+func _on_ship_4_pressed() -> void:
+	buy_ship(3)
+
+
+func _on_ship_5_pressed() -> void:
+	buy_ship(4)
+
+
+func _on_ship_6_pressed() -> void:
+	buy_ship(5)

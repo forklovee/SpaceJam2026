@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="ShipModel" format=3 uid="uid://cgm7tntodwecp"]
+
+[ext_resource type="Script" uid="uid://vcm2rq5por08" path="res://Ship/ShipStore/ShipModel.gd" id="1_txxb3"]
+[ext_resource type="Script" uid="uid://cfwgma8qj4hy8" path="res://Ship/ShipStore/ShipModelUpgrade.gd" id="2_ufdrq"]
+[ext_resource type="Texture2D" uid="uid://cu7n4ff743k6e" path="res://Arty/Statki z nazwami/SCF-4 Doktor.png" id="3_txxb3"]
+
+[sub_resource type="Resource" id="Resource_sdkmh"]
+script = ExtResource("2_ufdrq")
+ExtraMass = 1.0
+ExtraStorage = 10
+BrandName = "HeavyMode"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[sub_resource type="Resource" id="Resource_3baj7"]
+script = ExtResource("2_ufdrq")
+ExtraMass = -0.9
+BrandName = "LightWeightTunning"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[sub_resource type="Resource" id="Resource_hubhe"]
+script = ExtResource("2_ufdrq")
+ExtraHealth = 100
+ExtraShield = 100
+BrandName = "Tank"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[resource]
+script = ExtResource("1_txxb3")
+BaseStorage = 30
+BaseHealth = 300
+BaseShield = 300
+BaseFuel = 300.0
+BrandName = "SCF-4 Doktor"
+upgrades = Array[ExtResource("2_ufdrq")]([SubResource("Resource_sdkmh"), SubResource("Resource_3baj7"), SubResource("Resource_hubhe")])
+marketing_text = "by uzyskać przewagę w galaktyce Unia opracowała nowy modelstatku. Dzięki doświadczeniom zdobytym przy projektowaniu poprzednich modeli,udało się stworzyć potężny statek, mogący poradzić sobie z każdym przeciwnikiem."
+price = 500
+view2D = ExtResource("3_txxb3")
+metadata/_custom_type_script = "uid://vcm2rq5por08"

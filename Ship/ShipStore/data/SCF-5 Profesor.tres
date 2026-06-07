@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ShipModel" format=3 uid="uid://cdlhlk8kac2bj"]
+
+[ext_resource type="Script" uid="uid://vcm2rq5por08" path="res://Ship/ShipStore/ShipModel.gd" id="1_ju0qt"]
+[ext_resource type="Script" uid="uid://cfwgma8qj4hy8" path="res://Ship/ShipStore/ShipModelUpgrade.gd" id="2_4xy82"]
+[ext_resource type="Texture2D" uid="uid://co2rpxebvdk2o" path="res://Arty/Statki z nazwami/WCHUJ-01 Dziekan.png" id="3_ju0qt"]
+
+[sub_resource type="Resource" id="Resource_sdkmh"]
+script = ExtResource("2_4xy82")
+ExtraMass = 1.0
+ExtraStorage = 10
+BrandName = "HeavyMode"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[sub_resource type="Resource" id="Resource_3baj7"]
+script = ExtResource("2_4xy82")
+ExtraMass = -0.9
+BrandName = "LightWeightTunning"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[sub_resource type="Resource" id="Resource_hubhe"]
+script = ExtResource("2_4xy82")
+ExtraHealth = 100
+ExtraShield = 100
+BrandName = "Tank"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[resource]
+script = ExtResource("1_ju0qt")
+BaseMass = 0.6
+BaseStorage = 60
+BaseHealth = 600
+BaseShield = 600
+BaseFuel = 600.0
+BrandName = "SCF-5 Profesor"
+upgrades = Array[ExtResource("2_4xy82")]([SubResource("Resource_sdkmh"), SubResource("Resource_3baj7"), SubResource("Resource_hubhe")])
+marketing_text = "ulepszenia w wersji SCF-4 okazały się niewystarczające dlaelitarnych formacji, dlatego inżynierowie z WCHUJ opracowali specjalnie dla nichnowy model statku, jeszcze potężniejszy od swoich poprzedników."
+price = 1000
+view2D = ExtResource("3_ju0qt")
+metadata/_custom_type_script = "uid://vcm2rq5por08"

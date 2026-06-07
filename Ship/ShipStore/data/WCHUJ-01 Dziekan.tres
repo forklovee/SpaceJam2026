@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ShipModel" format=3 uid="uid://b0rpod5avbm52"]
+
+[ext_resource type="Script" uid="uid://vcm2rq5por08" path="res://Ship/ShipStore/ShipModel.gd" id="1_37pg7"]
+[ext_resource type="Script" uid="uid://cfwgma8qj4hy8" path="res://Ship/ShipStore/ShipModelUpgrade.gd" id="2_s8uvh"]
+[ext_resource type="Texture2D" uid="uid://2lak7lrswule" path="res://Arty/Statki z nazwami/SCF-3 Doktorant.png" id="3_cecaa"]
+
+[sub_resource type="Resource" id="Resource_sdkmh"]
+script = ExtResource("2_s8uvh")
+ExtraMass = 1.0
+ExtraStorage = 10
+BrandName = "HeavyMode"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[sub_resource type="Resource" id="Resource_3baj7"]
+script = ExtResource("2_s8uvh")
+ExtraMass = -0.9
+BrandName = "LightWeightTunning"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[sub_resource type="Resource" id="Resource_hubhe"]
+script = ExtResource("2_s8uvh")
+ExtraHealth = 100
+ExtraShield = 100
+BrandName = "Tank"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[resource]
+script = ExtResource("1_37pg7")
+BaseMass = 0.6
+BaseStorage = 100
+BaseHealth = 1000
+BaseShield = 1000
+BaseFuel = 1000.0
+BrandName = "WCHUJ-01 Dziekan"
+upgrades = Array[ExtResource("2_s8uvh")]([SubResource("Resource_sdkmh"), SubResource("Resource_3baj7"), SubResource("Resource_hubhe")])
+marketing_text = "eksperymentalny statek opracowany przez inżynierów zWojskowe Centrum Hydrodynamiki i Uskrzydlonych Jednostek, o wiele lepiejwyposażony i uzbrojony od innych, bije na głowę inne znane statki pod względemosiągów."
+price = 300
+view2D = ExtResource("3_cecaa")
+metadata/_custom_type_script = "uid://vcm2rq5por08"

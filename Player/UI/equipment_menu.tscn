@@ -5,6 +5,9 @@
 [ext_resource type="Resource" uid="uid://bwsc48jrilati" path="res://Ship/ShipStore/data/SCF-1 Student.tres" id="3_3dciq"]
 [ext_resource type="Resource" uid="uid://dyfarp6qhvs4v" path="res://Ship/ShipStore/data/SCF-2 Magister.tres" id="4_d2vkx"]
 [ext_resource type="Resource" uid="uid://erhorbqfv7ow" path="res://Ship/ShipStore/data/SCF-3 Doktorant.tres" id="5_sbpbq"]
+[ext_resource type="Resource" uid="uid://cgm7tntodwecp" path="res://Ship/ShipStore/data/SCF-4 Doktor.tres" id="6_281i0"]
+[ext_resource type="Resource" uid="uid://cdlhlk8kac2bj" path="res://Ship/ShipStore/data/SCF-5 Profesor.tres" id="7_1l2xl"]
+[ext_resource type="Resource" uid="uid://b0rpod5avbm52" path="res://Ship/ShipStore/data/WCHUJ-01 Dziekan.tres" id="8_nkl4v"]
 
 [sub_resource type="Resource" id="Resource_sbpbq"]
 script = ExtResource("2_d2vkx")
@@ -19,6 +22,21 @@ metadata/_custom_type_script = "uid://btxaaxskflxvo"
 [sub_resource type="Resource" id="Resource_2ohq7"]
 script = ExtResource("2_d2vkx")
 based_ship = ExtResource("5_sbpbq")
+metadata/_custom_type_script = "uid://btxaaxskflxvo"
+
+[sub_resource type="Resource" id="Resource_kottx"]
+script = ExtResource("2_d2vkx")
+based_ship = ExtResource("6_281i0")
+metadata/_custom_type_script = "uid://btxaaxskflxvo"
+
+[sub_resource type="Resource" id="Resource_t2xym"]
+script = ExtResource("2_d2vkx")
+based_ship = ExtResource("7_1l2xl")
+metadata/_custom_type_script = "uid://btxaaxskflxvo"
+
+[sub_resource type="Resource" id="Resource_mj3yj"]
+script = ExtResource("2_d2vkx")
+based_ship = ExtResource("8_nkl4v")
 metadata/_custom_type_script = "uid://btxaaxskflxvo"
 
 [node name="Equipment_menu" type="ColorRect" unique_id=6535177]
@@ -36,7 +54,7 @@ grow_vertical = 2
 script = ExtResource("1_yapah")
 currentShip = SubResource("Resource_sbpbq")
 allYourShip = Array[ExtResource("2_d2vkx")]([SubResource("Resource_sbpbq")])
-storeShip = Array[ExtResource("2_d2vkx")]([SubResource("Resource_27oab"), SubResource("Resource_2ohq7")])
+storeShip = Array[ExtResource("2_d2vkx")]([SubResource("Resource_27oab"), SubResource("Resource_2ohq7"), SubResource("Resource_kottx"), SubResource("Resource_t2xym"), SubResource("Resource_mj3yj")])
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1500512140]
 layout_mode = 1
@@ -138,7 +156,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 252.0
 offset_top = -239.0
-offset_right = 481.0
+offset_right = 714.0
 offset_bottom = 224.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -183,6 +201,51 @@ offset_bottom = 292.0
 text = "ship3"
 
 [node name="ColorRect4" type="ColorRect" parent="ColorRect3/SHIP3" unique_id=1928118810]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 12.0
+offset_right = 195.0
+offset_bottom = 52.0
+
+[node name="SHIP4" type="Button" parent="ColorRect3" unique_id=315535994]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 327.0
+offset_right = 205.0
+offset_bottom = 397.0
+text = "ship4"
+
+[node name="ColorRect4" type="ColorRect" parent="ColorRect3/SHIP4" unique_id=1192510932]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 12.0
+offset_right = 195.0
+offset_bottom = 52.0
+
+[node name="SHIP5" type="Button" parent="ColorRect3" unique_id=2012948581]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 26.0
+offset_right = 425.0
+offset_bottom = 96.0
+text = "ship5"
+
+[node name="ColorRect4" type="ColorRect" parent="ColorRect3/SHIP5" unique_id=1851240382]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 12.0
+offset_right = 195.0
+offset_bottom = 52.0
+
+[node name="SHIP6" type="Button" parent="ColorRect3" unique_id=687104603]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 126.0
+offset_right = 427.0
+offset_bottom = 196.0
+text = "ship6"
+
+[node name="ColorRect4" type="ColorRect" parent="ColorRect3/SHIP6" unique_id=1227289681]
 layout_mode = 0
 offset_left = 155.0
 offset_top = 12.0
@@ -238,3 +301,6 @@ text = "asdsasd"
 [connection signal="pressed" from="ColorRect3/SHIP1" to="." method="_on_ship_1_pressed"]
 [connection signal="pressed" from="ColorRect3/SHIP2" to="." method="_on_ship_2_pressed"]
 [connection signal="pressed" from="ColorRect3/SHIP3" to="." method="_on_ship_3_pressed"]
+[connection signal="pressed" from="ColorRect3/SHIP4" to="." method="_on_ship_4_pressed"]
+[connection signal="pressed" from="ColorRect3/SHIP5" to="." method="_on_ship_5_pressed"]
+[connection signal="pressed" from="ColorRect3/SHIP6" to="." method="_on_ship_6_pressed"]
