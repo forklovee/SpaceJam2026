@@ -1,6 +1,7 @@
 extends TextureRect
 
 func _process(delta: float) -> void:
+	self.visible=Input.is_key_pressed(KEY_M)
 	if self.texture==null:
 		if Game.level.view!=null:
 			var sv:SubViewport=Game.level.view

@@ -21,6 +21,21 @@ func _process(delta: float) -> void:
 			$UPGRADES4/UPG3/ColorRect3.visible=currentShip.has_in_equipment(2)
 			if Input.is_key_pressed(KEY_ESCAPE):
 				self.visible=false
+			var a=[
+				$ColorRect3/SHIP1,
+				$ColorRect3/SHIP2,
+				$ColorRect3/SHIP3,
+			]
+			var all_ship=[]
+			for s in allYourShip:
+				all_ship.append(s)
+			for s in storeShip:
+				all_ship.append(s)
+			for id in range(all_ship.size()):
+				a[id].text=all_ship[id].based_ship.BrandName
+			#for s in storeShip:
+				
+
 
 func buy_up(id):
 	if !currentShip.has_in_equipment(id):
@@ -51,6 +66,9 @@ func equip(w:PackedScene):
 		slot.add_child(gun)
 		gun.global_position=slot.global_position
 		s.update_weapons_and_gunslots()
+					
+
+
 
 
 func _on_upg_1_pressed() -> void:
