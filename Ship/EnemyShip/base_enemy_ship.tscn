@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bclhb4dyt4q6o"]
 
 [ext_resource type="PackedScene" uid="uid://idcyet8cqbav" path="res://Ship/base_ship.tscn" id="1_25uhw"]
+[ext_resource type="Script" uid="uid://b0kioegk77m42" path="res://Ship/EnemyShip/enemy_on_die.gd" id="2_8qru5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25uhw"]
 albedo_color = Color(1, 0, 0, 1)
@@ -9,3 +10,8 @@ albedo_color = Color(1, 0, 0, 1)
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1993636732]
 surface_material_override/0 = SubResource("StandardMaterial3D_25uhw")
+
+[node name="EnemyOnDie" type="Node" parent="." index="5" unique_id=1262769558]
+script = ExtResource("2_8qru5")
+
+[connection signal="died" from="." to="EnemyOnDie" method="_on_base_enemy_ship_died"]

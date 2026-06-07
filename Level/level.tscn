@@ -7,9 +7,11 @@
 [ext_resource type="Script" uid="uid://dm1nvh7d4k27x" path="res://Level/space_bg.gd" id="3_7a20f"]
 [ext_resource type="PackedScene" uid="uid://bao2jybtf0idi" path="res://MainMenu/win.tscn" id="3_nk1il"]
 [ext_resource type="PackedScene" uid="uid://cmcwrxxhrlkj3" path="res://Objects/Base/Base.tscn" id="7_d6qko"]
+[ext_resource type="Script" uid="uid://c4pkp6t5soa0b" path="res://Level/enemy_respawn.gd" id="8_i5g78"]
 [ext_resource type="PackedScene" uid="uid://wlwqk6cwxjmn" path="res://Objects/Crystal/CristalTypes/cristal_lua.tscn" id="8_wqlfs"]
 [ext_resource type="PackedScene" uid="uid://b1n61jmdup3bb" path="res://Objects/Crystal/CristalTypes/cristal_pas.tscn" id="9_py82k"]
 [ext_resource type="PackedScene" uid="uid://cdyvodqui4521" path="res://Objects/Crystal/CristalTypes/cristal_py.tscn" id="10_py82k"]
+[ext_resource type="PackedScene" uid="uid://bclhb4dyt4q6o" path="res://Ship/EnemyShip/base_enemy_ship.tscn" id="11_1teg4"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_7dm0k"]
 
@@ -349,6 +351,9 @@ is_allay = true
 [node name="Base2" parent="." unique_id=1424587177 instance=ExtResource("7_d6qko")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9371481, -0.08077848, 22.076908)
 
+[node name="EnemyRespawn" type="Node3D" parent="Base2" unique_id=2054981514]
+script = ExtResource("8_i5g78")
+
 [node name="cristal" parent="." unique_id=599004292 instance=ExtResource("8_wqlfs")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.4770496, 0.013561487, -0.21904063)
 
@@ -360,3 +365,39 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -2.715034, 0.064817905,
 
 [node name="cristal4" parent="." unique_id=1646615569 instance=ExtResource("10_py82k")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.718091, 0.024409592, -0.20307237)
+
+[node name="BaseEnemyShip" parent="." unique_id=1525440035 instance=ExtResource("11_1teg4")]
+transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 6.680936, 0, 17.553808)
+max_health = 30
+
+[node name="BaseEnemyShip2" parent="." unique_id=990744461 instance=ExtResource("11_1teg4")]
+transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 6.680936, 0, 20.343193)
+max_health = 30
+
+[node name="BaseEnemyShip3" parent="." unique_id=68656204 instance=ExtResource("11_1teg4")]
+transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 6.680936, 0, 14.975929)
+max_health = 30
+
+[node name="BaseEnemyShip4" parent="." unique_id=1716466935 instance=ExtResource("11_1teg4")]
+transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 6.680936, 0, 8.553808)
+max_health = 30
+
+[node name="BaseEnemyShip5" parent="." unique_id=572426146 instance=ExtResource("11_1teg4")]
+transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 6.680936, 0, 11.343193)
+max_health = 30
+
+[node name="BaseEnemyShip6" parent="." unique_id=270832613 instance=ExtResource("11_1teg4")]
+transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 6.680936, 0, 5.9759293)
+max_health = 30
+
+[node name="BaseEnemyShip7" parent="." unique_id=534632788 instance=ExtResource("11_1teg4")]
+transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 6.680936, 0, -0.4461918)
+max_health = 30
+
+[node name="BaseEnemyShip8" parent="." unique_id=1701762162 instance=ExtResource("11_1teg4")]
+transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 6.680936, 0, 2.343193)
+max_health = 30
+
+[node name="BaseEnemyShip9" parent="." unique_id=1254339928 instance=ExtResource("11_1teg4")]
+transform = Transform3D(0.23548143, 0, 0.9718788, 0, 1, 0, -0.9718788, 0, 0.23548143, 6.680936, 0, -3.0240707)
+max_health = 30

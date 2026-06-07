@@ -3,6 +3,7 @@ class_name Level extends Node3D
 signal crystal_amount_changed(level: Level)
 
 @onready var query_plane: SpacePlane = $Space_BG
+@onready var enemyRespawn:EnemyRespawn = $Base2/EnemyRespawn
 
 var crystals_to_gather: Array = []
 

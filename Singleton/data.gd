@@ -9,5 +9,11 @@ var bullets: Dictionary[Bullet3D.Type, PackedScene] = {
 
 var cristal_shard = ResourceLoader.load( "res://Objects/Crystal/CristalShard/cristal_shard.tscn")
 
+var enemies:Dictionary[EnemyRespawn.EnemyType, PackedScene] = {
+	EnemyRespawn.EnemyType.Normal:ResourceLoader.load("res://Ship/EnemyShip/base_enemy_ship.tscn"),
+	EnemyRespawn.EnemyType.Big:ResourceLoader.load("res://Ship/EnemyShip/big_enemy_ship.tscn")
+	
+}
+
 func get_bullet_resource(ammo_type: Bullet3D.Type) -> PackedScene:
 	return bullets[ammo_type]
