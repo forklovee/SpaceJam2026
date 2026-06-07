@@ -36,6 +36,10 @@ func apllay(s:Ship):
 		for u in equipment:
 			h+=u.ExtraStorage
 		s.max_storage=h
+		
+	var mi:MeshInstance3D=s.get_node("2dView")
+	var mat:StandardMaterial3D=mi.get_surface_override_material(0)
+	mat.albedo_texture=based_ship.view2D
 
 func has_in_equipment(id):
 	return equipment.find(based_ship.upgrades[id])!=-1

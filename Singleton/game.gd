@@ -8,6 +8,8 @@ var level
 
 var level_end=null
 
+var gold=400
+
 var player_score := 0:
 	set(value):
 		player_score = value

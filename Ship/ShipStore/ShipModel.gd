@@ -17,3 +17,6 @@ class_name ShipModel
 @export var extraWeaponNames=["LASERS","ROCKETS"]
 @export var upgrade_slots=2
 @export var marketing_text=""
+@export var price=80
+
+@export var view2D:Texture

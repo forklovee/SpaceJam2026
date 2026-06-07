@@ -65,10 +65,17 @@ func show_repair_munu(_b1:Node3D,_b2:Node3D):
 	$Equipment_menu.visible=true
 	b1=_b1
 	b2=_b2
+
+func can_tab(f=true):
+	if f:
+		if !$Equipment_menu.visible:
+			$Equipment_popup.visible=true
+	else:
+		$Equipment_popup.visible=false
 	
 func _process(delta: float) -> void:
 	if $Equipment_menu.visible:
-		if !(is_instance_valid(b1) and is_instance_valid(b1)):
+		if !(is_instance_valid(b1) and is_instance_valid(b2)):
 			$Equipment_menu.visible=false
-		if b1.global_position.distance_to(b2.global_position)>5.0:
+		if b1.global_position.distance_to(b2.global_position)>70.0:
 			$Equipment_menu.visible=false

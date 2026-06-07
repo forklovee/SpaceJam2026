@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ShipModel" format=3 uid="uid://erhorbqfv7ow"]
+
+[ext_resource type="Script" uid="uid://vcm2rq5por08" path="res://Ship/ShipStore/ShipModel.gd" id="1_e0vjj"]
+[ext_resource type="Script" uid="uid://cfwgma8qj4hy8" path="res://Ship/ShipStore/ShipModelUpgrade.gd" id="2_u6sqr"]
+[ext_resource type="Texture2D" uid="uid://2lak7lrswule" path="res://Arty/Statki z nazwami/SCF-3 Doktorant.png" id="3_u6sqr"]
+
+[sub_resource type="Resource" id="Resource_sdkmh"]
+script = ExtResource("2_u6sqr")
+ExtraMass = 1.0
+ExtraStorage = 10
+BrandName = "HeavyMode"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[sub_resource type="Resource" id="Resource_3baj7"]
+script = ExtResource("2_u6sqr")
+ExtraMass = -0.9
+BrandName = "LightWeightTunning"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[sub_resource type="Resource" id="Resource_hubhe"]
+script = ExtResource("2_u6sqr")
+ExtraHealth = 100
+ExtraShield = 100
+BrandName = "Tank"
+metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
+
+[resource]
+script = ExtResource("1_e0vjj")
+BaseMass = 2.0
+BaseStorage = 20
+BaseHealth = 200
+BaseShield = 200
+BaseFuel = 200.0
+BrandName = "SCF-3 Doktorant"
+upgrades = Array[ExtResource("2_u6sqr")]([SubResource("Resource_sdkmh"), SubResource("Resource_3baj7"), SubResource("Resource_hubhe")])
+marketing_text = "kolejne konflikty pokazały, że istnieje konieczność opracowanianowych statków kosmicznych zdolnych wytrzymać trudy kampanii. Ten statek toowoc badań i zbierania doświadczeń z dwóch poprzednich modeli, przez co udało sięstworzyć pojazd przewyższający poprzedników."
+price = 300
+view2D = ExtResource("3_u6sqr")
+metadata/_custom_type_script = "uid://vcm2rq5por08"
