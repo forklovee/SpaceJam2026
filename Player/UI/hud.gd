@@ -55,7 +55,8 @@ func _on_shield_changed(ship: Ship):
 	shield_label.text = "Shield: "+str(ship.shield)+"/"+str(ship.max_shield)
 	
 func _on_fuel_changed(ship: Ship):
-	fuel_label.text = "Fuel: "+str(ship.fuel)+"/"+str(ship.max_fuel)
+	print("******88")
+	fuel_label.text = "Fuel: "+str(int(ship.fuel))+"/"+str(int(ship.max_fuel))
 	
 func _on_storage_changed(ship: Ship):
 	storage_label.text = "Storage: "+str(ship.storage)+"/"+str(ship.max_storage)

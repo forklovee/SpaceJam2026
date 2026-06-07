@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bao2jybtf0idi" path="res://MainMenu/win.tscn" id="3_nk1il"]
 [ext_resource type="PackedScene" uid="uid://cmcwrxxhrlkj3" path="res://Objects/Base/Base.tscn" id="7_d6qko"]
 [ext_resource type="Script" uid="uid://c4pkp6t5soa0b" path="res://Level/enemy_respawn.gd" id="8_i5g78"]
+[ext_resource type="Script" uid="uid://cm2brwbb0ogq1" path="res://Level/player_respawn.gd" id="8_q47le"]
 [ext_resource type="PackedScene" uid="uid://wlwqk6cwxjmn" path="res://Objects/Crystal/CristalTypes/cristal_lua.tscn" id="8_wqlfs"]
 [ext_resource type="PackedScene" uid="uid://b1n61jmdup3bb" path="res://Objects/Crystal/CristalTypes/cristal_pas.tscn" id="9_py82k"]
 [ext_resource type="PackedScene" uid="uid://cdyvodqui4521" path="res://Objects/Crystal/CristalTypes/cristal_py.tscn" id="10_py82k"]
@@ -347,6 +348,9 @@ input_stars = [NodePath("../star5/star3"), NodePath("../star5/star2"), NodePath(
 [node name="Base" parent="." unique_id=1098030614 instance=ExtResource("7_d6qko")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9371481, -0.08077848, -3.141234)
 is_allay = true
+
+[node name="PlayerRespawn" type="Node3D" parent="Base" unique_id=17418823]
+script = ExtResource("8_q47le")
 
 [node name="Base2" parent="." unique_id=1424587177 instance=ExtResource("7_d6qko")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9371481, -0.08077848, 22.076908)
