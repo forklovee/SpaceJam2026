@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b84ysw4g1x5ie" path="res://Arty/bazy/FAIS_wycięty.png" id="3_7ckc5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i283b"]
-radius = 1.615857
+radius = 2.6762288
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_j1vqp"]
 
@@ -28,6 +28,8 @@ shading_mode = 0
 albedo_texture = ExtResource("3_7ckc5")
 
 [node name="Base" type="Area3D" unique_id=1098030614]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_j1vqp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1477887116]

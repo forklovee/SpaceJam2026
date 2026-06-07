@@ -61,7 +61,8 @@ func radiation_process(delta):
 	self.use_fuel(-fuel)
 	var sh=30.0*delta*radiation_query.data[Star3D.RaditionType.SHILD]
 	self.add_shield(self,1 if randf()<sh else 0)
-	var tok=30.0*delta*radiation_query.data[Star3D.RaditionType.TOKSIC]
+	var tok_multi=30.0 if self.is_in_group("PlayerShip") else 10.0
+	var tok=tok_multi*delta*radiation_query.data[Star3D.RaditionType.TOKSIC]
 	self.damage(self,4 if randf()<tok else 0)
 	var amm=10.0*delta*radiation_query.data[Star3D.RaditionType.AMMO]
 	if randf()<amm:
@@ -128,7 +129,8 @@ func damage(instigator: Node3D, value: int):
 		health = clamp(health-value, 0, max_health)
 		#print(self, "(", health, "/", max_health,")"," damaged by ", instigator, " with ", value, "DMG")
 		health_changed.emit(self)
-		got_damage.emit(self, instigator)
+		if instigator!=null:
+			got_damage.emit(self, instigator)
 		if health <= 0:
 			_on_died()
 	else:

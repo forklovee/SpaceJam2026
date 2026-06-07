@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 	if to_spawn>0:
 		time+=delta
 		if time>CullDown:
+			print("RESPAWN")
 			var current_wave:Array=waves[wave_type]
 			if wave_type<2:
 				if id==current_wave.size()-1:
