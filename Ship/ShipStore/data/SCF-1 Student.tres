@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vcm2rq5por08" path="res://Ship/ShipStore/ShipModel.gd" id="1_7h3bs"]
 [ext_resource type="Script" uid="uid://cfwgma8qj4hy8" path="res://Ship/ShipStore/ShipModelUpgrade.gd" id="2_g127n"]
+[ext_resource type="Texture2D" uid="uid://bqvh4y0cenci2" path="res://Arty/Statki z nazwami/SCF-1 Student.png" id="3_g127n"]
 
 [sub_resource type="Resource" id="Resource_sdkmh"]
 script = ExtResource("2_g127n")
@@ -12,7 +13,8 @@ metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
 
 [sub_resource type="Resource" id="Resource_3baj7"]
 script = ExtResource("2_g127n")
-ExtraMass = -0.9
+ExtraMass = -0.5
+ExtraStorage = -2
 BrandName = "LightWeightTunning"
 metadata/_custom_type_script = "uid://cfwgma8qj4hy8"
 
@@ -28,4 +30,5 @@ script = ExtResource("1_7h3bs")
 BrandName = "SCF-1 Student"
 upgrades = Array[ExtResource("2_g127n")]([SubResource("Resource_sdkmh"), SubResource("Resource_3baj7"), SubResource("Resource_hubhe")])
 marketing_text = "podstawowy statek kosmiczny wykorzystywany przez siły Unii iArmii. Sprawdzony w wielu bitwach, jest koniem roboczym, na którym można polegać."
+view2D = ExtResource("3_g127n")
 metadata/_custom_type_script = "uid://vcm2rq5por08"

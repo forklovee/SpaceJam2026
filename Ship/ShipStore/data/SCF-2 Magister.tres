@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vcm2rq5por08" path="res://Ship/ShipStore/ShipModel.gd" id="1_deynd"]
 [ext_resource type="Script" uid="uid://cfwgma8qj4hy8" path="res://Ship/ShipStore/ShipModelUpgrade.gd" id="2_eop4f"]
+[ext_resource type="Texture2D" uid="uid://rvpetjugxybv" path="res://Arty/Statki z nazwami/SCF-2 Magister.png" id="3_eop4f"]
 
 [sub_resource type="Resource" id="Resource_sdkmh"]
 script = ExtResource("2_eop4f")
@@ -33,4 +34,6 @@ BaseFuel = 150.0
 BrandName = "SCF-2 Magister"
 upgrades = Array[ExtResource("2_eop4f")]([SubResource("Resource_sdkmh"), SubResource("Resource_3baj7"), SubResource("Resource_hubhe")])
 marketing_text = "ciągłe walki pokazały, że osiągi SCF-1 są niewystarczające,dlatego Wytwórnia Materiałów i Interkomów opracowała zupełnie nowy pojazd.Oznaczony jako model 2, jest on potężniejszy od swojego poprzednika."
+price = 160
+view2D = ExtResource("3_eop4f")
 metadata/_custom_type_script = "uid://vcm2rq5por08"
