@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bneeq5flnv7ft"]
 
+[ext_resource type="Script" uid="uid://dsuiuajhyd0wt" path="res://briefieng.gd" id="1_6hqfe"]
 [ext_resource type="Texture2D" uid="uid://b8gog0fqkga1" path="res://Arty/Gemini_Generated_Image_i8hhooi8hhooi8hh.png" id="1_rf2r2"]
 [ext_resource type="AudioStream" uid="uid://lv88xutkytsk" path="res://Audio/VoiceActing/VoiceActing.mp3" id="2_6hqfe"]
 [ext_resource type="AudioStream" uid="uid://5tquq7abr7lm" path="res://Audio/Music/FabułaBriefing.mp3" id="3_tglvp"]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6hqfe")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=363083632]
 layout_mode = 1
@@ -24,7 +26,7 @@ expand_mode = 1
 
 [node name="NarracjaBriefieng" type="AudioStreamPlayer2D" parent="." unique_id=2113662446]
 stream = ExtResource("2_6hqfe")
-volume_db = 5.0
+volume_db = 15.0
 autoplay = true
 
 [node name="MuzykaBriefieng" type="AudioStreamPlayer2D" parent="." unique_id=1473804809]

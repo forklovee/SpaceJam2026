@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://7kdhutqx8guj" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://ekk6qgvepctd" path="res://Ship/PlayerShip/player_ship.tscn" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c446u8dav2dnv" path="res://Level/level.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bneeq5flnv7ft" path="res://briefieng.tscn" id="4_1bvp3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 ground_bottom_color = Color(0.059710145, 0.076380156, 0.16532534, 1)
@@ -31,5 +32,9 @@ script = ExtResource("1_ig7tw")
 debug_player_ship = ExtResource("2_lquwl")
 debug_level = ExtResource("3_h2yge")
 
+[node name="Briefieng" parent="." unique_id=2142269119 instance=ExtResource("4_1bvp3")]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=672368694]
 environment = SubResource("Environment_1bvp3")
+
+[connection signal="briefing_end" from="Briefieng" to="." method="_on_briefieng_briefing_end"]
