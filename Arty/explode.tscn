@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dj7u0ky0pftja"]
+
+[ext_resource type="Texture2D" uid="uid://knx611daqm4j" path="res://Arty/wybuch/1.png" id="1_fhe8l"]
+[ext_resource type="Texture2D" uid="uid://dlftsey60mgk0" path="res://Arty/wybuch/2.png" id="2_65dxt"]
+[ext_resource type="Texture2D" uid="uid://ca0h7o4krfdqc" path="res://Arty/wybuch/3.png" id="3_j5cgj"]
+[ext_resource type="Texture2D" uid="uid://d4go0s0ofqv61" path="res://Arty/wybuch/4.png" id="4_hh4in"]
+[ext_resource type="Texture2D" uid="uid://5q3g6n4dinx7" path="res://Arty/wybuch/5.png" id="5_wwi2i"]
+[ext_resource type="Texture2D" uid="uid://i35h0fy3i5ki" path="res://Arty/wybuch/7.png" id="6_1p8gy"]
+[ext_resource type="Texture2D" uid="uid://dsvtd85fcsliq" path="res://Arty/wybuch/6.png" id="7_76sdr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3f1w"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fhe8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_65dxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j5cgj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hh4in")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wwi2i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1p8gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_76sdr")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Explode" type="AnimatedSprite3D" unique_id=604551169]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5, 0)
+sprite_frames = SubResource("SpriteFrames_i3f1w")
+animation = &"new_animation"
+frame_progress = 0.7575393

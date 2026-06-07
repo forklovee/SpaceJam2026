@@ -18,5 +18,7 @@ var enemies:Dictionary[EnemyRespawn.EnemyType, PackedScene] = {
 
 var player_to_respawn = ResourceLoader.load( "res://Ship/PlayerShip/player_ship.tscn")
 
+var exp=ResourceLoader.load("res://Arty/explode.tscn")
+
 func get_bullet_resource(ammo_type: Bullet3D.Type) -> PackedScene:
 	return bullets[ammo_type]

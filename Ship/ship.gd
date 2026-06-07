@@ -114,6 +114,8 @@ func get_gun_slot(gun_slot_enum: GunSlot.GunSlotTargets) -> GunSlot:
 	return gun_slots.get(gun_slot_enum, null)
 
 func shoot(weapon_id: int):
+	if radiation_query.data[Star3D.RaditionType.PACE]>1.0:
+		return
 	if weapon_id >= weapons.size():
 		return
 	var weapon: Gun = weapons[weapon_id]
