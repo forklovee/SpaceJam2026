@@ -28,6 +28,7 @@ func damage(instigator: Ship, demage_value: int):
 				Game.level.add_child(s)
 				s.global_position=p
 				s.ship_owner=instigator
+			Game.level_end.cristal_left-=1
 			queue_free()
 	else:
 		if $crack!=null:
