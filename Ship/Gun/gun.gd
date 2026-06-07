@@ -1,5 +1,6 @@
 class_name Gun extends Node3D
 
+@export_range(1, 3) var level: int = 1
 @export var bullet_type: Bullet3D.Type
 
 @export var damage: int = 5

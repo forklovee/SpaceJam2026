@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cp0mfj25tw50"]
 
-[ext_resource type="PackedScene" uid="uid://dr7hss4w17q6r" path="res://Ship/Gun/Bullet.tscn" id="1_ev7vb"]
+[ext_resource type="PackedScene" uid="uid://dr7hss4w17q6r" path="res://Ship/Gun/Bullets/Bullet.tscn" id="1_ev7vb"]
+
 
 [node name="RegularBullet" unique_id=895270872 instance=ExtResource("1_ev7vb")]

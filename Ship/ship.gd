@@ -145,5 +145,4 @@ func use_fuel(value: int):
 	fuel_changed.emit(self)
 
 func can_collect(value):
-	print("cooo,",storage+value<=max_storage)
 	return storage+value<=max_storage
