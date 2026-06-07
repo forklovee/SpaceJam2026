@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 				if c>0:
 					print("transfer:",c)
 				ship.storage=0
+				ship.transfer_crystal()
 				Game.player_score+=c
 
 

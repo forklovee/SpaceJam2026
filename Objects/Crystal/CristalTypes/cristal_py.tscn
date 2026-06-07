@@ -18,6 +18,9 @@ albedo_texture = ExtResource("3_8bqt1")
 durability = 10
 value = 10
 
+[node name="MeshInstance3D" parent="." index="1" unique_id=1982544863]
+visible = false
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="2" unique_id=1474114186]
 mesh = SubResource("PlaneMesh_8xxgn")
 surface_material_override/0 = SubResource("StandardMaterial3D_62iko")

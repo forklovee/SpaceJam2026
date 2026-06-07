@@ -134,6 +134,8 @@ func gather_crystal(crystal_piece: Node3D, amount: int):
 	storage_changed.emit(self)
 
 #TODO: oddawanie kryształów (metoda!)
+func transfer_crystal():
+	storage_changed.emit(self)
 
 func can_use_fuel(value: int) -> bool:
 	return fuel - value >= 0

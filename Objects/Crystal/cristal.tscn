@@ -22,6 +22,5 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0,
 shape = SubResource("BoxShape3D_ndduc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1982544863]
-visible = false
 mesh = SubResource("TubeTrailMesh_1bvp3")
 surface_material_override/0 = SubResource("StandardMaterial3D_lquwl")
