@@ -1,16 +1,19 @@
 @tool
 class_name SpacePlane extends MeshInstance3D
 
-@export var input_stars:Array[Star3D]
+@export var input_stars:Array[Node]
+
+func _ready() -> void:
+	input_stars=get_tree().get_nodes_in_group("Star")
 
 func _process(delta: float) -> void:
 	var m:ShaderMaterial=get_surface_override_material(0)
 	var stars=PackedVector2Array([])
 	var stars_color=PackedVector3Array([])
 	var stars_Ani=PackedInt32Array([])
-	stars.resize(12)
-	stars_color.resize(12)
-	stars_Ani.resize(12)
+	stars.resize(40)
+	stars_color.resize(40)
+	stars_Ani.resize(40)
 	for id in range(input_stars.size()):
 		stars[id]=Vector2(input_stars[id].global_position.x,input_stars[id].global_position.z)
 		stars_color[id]=Vector3(input_stars[id].color.r,input_stars[id].color.g,input_stars[id].color.b)

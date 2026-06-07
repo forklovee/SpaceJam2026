@@ -2,6 +2,13 @@ extends Area3D
 
 @export var is_allay=false
 
+func _ready() -> void:
+	if is_allay:
+		$allay_gfx.visible=true
+		$enemy_gfx.visible=false
+	else:
+		$allay_gfx.visible=false
+		$enemy_gfx.visible=true
 
 func _process(delta: float) -> void:
 	if is_allay:

@@ -30,6 +30,7 @@ window/stretch/aspect="keep_height"
 Crystal=""
 PlayerShip=""
 EnemyShip=""
+Star=""
 
 [input]
 

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cmcwrxxhrlkj3"]
 
 [ext_resource type="Script" uid="uid://bidrk7yxxeqbs" path="res://Objects/Base/base.gd" id="1_j1vqp"]
+[ext_resource type="Texture2D" uid="uid://db4430757d8p4" path="res://Arty/bazy/AGH_wycięty.png" id="2_uypch"]
+[ext_resource type="Texture2D" uid="uid://b84ysw4g1x5ie" path="res://Arty/bazy/FAIS_wycięty.png" id="3_7ckc5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i283b"]
 radius = 1.615857
@@ -9,6 +11,21 @@ radius = 1.615857
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y72cj"]
 albedo_color = Color(0.43817, 0.1315285, 0.16110122, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rfn0f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8jswd"]
+shading_mode = 0
+albedo_texture = ExtResource("2_uypch")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ddjd"]
+shading_mode = 0
+albedo_texture = ExtResource("3_7ckc5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83pwm"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("3_7ckc5")
 
 [node name="Base" type="Area3D" unique_id=1098030614]
 script = ExtResource("1_j1vqp")
@@ -25,5 +42,32 @@ surface_material_override/0 = SubResource("StandardMaterial3D_y72cj")
 transform = Transform3D(0.9999994, 0.0008362296, 0.0007405623, -0.0008362296, 0.9999997, -3.5762787e-07, -0.00074056233, -2.682209e-07, 0.99999976, -0.12520051, 1.1369506, 0.88720554)
 light_color = Color(1, 0.91916394, 0.4435601, 1)
 light_energy = 2.515
+
+[node name="enemy_gfx" type="Node3D" parent="." unique_id=1035539713]
+visible = false
+
+[node name="en_normal" type="MeshInstance3D" parent="enemy_gfx" unique_id=1752228247]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.21128988, 0)
+mesh = SubResource("PlaneMesh_rfn0f")
+surface_material_override/0 = SubResource("StandardMaterial3D_8jswd")
+
+[node name="en_map" type="MeshInstance3D" parent="enemy_gfx" unique_id=1460704917]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0.68455744, 0)
+layers = 1024
+mesh = SubResource("PlaneMesh_rfn0f")
+surface_material_override/0 = SubResource("StandardMaterial3D_8jswd")
+
+[node name="allay_gfx" type="Node3D" parent="." unique_id=1562472723]
+
+[node name="en_normal" type="MeshInstance3D" parent="allay_gfx" unique_id=290256895]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.21128988, 0)
+mesh = SubResource("PlaneMesh_rfn0f")
+surface_material_override/0 = SubResource("StandardMaterial3D_3ddjd")
+
+[node name="en_map" type="MeshInstance3D" parent="allay_gfx" unique_id=1695916580]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0.68455744, 0)
+layers = 1024
+mesh = SubResource("PlaneMesh_rfn0f")
+surface_material_override/0 = SubResource("StandardMaterial3D_83pwm")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

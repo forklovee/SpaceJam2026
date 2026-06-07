@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b0djlce41mujl"]
+
+[ext_resource type="Script" uid="uid://c0bq257vib83j" path="res://Level/star.gd" id="1_6dlok"]
+[ext_resource type="PackedScene" uid="uid://c6mo1qdt786aw" path="res://Objects/Planet/planet.tscn" id="2_ygaiu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7dm0k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+shading_mode = 0
+albedo_color = Color(0.31398752, 0.70897424, 0.6122957, 1)
+
+[node name="star_blue" type="MeshInstance3D" unique_id=2068162764 groups=["Star"]]
+transform = Transform3D(0.922259, 0, -0.38783568, 0, 0.99999994, 0, 0.38783568, 0, 0.922259, 0, 0, 0)
+mesh = SubResource("SphereMesh_7dm0k")
+surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
+script = ExtResource("1_6dlok")
+color = Color(0.24118897, 0.2929656, 1, 1)
+flag = 1
+rot = 0.165
+pause = false
+
+[node name="Planet2" parent="." unique_id=1534775064 instance=ExtResource("2_ygaiu")]
+transform = Transform3D(7.290221, 0, -5.3522887, 0, 9.042999, 0, 5.3522887, 0, 7.290221, 9.070602, 0, -12.354846)
+rad = 2.99
+rot = 0.065
+
+[node name="Planet3" parent="." unique_id=539208512 instance=ExtResource("2_ygaiu")]
+transform = Transform3D(4.2512755, 0, -3.1211748, 0, 5.273, 0, 3.1211748, 0, 4.2512755, -0.2909994, 0, 14.928317)
+rad = 2.99
+rot = 0.065
