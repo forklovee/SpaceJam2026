@@ -360,19 +360,13 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Equipment_menu" parent="." unique_id=6535177 instance=ExtResource("4_egnu7")]
-visible = false
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 4
 anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 500.0
-offset_bottom = 500.0
+offset_left = 27.0
+offset_right = 527.0
 grow_horizontal = 1
-grow_vertical = 1
 
 [node name="Equipment_popup" type="TextureRect" parent="." unique_id=1943267496]
 layout_mode = 0
