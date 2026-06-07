@@ -47,5 +47,23 @@ offset_right = 427.0
 offset_bottom = 90.0
 text = "USE ROCKET"
 
+[node name="HButton" type="Button" parent="ColorRect2" unique_id=480862389]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 121.0
+offset_right = 206.0
+offset_bottom = 191.0
+text = "HEAVY TANK"
+
+[node name="LButton" type="Button" parent="ColorRect2" unique_id=1608632698]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 125.0
+offset_right = 428.0
+offset_bottom = 195.0
+text = "LIGHT TANK"
+
 [connection signal="pressed" from="ColorRect2/LaserButton" to="." method="_on_laser_button_pressed"]
 [connection signal="pressed" from="ColorRect2/RocketButton" to="." method="_on_rocket_button_pressed"]
+[connection signal="pressed" from="ColorRect2/HButton" to="." method="_on_h_button_pressed"]
+[connection signal="pressed" from="ColorRect2/LButton" to="." method="_on_l_button_pressed"]

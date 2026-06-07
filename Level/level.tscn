@@ -106,7 +106,7 @@ rot = 0.1
 neg = true
 
 [node name="star_f" type="MeshInstance3D" parent="star_FR" unique_id=415690745 groups=["Star"]]
-transform = Transform3D(0.21159966, 0, -0.9771183, 0, 0.9999998, 0, 0.9771183, 0, 0.21159966, -20.715414, 0, -18.822462)
+transform = Transform3D(-0.5160679, 0, -0.85620224, 0, 0.9999998, 0, 0.85620224, 0, -0.5160679, -20.715414, 0, -18.822462)
 mesh = SubResource("SphereMesh_7dm0k")
 script = ExtResource("1_jglls")
 color = Color(0.13692334, 0.5227604, 4.813075e-07, 1)
@@ -121,10 +121,10 @@ rad = 2.99
 rot = 0.065
 
 [node name="star_orange" parent="star_FR" unique_id=687839587 instance=ExtResource("6_luomk")]
-transform = Transform3D(0.6370713, 0, -0.76951015, 0, 0.99999976, 0, 0.76951015, 0, 0.6370713, 1.5636826, 0, 23.72193)
+transform = Transform3D(-0.83518696, 0, -0.54798865, 0, 0.99999976, 0, 0.54798865, 0, -0.83518696, 1.5636826, 0, 23.72193)
 
 [node name="star_orange2" parent="star_FR" unique_id=313257437 instance=ExtResource("6_luomk")]
-transform = Transform3D(0.90562075, 0, -0.42169607, 0, 0.99999976, 0, 0.42169607, 0, 0.90562075, 13.588699, 0, -24.018686)
+transform = Transform3D(-0.5192444, 0, -0.8533408, 0, 0.99999976, 0, 0.8533408, 0, -0.5192444, 13.588699, 0, -24.018686)
 
 [node name="cristal" parent="star_FR" unique_id=1058605122 instance=ExtResource("9_py82k")]
 transform = Transform3D(0.8140183, 0, 3.231742, 0, 3.333333, 0, -3.231742, 0, 0.8140183, 12.7237015, 0.5512873, 28.397894)
@@ -142,7 +142,7 @@ rot = 0.1
 neg = true
 
 [node name="star_f" type="MeshInstance3D" parent="star_FR2" unique_id=1118624179 groups=["Star"]]
-transform = Transform3D(0.21159966, 0, -0.9771183, 0, 0.9999998, 0, 0.9771183, 0, 0.21159966, -20.715414, 0, -18.822462)
+transform = Transform3D(-0.5160679, 0, -0.85620224, 0, 0.9999998, 0, 0.85620224, 0, -0.5160679, -20.715414, 0, -18.822462)
 mesh = SubResource("SphereMesh_7dm0k")
 script = ExtResource("1_jglls")
 color = Color(0.13692334, 0.5227604, 4.813075e-07, 1)
@@ -157,10 +157,10 @@ rad = 2.99
 rot = 0.065
 
 [node name="star_orange" parent="star_FR2" unique_id=194893723 instance=ExtResource("6_luomk")]
-transform = Transform3D(0.6370713, 0, -0.76951015, 0, 0.99999976, 0, 0.76951015, 0, 0.6370713, 1.5636826, 0, 23.72193)
+transform = Transform3D(-0.83518696, 0, -0.54798865, 0, 0.99999976, 0, 0.54798865, 0, -0.83518696, 1.5636826, 0, 23.72193)
 
 [node name="star_orange2" parent="star_FR2" unique_id=1300598705 instance=ExtResource("6_luomk")]
-transform = Transform3D(0.90562075, 0, -0.42169607, 0, 0.99999976, 0, 0.42169607, 0, 0.90562075, 13.588699, 0, -24.018686)
+transform = Transform3D(-0.5192444, 0, -0.8533408, 0, 0.99999976, 0, 0.8533408, 0, -0.5192444, 13.588699, 0, -24.018686)
 
 [node name="star_FL" type="MeshInstance3D" parent="." unique_id=1229126835 groups=["Star"]]
 transform = Transform3D(0.07329019, 0, -0.2909701, 0, 0.3, 0, 0.2909701, 0, 0.07329019, 13.868187, 0, -33.897556)
@@ -175,13 +175,13 @@ rot = 0.1
 neg = true
 
 [node name="star_green" parent="star_FL" unique_id=35454859 instance=ExtResource("6_uqeto")]
-transform = Transform3D(0.21159966, 0, -0.9771183, 0, 0.9999998, 0, 0.9771183, 0, 0.21159966, -20.715414, 0, -18.822462)
+transform = Transform3D(-0.5160679, 0, -0.85620224, 0, 0.9999998, 0, 0.85620224, 0, -0.5160679, -20.715414, 0, -18.822462)
 
 [node name="star_blue" parent="star_FL" unique_id=2068162764 instance=ExtResource("7_luomk")]
-transform = Transform3D(0.9675004, 0, -0.25430095, 0, 0.99999994, 0, 0.25430095, 0, 0.9675004, 15.154943, 0, 19.673292)
+transform = Transform3D(-0.95313114, 0, -0.30408472, 0, 0.99999994, 0, 0.30408472, 0, -0.95313114, 15.154943, 0, 19.673292)
 
 [node name="star3" type="MeshInstance3D" parent="star_FL" unique_id=1965202852 groups=["Star"]]
-transform = Transform3D(0.82760584, 0, -0.56193256, 0, 0.99999976, 0, 0.56193256, 0, 0.82760584, 19.428894, 0, -21.920444)
+transform = Transform3D(-0.9999789, 0, 0.030636344, 0, 0.99999976, 0, -0.030636344, 0, -0.9999789, 19.428894, 0, -21.920444)
 mesh = SubResource("SphereMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
 script = ExtResource("1_jglls")
@@ -213,13 +213,13 @@ rot = 0.1
 neg = true
 
 [node name="star_green" parent="star_FL2" unique_id=677987566 instance=ExtResource("6_uqeto")]
-transform = Transform3D(0.21159966, 0, -0.9771183, 0, 0.9999998, 0, 0.9771183, 0, 0.21159966, -20.715414, 0, -18.822462)
+transform = Transform3D(-0.5160679, 0, -0.85620224, 0, 0.9999998, 0, 0.85620224, 0, -0.5160679, -20.715414, 0, -18.822462)
 
 [node name="star_blue" parent="star_FL2" unique_id=1318786042 instance=ExtResource("7_luomk")]
-transform = Transform3D(0.9675004, 0, -0.25430095, 0, 0.99999994, 0, 0.25430095, 0, 0.9675004, 15.154943, 0, 19.673292)
+transform = Transform3D(-0.95313114, 0, -0.30408472, 0, 0.99999994, 0, 0.30408472, 0, -0.95313114, 15.154943, 0, 19.673292)
 
 [node name="star3" type="MeshInstance3D" parent="star_FL2" unique_id=1390879984 groups=["Star"]]
-transform = Transform3D(0.82760584, 0, -0.56193256, 0, 0.99999976, 0, 0.56193256, 0, 0.82760584, 19.428894, 0, -21.920444)
+transform = Transform3D(-0.9999789, 0, 0.030636344, 0, 0.99999976, 0, -0.030636344, 0, -0.9999789, 19.428894, 0, -21.920444)
 mesh = SubResource("SphereMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
 script = ExtResource("1_jglls")
@@ -254,10 +254,10 @@ rot = 0.1
 neg = true
 
 [node name="star_yellow2" parent="starMID_F" unique_id=1358298473 instance=ExtResource("9_jghi6")]
-transform = Transform3D(-0.5112409, 0, 0.85839176, 0, 1, 0, -0.85839176, 0, -0.5112409, -1.2804388, 0, 18.512566)
+transform = Transform3D(0.66393846, 0, -0.746393, 0, 1, 0, 0.746393, 0, 0.66393846, -1.2804388, 0, 18.512566)
 
 [node name="star_green" parent="starMID_F" unique_id=1507610008 instance=ExtResource("6_uqeto")]
-transform = Transform3D(0.9971692, 0, 0.072277226, 0, 1, 0, -0.072277226, 0, 0.9971692, 2.1732147, 0, -17.5532)
+transform = Transform3D(0.7752507, 0, -0.6312106, 0, 1, 0, 0.6312106, 0, 0.7752507, 2.1732147, 0, -17.5532)
 
 [node name="starMID_F2" type="MeshInstance3D" parent="." unique_id=1417271142 groups=["Star"]]
 transform = Transform3D(0.30019447, 0, -0.00046803057, 0, 0.29999998, 0, 0.00046803057, 0, 0.30019447, -0.16682053, 0, 20.881256)
@@ -272,10 +272,10 @@ rot = 0.1
 neg = true
 
 [node name="star_yellow" parent="starMID_F2" unique_id=1718721205 instance=ExtResource("9_jghi6")]
-transform = Transform3D(0.5039216, 0, 0.86270636, 0, 0.9999999, 0, -0.86270636, 0, 0.5039216, 0.030468851, 0, 19.542702)
+transform = Transform3D(-0.33203146, 0, -0.94216186, 0, 0.9999999, 0, 0.94216186, 0, -0.33203146, 0.030468851, 0, 19.542702)
 
 [node name="star_green" parent="starMID_F2" unique_id=453900770 instance=ExtResource("6_uqeto")]
-transform = Transform3D(0.9903788, 0, 0.13686496, 0, 0.9999999, 0, -0.13686496, 0, 0.9903788, 3.2335594, 0, -32.883648)
+transform = Transform3D(0.8146021, 0, -0.5795499, 0, 0.9999999, 0, 0.5795499, 0, 0.8146021, 3.2335594, 0, -32.883648)
 
 [node name="starMID_F3" type="MeshInstance3D" parent="." unique_id=172486574 groups=["Star"]]
 transform = Transform3D(0.30019447, 0, -0.00046803057, 0, 0.29999998, 0, 0.00046803057, 0, 0.30019447, -0.16682053, 0, -0.13560104)
@@ -290,22 +290,22 @@ rot = 0.1
 neg = true
 
 [node name="star_pink" parent="starMID_F3" unique_id=747605801 instance=ExtResource("7_l5n2q")]
-transform = Transform3D(-0.5386767, 0, 0.84307873, 0, 0.99999994, 0, -0.84307873, 0, -0.5386767, 31.454226, 0, 0.40267068)
+transform = Transform3D(0.43500346, 0, -0.90109426, 0, 0.99999994, 0, 0.90109426, 0, 0.43500346, 31.454226, 0, 0.40267068)
 
 [node name="star_pink2" parent="starMID_F3" unique_id=585161896 instance=ExtResource("7_l5n2q")]
-transform = Transform3D(-0.85544604, 0, 0.51882076, 0, 0.99999994, 0, -0.51882076, 0, -0.85544604, -40.189075, 0, 0.5143692)
+transform = Transform3D(0.7880207, 0, -0.6166362, 0, 0.99999994, 0, 0.6166362, 0, 0.7880207, -40.189075, 0, 0.5143692)
 
 [node name="star_red" parent="starMID_F3" unique_id=261927623 instance=ExtResource("8_cv6tn")]
-transform = Transform3D(-0.8785524, 0, -0.47822887, 0, 0.99999994, 0, 0.47822887, 0, -0.8785524, 12.120184, 0, -15.307797)
+transform = Transform3D(0.26217392, 0, 0.9654083, 0, 0.99999994, 0, -0.9654083, 0, 0.26217392, 12.120184, 0, -15.307797)
 
 [node name="star_red2" parent="starMID_F3" unique_id=1491284656 instance=ExtResource("8_cv6tn")]
-transform = Transform3D(-0.8513271, 0, -0.52514976, 0, 0.99999994, 0, 0.52514976, 0, -0.8513271, -9.49486, 0, -15.274097)
+transform = Transform3D(0.209454, 0, 0.9781936, 0, 0.99999994, 0, -0.9781936, 0, 0.209454, -9.49486, 0, -15.274097)
 
 [node name="star_red3" parent="starMID_F3" unique_id=1700424049 instance=ExtResource("8_cv6tn")]
-transform = Transform3D(-0.8279739, 0, -0.5612728, 0, 0.99999994, 0, 0.5612728, 0, -0.8279739, -9.452894, 0, 11.6428)
+transform = Transform3D(0.16720472, 0, 0.9863111, 0, 0.99999994, 0, -0.9863111, 0, 0.16720472, -9.452894, 0, 11.6428)
 
 [node name="star_red4" parent="starMID_F3" unique_id=108957794 instance=ExtResource("8_cv6tn")]
-transform = Transform3D(-0.7751668, 0, -0.6321981, 0, 0.99999994, 0, 0.6321981, 0, -0.7751668, 16.032019, 0, 11.603066)
+transform = Transform3D(0.07944571, 0, 0.9972187, 0, 0.99999994, 0, -0.9972187, 0, 0.07944571, 16.032019, 0, 11.603066)
 
 [node name="Space_BG" type="MeshInstance3D" parent="." unique_id=1451238334 node_paths=PackedStringArray("input_stars")]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0.148, 0, -0.1)
@@ -323,6 +323,7 @@ script = ExtResource("8_q47le")
 
 [node name="EnemyBase" parent="." unique_id=1424587177 instance=ExtResource("7_d6qko")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9371481, -0.08077848, 33.579407)
+is_allay = null
 
 [node name="EnemyRespawn" type="Node3D" parent="EnemyBase" unique_id=2054981514]
 script = ExtResource("8_i5g78")

@@ -27,3 +27,19 @@ func equip(w:PackedScene):
 		slot.add_child(gun)
 		gun.global_position=slot.global_position
 		s.update_weapons_and_gunslots()
+		
+		#Speed 15.0 cargo 10
+		
+
+
+func _on_l_button_pressed() -> void:
+	var s:Ship=Game.pc.ship
+	s.speed=15.0
+	s.max_storage=10
+	s.mass=1.0
+
+func _on_h_button_pressed() -> void:
+	var s:Ship=Game.pc.ship
+	s.speed=0.0
+	s.mass=3.0
+	s.max_storage=20

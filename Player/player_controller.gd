@@ -36,7 +36,7 @@ func _process(_delta: float) -> void:
 	ship.steer(look_direction)
 	
 	input_direction = Input.get_vector("Left", "Right", "Down", "Up")
-	ship.move(input_direction)
+	ship.move(input_direction*ship.Speed/15.0)
 	
 	hud.update_labels()
 

@@ -29,6 +29,8 @@ var gun_slots: Dictionary[GunSlot.GunSlotTargets, GunSlot] = {}
 var steering_direction: Vector2
 var movement_direction: Vector2
 
+var Speed=15.0
+
 func _ready() -> void:
 	health = max_health
 	shield = max_shield
@@ -44,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	var target_angle: float = lerp_angle(current_angle, steering_direction.angle(), 2.0*delta) 
 	apply_central_force(1.0*Vector3(radiation_query.f.x, 0, radiation_query.f.y))
 	if movement_direction.length() > 0.01:
-		apply_central_force(15.0*Vector3(movement_direction.x, 0, movement_direction.y))
+		apply_central_force(Speed*Vector3(movement_direction.x, 0, movement_direction.y))
 		if self.is_in_group("PlayerShip"): #TODO ememies use fuel
 			use_fuel(delta*1.0)
 	# y rotation

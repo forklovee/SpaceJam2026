@@ -35,7 +35,8 @@ func _return_to_base_task(_delta: float):
 	if ship.storage == 0:
 		task = Task.Gather
 		return
-	
+	if Game.level.enemy_base==null:
+		return
 	var enemy_base :Base= Game.level.enemy_base
 	var global_position := ship.global_position
 	var target_position := enemy_base.global_position
