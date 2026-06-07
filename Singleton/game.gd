@@ -6,9 +6,6 @@ signal enemy_score_changed
 var pc: PlayerController
 var level: Level
 
-# Crystal and ships that are targetting it
-var enemy_blackboard: Dictionary[Crystal, Array] = {}
-
 var level_end=null
 
 var player_score := 0:
@@ -32,22 +29,6 @@ func open_level(level_scene: PackedScene):
 	
 	level = level_scene.instantiate()
 	add_child(level)
-
-
-func register_target_crystal(ship: Ship) -> Crystal:
-	if !level:
-		return
-	for crystal in level.crystals_to_gather:
-		if enemy_blackboard.has(crystal):
-			continue
-		enemy_blackboard[crystal] = [ship]
-		return crystal
-	#
-	#enemy_blackboard.sort()
-	#print(enemy_blackboard)
-	
-	return null
-	
 
 
 func spawn_explosion(instigator: Ship, damage: int, max_range: float, target_position: Vector3):

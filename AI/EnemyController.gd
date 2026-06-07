@@ -1,6 +1,7 @@
 class_name EnemyController extends Node
 
 enum Task{
+	ReturnToBase,
 	Gather,
 	Combat
 }
@@ -13,6 +14,8 @@ var nervousness: float = 0.0
 
 var bodies_in_sight: Array[Node3D]
 
+var target_crystal: Crystal
+
 func _ready() -> void:
 	possess(get_parent())
 
@@ -21,13 +24,54 @@ func _process(delta: float) -> void:
 		return
 	
 	match task:
+		Task.ReturnToBase:
+			_return_to_base_task(delta)
 		Task.Gather:
 			_gather_task(delta)
 		Task.Combat:
 			_combat_task(delta)
 
+func _return_to_base_task(_delta: float):
+	if ship.storage == 0:
+		task = Task.Gather
+		return
+	
+	var enemy_base := Game.level.enemy_base
+	var global_position := ship.global_position
+	var target_position := enemy_base.global_position
+	var direction_to_target := global_position.direction_to(target_position)
+	var move_direction := Vector2(
+		direction_to_target.x,
+		-direction_to_target.z
+	)
+	ship.steer(move_direction)
+	if global_position.distance_to(target_position) > 1.0:
+		ship.move(move_direction)
+	else:
+		ship.move(Vector2.ZERO)
+
 func _gather_task(delta: float):
-	# TODO: fly to resources
+	if ship.is_storage_full():
+		task = Task.ReturnToBase
+		return
+	
+	if is_instance_valid(target_crystal):
+		var global_position := ship.global_position
+		var target_position := target_crystal.global_position
+		var direction_to_target := global_position.direction_to(target_position)
+		var move_direction := Vector2(
+			direction_to_target.x,
+			-direction_to_target.z
+		)
+		ship.steer(move_direction)
+		
+		if global_position.distance_to(target_position) > 2.0:
+			ship.move(move_direction)
+		else:
+			ship.move(Vector2.ZERO)
+			ship.shoot(0)
+	else:
+		target_crystal = Game.level.register_target_crystal(ship)
 	
 	if !bodies_in_sight.is_empty():
 		var global_position: Vector3 = ship.global_position
@@ -48,7 +92,7 @@ func _gather_task(delta: float):
 	if nervousness >= 1.0:
 		task = Task.Combat
 
-func _combat_task(delta: float):
+func _combat_task(_delta: float):
 	var global_position := ship.global_position
 	var nearest_target = bodies_in_sight.reduce(
 		func(nearest, body): 
@@ -92,7 +136,16 @@ func _combat_task(delta: float):
 
 func possess(new_ship: Ship):
 	ship = new_ship
+	ship.got_damage.connect(_on_got_damage)
+	ship.died.connect(_on_died)
 
+func _on_died(_ship: Ship):
+	bodies_in_sight = []
+
+func _on_got_damage(_ship: Ship, instigator: Ship):
+	if task == Task.Gather && instigator.is_in_group(&"PlayerShip"):
+		bodies_in_sight = [instigator]
+		task = Task.Combat
 
 func _on_sight_sense_body_entered(body: Node):
 	if body in bodies_in_sight || !body.is_in_group(&"PlayerShip"):

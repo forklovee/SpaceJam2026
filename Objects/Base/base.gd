@@ -1,4 +1,4 @@
-extends Area3D
+class_name Base extends Area3D
 
 @export var is_allay=false
 
