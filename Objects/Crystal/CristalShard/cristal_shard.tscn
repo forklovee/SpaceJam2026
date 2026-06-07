@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://1qqcaerm06c7"]
+[gd_scene format=3 uid="uid://b6idd7rj3rm2r"]
 
-[ext_resource type="Script" uid="uid://dmwnhpoysrvs5" path="res://Objects/Crystal/cristal.gd" id="1_nkxha"]
+[ext_resource type="Script" uid="uid://junuorj4d6dr" path="res://Objects/Crystal/CristalShard/cristal_shard.gd" id="1_ifhdi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ndduc"]
 size = Vector3(2, 2, 2)
@@ -13,15 +13,22 @@ section_length = 0.5
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
 albedo_color = Color(4.1873755e-06, 0.5089053, 0.5611632, 1)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_x0f5b"]
+radius = 8.225488
+
 [node name="cristal" type="StaticBody3D" unique_id=1058605122 groups=["Crystal"]]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-script = ExtResource("1_nkxha")
+script = ExtResource("1_ifhdi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1030377784]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 shape = SubResource("BoxShape3D_ndduc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1982544863]
-visible = false
 mesh = SubResource("TubeTrailMesh_1bvp3")
 surface_material_override/0 = SubResource("StandardMaterial3D_lquwl")
+
+[node name="PickUpArea" type="Area3D" parent="." unique_id=485974809]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpArea" unique_id=1111126258]
+shape = SubResource("SphereShape3D_x0f5b")

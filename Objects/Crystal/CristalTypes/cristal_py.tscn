@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cdyvodqui4521"]
+
+[ext_resource type="PackedScene" uid="uid://1qqcaerm06c7" path="res://Objects/Crystal/cristal.tscn" id="1_k4sa8"]
+[ext_resource type="Texture2D" uid="uid://dagpg6pqcfvlm" path="res://Objects/Crystal/CristalTypes/Python.svg.png" id="2_k4sa8"]
+[ext_resource type="Texture2D" uid="uid://bh301sdw1mexi" path="res://Objects/Crystal/CristalShard/crack.png" id="3_8bqt1"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8xxgn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62iko"]
+transparency = 1
+albedo_texture = ExtResource("2_k4sa8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77x8y"]
+transparency = 1
+albedo_texture = ExtResource("3_8bqt1")
+
+[node name="cristal" unique_id=1058605122 instance=ExtResource("1_k4sa8")]
+durability = 10
+value = 10
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="2" unique_id=1474114186]
+mesh = SubResource("PlaneMesh_8xxgn")
+surface_material_override/0 = SubResource("StandardMaterial3D_62iko")
+
+[node name="crack" type="MeshInstance3D" parent="." index="3" unique_id=1443542499]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 0.0037785368, 0)
+visible = false
+mesh = SubResource("PlaneMesh_8xxgn")
+surface_material_override/0 = SubResource("StandardMaterial3D_77x8y")
