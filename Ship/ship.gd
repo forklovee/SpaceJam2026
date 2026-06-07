@@ -31,7 +31,7 @@ var movement_direction: Vector2
 func _ready() -> void:
 	health = max_health
 	shield = max_shield
-	storage = max_storage
+	storage = 0#max_storage
 	fuel = max_fuel
 	update_weapons_and_gunslots()
 
@@ -125,7 +125,7 @@ func shoot(weapon_id: int):
 func damage(instigator: Node3D, value: int):
 	if shield<=0:
 		health = clamp(health-value, 0, max_health)
-		print(self, "(", health, "/", max_health,")"," damaged by ", instigator, " with ", value, "DMG")
+		#print(self, "(", health, "/", max_health,")"," damaged by ", instigator, " with ", value, "DMG")
 		health_changed.emit(self) 
 		if health <= 0:
 			_on_died()
@@ -148,7 +148,7 @@ func heal(instigator: Node3D, value: int):
 
 func add_shield(instigator: Node3D, value: int):
 	shield = clamp(shield+value, 0, max_shield)
-	print(self, "(", shield, "/", max_shield,")", " shield by ", instigator, " with ", value)
+	#print(self, "(", shield, "/", max_shield,")", " shield by ", instigator, " with ", value)
 	shield_changed.emit(self)
 
 
@@ -187,3 +187,17 @@ func use_fuel(value: float):
 
 func can_collect(value):
 	return storage+value<=max_storage
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		if is_instance_valid(Data):
+			for st in range(storage):
+				var p=self.global_position
+				var a=randf()*2*PI
+				p+=Vector3(sin(a),0.0,cos(a))*0.3
+				var s:Node3D=Data.cristal_shard.instantiate()
+				Game.level.add_child(s)#.call_deferred(s)
+				s.global_position=p
+				s.scale=Vector3(1,1,1)*0.2
+				
+			self.storage=0

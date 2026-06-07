@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 	#if Game.pc==null:
 	#	e_process(delta)
 func e_process(delta: float) -> void:
-		print("AAAA")
+		#print("AAAA")
 		time+=delta
 		if time>cull_down:
 			time=0.0

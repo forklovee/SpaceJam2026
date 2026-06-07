@@ -55,5 +55,5 @@ func _exit_tree() -> void:
 	Game.level.add_child(e)
 	e.global_position=self.global_position
 	e.play()
-	var f=func():e.queue_free()
-	e.animation_finished.connect(f)
+	#var f=func():e.queue_free()
+	#e.animation_finished.connect(f)

@@ -47,3 +47,8 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0
 sprite_frames = SubResource("SpriteFrames_i3f1w")
 animation = &"new_animation"
 frame_progress = 0.7575393
+
+[node name="Timer" type="Timer" parent="." unique_id=550285081]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="queue_free"]
