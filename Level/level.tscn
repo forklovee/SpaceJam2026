@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://dm1nvh7d4k27x" path="res://Level/space_bg.gd" id="3_7a20f"]
 [ext_resource type="PackedScene" uid="uid://bao2jybtf0idi" path="res://MainMenu/win.tscn" id="3_nk1il"]
 [ext_resource type="PackedScene" uid="uid://cmcwrxxhrlkj3" path="res://Objects/Base/Base.tscn" id="7_d6qko"]
+[ext_resource type="PackedScene" uid="uid://wlwqk6cwxjmn" path="res://Objects/Crystal/CristalTypes/cristal_lua.tscn" id="8_wqlfs"]
+[ext_resource type="PackedScene" uid="uid://b1n61jmdup3bb" path="res://Objects/Crystal/CristalTypes/cristal_pas.tscn" id="9_py82k"]
+[ext_resource type="PackedScene" uid="uid://cdyvodqui4521" path="res://Objects/Crystal/CristalTypes/cristal_py.tscn" id="10_py82k"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_7dm0k"]
 
@@ -345,3 +348,15 @@ is_allay = true
 
 [node name="Base2" parent="." unique_id=1424587177 instance=ExtResource("7_d6qko")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9371481, -0.08077848, 22.076908)
+
+[node name="cristal" parent="." unique_id=599004292 instance=ExtResource("8_wqlfs")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.4770496, 0.013561487, -0.21904063)
+
+[node name="cristal2" parent="." unique_id=1181513035 instance=ExtResource("8_wqlfs")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -2.670039, 0.013561487, -0.21904063)
+
+[node name="cristal3" parent="." unique_id=686372781 instance=ExtResource("9_py82k")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -2.715034, 0.064817905, 0.7861613)
+
+[node name="cristal4" parent="." unique_id=1646615569 instance=ExtResource("10_py82k")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.718091, 0.024409592, -0.20307237)

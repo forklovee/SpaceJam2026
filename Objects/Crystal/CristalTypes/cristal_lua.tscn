@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://wlwqk6cwxjmn"]
+
+[ext_resource type="PackedScene" uid="uid://1qqcaerm06c7" path="res://Objects/Crystal/cristal.tscn" id="1_7p6nt"]
+[ext_resource type="Texture2D" uid="uid://csp1evfbee5us" path="res://Objects/Crystal/CristalTypes/Lua-Logo.svg.png" id="2_21qfs"]
+[ext_resource type="Texture2D" uid="uid://bh301sdw1mexi" path="res://Objects/Crystal/CristalShard/crack.png" id="3_1wt7a"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hvvak"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skchh"]
+transparency = 1
+albedo_texture = ExtResource("2_21qfs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qx5cn"]
+transparency = 1
+albedo_texture = ExtResource("3_1wt7a")
+
+[node name="cristal" unique_id=1058605122 instance=ExtResource("1_7p6nt")]
+durability = 5
+value = 5
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="2" unique_id=63835178]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0)
+mesh = SubResource("PlaneMesh_hvvak")
+surface_material_override/0 = SubResource("StandardMaterial3D_skchh")
+
+[node name="crack" type="MeshInstance3D" parent="." index="3" unique_id=1904638923]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 0.0037785368, 0)
+visible = false
+mesh = SubResource("PlaneMesh_hvvak")
+surface_material_override/0 = SubResource("StandardMaterial3D_qx5cn")

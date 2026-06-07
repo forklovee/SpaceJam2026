@@ -7,5 +7,7 @@ var bullets: Dictionary[Bullet3D.Type, PackedScene] = {
 	#Bullet3D.Type.Railgun: ResourceLoader.load("res://Ship/Gun/Bullets/regular_bullet.tscn")
 }
 
+var cristal_shard = ResourceLoader.load( "res://Objects/Crystal/CristalShard/cristal_shard.tscn")
+
 func get_bullet_resource(ammo_type: Bullet3D.Type) -> PackedScene:
 	return bullets[ammo_type]
