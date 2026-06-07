@@ -5,6 +5,7 @@
 [node name="RocketGun" type="Node3D" unique_id=325331390]
 script = ExtResource("1_epjrh")
 bullet_type = 2
+target_gun_slots = Array[int]([1, 2])
 damage = 50
 range = 5.0
 firerate_sec = 2.0

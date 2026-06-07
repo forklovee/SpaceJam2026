@@ -32,9 +32,10 @@ func bind_ship(ship: Ship):
 
 func unbind_ship(ship: Ship):
 	ship.health_changed.disconnect(_on_health_changed)
+	ship.shield_changed.disconnect(_on_shield_changed)
 	ship.fuel_changed.disconnect(_on_fuel_changed)
 	ship.storage_changed.disconnect(_on_storage_changed)
-	ship.ammo_amount_changed.disconnect(_on_ammo_amount_changed)
+	ship.used_weapon.disconnect(_on_ammo_amount_changed)
 
 
 func update_labels():

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://idcyet8cqbav" path="res://Ship/base_ship.tscn" id="1_4ff6c"]
 [ext_resource type="PackedScene" uid="uid://cnkt4114trhuc" path="res://Ship/Gun/regular_gun.tscn" id="2_d1b4h"]
-[ext_resource type="PackedScene" uid="uid://dggubpuu36kb3" path="res://Ship/Gun/rocket_gun.tscn" id="3_wtuya"]
+[ext_resource type="PackedScene" uid="uid://vit26vtugxqg" path="res://Ship/Gun/plsl_gun.tscn" id="3_wtuya"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ff6c"]
 albedo_color = Color(0.3372549, 1, 1, 1)
@@ -19,4 +19,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.54223883)
 bullets_per_shot = 7
 spread_deg = 18.289
 
-[node name="RocketGun" parent="WingL_GunSlot" parent_id_path=PackedInt32Array(1491398764) index="0" unique_id=274696058 instance=ExtResource("3_wtuya")]
+[node name="PLSLGun" parent="WingL_GunSlot" parent_id_path=PackedInt32Array(1491398764) index="0" unique_id=1435125892 instance=ExtResource("3_wtuya")]
