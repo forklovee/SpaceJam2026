@@ -71,4 +71,17 @@ func _on_ammo_amount_changed(ship: Ship, ammo_type: Bullet3D.Type):
 			rocket_ammo.update_amount(ship, ammo_type)
 		Bullet3D.Type.Railgun:
 			railgun_ammo.update_amount(ship, ammo_type)
+
+var b1:Node3D
+var b2:Node3D
+func show_repair_munu(_b1:Node3D,_b2:Node3D):
+	$Equipment_menu.visible=true
+	b1=_b1
+	b2=_b2
 	
+func _process(delta: float) -> void:
+	if $Equipment_menu.visible:
+		if !(is_instance_valid(b1) and is_instance_valid(b1)):
+			$Equipment_menu.visible=false
+		if b1.global_position.distance_to(b2.global_position)>5.0:
+			$Equipment_menu.visible=false

@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://8s2c3kns8i8q"]
+
+[ext_resource type="Script" uid="uid://bwv233eydj00c" path="res://Player/UI/equipment_menu.gd" id="1_yapah"]
+
+[node name="Equipment_menu" type="ColorRect" unique_id=6535177]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yapah")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1500512140]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -227.0
+offset_top = -230.0
+offset_right = 229.0
+offset_bottom = 233.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.29529542, 0.36722022, 0.72512126, 1)
+
+[node name="LaserButton" type="Button" parent="ColorRect2" unique_id=358851448]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 22.0
+offset_right = 207.0
+offset_bottom = 92.0
+text = "USE LASERS"
+
+[node name="RocketButton" type="Button" parent="ColorRect2" unique_id=2076952280]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 20.0
+offset_right = 427.0
+offset_bottom = 90.0
+text = "USE ROCKET"
+
+[connection signal="pressed" from="ColorRect2/LaserButton" to="." method="_on_laser_button_pressed"]
+[connection signal="pressed" from="ColorRect2/RocketButton" to="." method="_on_rocket_button_pressed"]

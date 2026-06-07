@@ -15,6 +15,8 @@ func _process(delta: float) -> void:
 		$MeshInstance3D/OmniLight3D.visible=false
 		for b in get_overlapping_bodies():
 			if b.is_in_group("PlayerShip"):
+				if Input.is_key_pressed(KEY_TAB):
+					Game.pc.hud.show_repair_munu(self,b)
 				var ship:Ship=b
 				$MeshInstance3D/OmniLight3D.visible=true
 				var c=ship.storage

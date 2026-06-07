@@ -22,3 +22,8 @@ var exp=ResourceLoader.load("res://Arty/explode.tscn")
 
 func get_bullet_resource(ammo_type: Bullet3D.Type) -> PackedScene:
 	return bullets[ammo_type]
+	
+var extra_wepons=[
+	ResourceLoader.load("res://Ship/Gun/rocket_gun.tscn"),
+	ResourceLoader.load("res://Ship/Gun/plsl_gun.tscn")
+]
