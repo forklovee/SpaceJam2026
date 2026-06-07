@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://duir75lrj04fx"]
+
+[ext_resource type="Script" uid="uid://c0bq257vib83j" path="res://Level/star.gd" id="1_r00aw"]
+[ext_resource type="PackedScene" uid="uid://c6mo1qdt786aw" path="res://Objects/Planet/planet.tscn" id="2_bhc7d"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7dm0k"]
+
+[node name="star_orange" type="MeshInstance3D" unique_id=686406761 groups=["Star"]]
+transform = Transform3D(0.857283, 0, -0.51320434, 0, 0.9999998, 0, 0.51320434, 0, 0.857283, 0, 0, 0)
+mesh = SubResource("SphereMesh_7dm0k")
+script = ExtResource("1_r00aw")
+color = Color(0.9196297, 0.25485146, 1.92523e-07, 1)
+flag = 2
+rot = -0.185
+pause = false
+
+[node name="Planet4" parent="." unique_id=1534775064 instance=ExtResource("2_bhc7d")]
+transform = Transform3D(-4.1421785, 0, 6.116382, 0, 7.383, 0, -6.116382, 0, -4.1421785, 9.253, 0, -6.2663817)
+rad = 2.99
+rot = 0.065

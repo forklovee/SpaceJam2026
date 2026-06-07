@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bl0rcrn70awui"]
+
+[ext_resource type="Script" uid="uid://c0bq257vib83j" path="res://Level/star.gd" id="1_oij8f"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7dm0k"]
+
+[node name="star_red" type="MeshInstance3D" unique_id=2052159992 groups=["Star"]]
+transform = Transform3D(0.9206363, 0, 0.39142913, 0, 0.99999976, 0, -0.39142913, 0, 0.9206363, 0, 0, 0)
+mesh = SubResource("SphereMesh_7dm0k")
+script = ExtResource("1_oij8f")
+color = Color(1, 0, 0, 1)
+flag = 4
+rot = -0.07
+pause = false

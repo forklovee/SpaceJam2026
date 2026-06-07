@@ -17,8 +17,8 @@ var health: int = max_health
 var shield: int = 0
 @export var max_storage: int = 10
 var storage: int = 0
-@export var max_fuel: int = 100
-var fuel: int = max_fuel
+@export var max_fuel: float = 100.0
+var fuel: float = max_fuel
 
 @export_group("Movement")
 @export var speed: float = 12.0
@@ -42,10 +42,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	radiation_query.update()
+	radiation_process(delta)
 	
 	var current_angle: float = rotation.y
 	var target_angle: float = lerp_angle(current_angle, steering_direction.angle(), 2.0*delta) 
-	
+	apply_central_force(1.0*Vector3(radiation_query.f.x, 0, radiation_query.f.y))
 	if movement_direction.length() > 0.01:
 		apply_central_force(speed*Vector3(movement_direction.x, 0, movement_direction.y))
 		if self.is_in_group("PlayerShip"): #TODO ememies use fuel
@@ -126,6 +127,8 @@ func get_gun_slot(gun_slot_enum: GunSlot.GunSlotTargets) -> GunSlot:
 	return gun_slots.get(gun_slot_enum, null)
 
 func shoot(weapon_id: int):
+	if radiation_query.data[Star3D.RaditionType.PACE]>1.0:
+		return
 	if weapon_id >= weapons.size():
 		return
 	var weapon: Gun = weapons[weapon_id]
@@ -159,7 +162,7 @@ func heal(instigator: Node3D, value: int):
 
 func add_shield(instigator: Node3D, value: int):
 	shield = clamp(shield+value, 0, max_shield)
-	print(self, "(", shield, "/", max_shield,")", " shield by ", instigator, " with ", value)
+	#print(self, "(", shield, "/", max_shield,")", " shield by ", instigator, " with ", value)
 	shield_changed.emit(self)
 
 
@@ -189,7 +192,7 @@ func transfer_crystal():
 func can_use_fuel(value: int) -> bool:
 	return fuel - value >= 0
 
-func use_fuel(value: int):
+func use_fuel(value: float):
 	if !can_use_fuel(value):
 		return
 	fuel = clamp(fuel-value, 0, max_fuel)
@@ -206,3 +209,17 @@ func refill_fuel(value: float, is_clamping = true):
 
 func can_collect(value):
 	return storage+value<=max_storage
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		if is_instance_valid(Data):
+			for st in range(storage):
+				var p=self.global_position
+				var a=randf()*2*PI
+				p+=Vector3(sin(a),0.0,cos(a))*0.3
+				var s:Node3D=Data.cristal_shard.instantiate()
+				Game.level.add_child(s)#.call_deferred(s)
+				s.global_position=p
+				s.scale=Vector3(1,1,1)*0.2
+				
+			self.storage=0

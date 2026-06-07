@@ -14,6 +14,11 @@ albedo_texture = ExtResource("2_21qfs")
 transparency = 1
 albedo_texture = ExtResource("3_1wt7a")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21qfs"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_21qfs")
+
 [node name="cristal" unique_id=1058605122 instance=ExtResource("1_7p6nt")]
 durability = 5
 value = 5
@@ -31,3 +36,9 @@ transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0,
 visible = false
 mesh = SubResource("PlaneMesh_hvvak")
 surface_material_override/0 = SubResource("StandardMaterial3D_qx5cn")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="4" unique_id=1141393142]
+transform = Transform3D(4.999999, 0, 0, 0, 4.999999, 0, 0, 0, 4.999999, 0, 0.67775285, 0)
+layers = 1024
+mesh = SubResource("PlaneMesh_hvvak")
+surface_material_override/0 = SubResource("StandardMaterial3D_21qfs")

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ct8vgrqe7wsng"]
+
+[ext_resource type="Script" uid="uid://c0bq257vib83j" path="res://Level/star.gd" id="1_wlv41"]
+[ext_resource type="PackedScene" uid="uid://c6mo1qdt786aw" path="res://Objects/Planet/planet.tscn" id="2_afe5r"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7dm0k"]
+
+[sub_resource type="Curve" id="Curve_0xm2m"]
+_data = [Vector2(0.2021605, 0.98771554), 0.0, 0.0, 0, 0, Vector2(0.50271004, 0.15240419), 0.0, 0.0, 0, 0, Vector2(0.8657407, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_h2yge"]
+texture_mode = 1
+curve = SubResource("Curve_0xm2m")
+
+[node name="star_green" type="MeshInstance3D" unique_id=35454859 groups=["Star"]]
+transform = Transform3D(0.6392065, 0, -0.76875776, 0, 0.9999998, 0, 0.76875776, 0, 0.6392065, 0, 0, 0)
+mesh = SubResource("SphereMesh_7dm0k")
+script = ExtResource("1_wlv41")
+color = Color(0.13692334, 0.5227604, 4.813075e-07, 1)
+rad = 2.005
+freq_profile = SubResource("CurveTexture_h2yge")
+rot = 0.085
+pause = false
+
+[node name="Planet" parent="." unique_id=1534775064 instance=ExtResource("2_afe5r")]
+transform = Transform3D(7.144947, 0, 5.541434, 0, 9.043, 0, -5.541434, 0, 7.144947, 9.014397, 0, 12.106629)
+rad = 2.99
+rot = 0.065

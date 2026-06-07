@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://l7q61qhof7j7"]
+
+[ext_resource type="Script" uid="uid://c0bq257vib83j" path="res://Level/star.gd" id="1_6rub8"]
+[ext_resource type="PackedScene" uid="uid://c6mo1qdt786aw" path="res://Objects/Planet/planet.tscn" id="2_n5cdo"]
+[ext_resource type="PackedScene" uid="uid://cdyvodqui4521" path="res://Objects/Crystal/CristalTypes/cristal_py.tscn" id="3_n5cdo"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7dm0k"]
+
+[node name="star_pink" type="MeshInstance3D" unique_id=409474172 groups=["Star"]]
+transform = Transform3D(0.3866048, 0, -0.92266244, 0, 0.99999994, 0, 0.92266244, 0, 0.3866048, 0, 0, 0)
+mesh = SubResource("SphereMesh_7dm0k")
+script = ExtResource("1_6rub8")
+color = Color(0.7621092, 0.26604587, 0.6329997, 1)
+flag = 3
+rot = -0.34
+pause = false
+
+[node name="Planet4" parent="." unique_id=1534775064 instance=ExtResource("2_n5cdo")]
+transform = Transform3D(-6.6469994, 0, 9.815025, 0, 11.848, 0, -9.815025, 0, -6.6469994, -10.872459, 0, 7.363122)
+rad = 2.99
+rot = 0.065
+
+[node name="cristal" parent="Planet4" unique_id=1058605122 instance=ExtResource("3_n5cdo")]
+transform = Transform3D(0.27336472, 0, 0.12357778, 0, 0.29999998, 0, -0.12357778, 0, 0.27336472, -1.2011485, 0, -0.1867975)

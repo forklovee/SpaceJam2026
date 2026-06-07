@@ -25,7 +25,13 @@ visible = false
 mesh = SubResource("PlaneMesh_8xxgn")
 surface_material_override/0 = SubResource("StandardMaterial3D_62iko")
 
-[node name="crack" type="MeshInstance3D" parent="." index="3" unique_id=1443542499]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="3" unique_id=655074711]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.09119768, 0)
+layers = 1024
+mesh = SubResource("PlaneMesh_8xxgn")
+surface_material_override/0 = SubResource("StandardMaterial3D_62iko")
+
+[node name="crack" type="MeshInstance3D" parent="." index="4" unique_id=1443542499]
 transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 0.0037785368, 0)
 visible = false
 mesh = SubResource("PlaneMesh_8xxgn")
