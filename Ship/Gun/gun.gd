@@ -14,6 +14,9 @@ var ammo := max_ammo
 
 var last_shoot_time: int = -1
 
+func _ready() -> void:
+	ammo = max_ammo
+
 func has_ammo() -> bool:
 	return ammo > 0
 

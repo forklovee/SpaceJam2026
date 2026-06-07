@@ -4,10 +4,9 @@ enum Type{
 	Regular,
 	PLSL,
 	Rocket,
+	RocketExplosion,
 	Railgun
 }
-
-const AUTOKILL_TIME: float = 3.0
 
 var instigator = null
 var velocity: Vector3
@@ -43,4 +42,5 @@ func _on_body_entered(body: Node3D) -> void:
 		return
 	if !can_get_hurt(body):
 		return
-	body.damage(instigator, 1)
+	body.damage(instigator, damage)
+	queue_free()

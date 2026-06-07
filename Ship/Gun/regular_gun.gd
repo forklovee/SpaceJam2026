@@ -15,10 +15,14 @@ func shoot(instigator: Ship):
 	var target_damage := damage
 	var target_speed := bullet_speed
 	match level:
+		1:
+			bullets_per_shot = 1
 		2:
+			bullets_per_shot = 3
 			target_range *= 1.1
 			target_speed *= 1.05
 		3:
+			bullets_per_shot = 5
 			target_damage *= 1.05
 			target_range *= 1.1
 			target_speed *= 1.05

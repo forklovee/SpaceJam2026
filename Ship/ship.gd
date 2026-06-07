@@ -8,7 +8,6 @@ signal fuel_changed(ship: Ship)
 
 signal used_weapon(ship: Ship)
 
-@onready var base_gun_slot: GunSlot = $BaseGunSlot
 @onready var radiation_query: RadiationQuery = $RaddiationQuerry
 
 @export var max_health: int = 100
@@ -30,6 +29,10 @@ var steering_direction: Vector2
 var movement_direction: Vector2
 
 func _ready() -> void:
+	health = max_health
+	shield = max_shield
+	storage = max_storage
+	fuel = max_fuel
 	update_weapons_and_gunslots()
 
 func _physics_process(delta: float) -> void:
@@ -42,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		apply_central_force(15.0*Vector3(movement_direction.x, 0, movement_direction.y))
 	
 	# y rotation
-	apply_torque(150.0*Vector3.UP * angle_difference(current_angle, target_angle))	
+	apply_torque(250.0*Vector3.UP * angle_difference(current_angle, target_angle))	
 
 func get_forward() -> Vector3:
 	return -global_basis.z
